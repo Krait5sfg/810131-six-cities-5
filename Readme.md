@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Юрий Кулаченко](https://up.htmlacademy.ru/react/5/user/810131).
-* Наставник: [Владимир Турецкий](https://htmlacademy.ru/profile/id439019).
+* Наставник: [Сергей Шершнев](https://htmlacademy.ru/profile/shv_sergey).
 
 ---
 
