@@ -23,7 +23,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'] //при импорте позволяет не писать расширения файлов
   },
   devtool: 'source-map',
 };
