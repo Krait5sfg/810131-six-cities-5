@@ -6,7 +6,7 @@ import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 
-const App = ({leaseCount}) => {
+const App = ({leaseCount, offers, reviews}) => {
   return (
     <BrowserRouter>
       <Switch>
@@ -28,7 +28,34 @@ const App = ({leaseCount}) => {
 };
 
 App.propTypes = {
-  leaseCount: PropTypes.number.isRequired
+  leaseCount: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+    accommodation: PropTypes.shape({
+      isPremium: PropTypes.bool.isRequired,
+      starsCount: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      bedroomsCount: PropTypes.string.isRequired,
+      guestsLimit: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      features: PropTypes.array.isRequired,
+    }).isRequired,
+    host: PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+  })).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    offerId: PropTypes.number.isRequired,
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    starsCount: PropTypes.number.isRequired,
+    commentText: PropTypes.string.isRequired,
+    date: PropTypes.object.isRequired,
+  })).isRequired,
 };
 
 export default App;

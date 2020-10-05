@@ -6,4 +6,4 @@ import reviews from './mocks/reviews';
 
 const LEASE_COUNT = 312;
 
-ReactDOM.render(<App leaseCount={LEASE_COUNT} />, document.querySelector(`#root`));
+ReactDOM.render(<App leaseCount={LEASE_COUNT} offers={offers} reviews={reviews} />, document.querySelector(`#root`));

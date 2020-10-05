@@ -9,7 +9,7 @@ export default [
       `img/apartment-01.jpg`],
     accommodation: {
       isPremium: true,
-      starsCount: `4.8`,
+      starsCount: 4.8,
       title: `Beautiful & luxurious apartment at great location`,
       type: `appartment`,
       bedroomsCount: `3`,
@@ -43,7 +43,7 @@ export default [
       `img/room.jpg`],
     accommodation: {
       isPremium: false,
-      starsCount: `4.3`,
+      starsCount: 4.3,
       title: `Wood and stone place`,
       type: `room`,
       bedroomsCount: `2`,
@@ -72,7 +72,7 @@ export default [
       `img/apartment-02.jpg`],
     accommodation: {
       isPremium: true,
-      starsCount: `4`,
+      starsCount: 4,
       title: `Canal View Prinsengracht`,
       type: `house`,
       bedroomsCount: `5`,
@@ -106,7 +106,7 @@ export default [
       `img/apartment-03.jpg`],
     accommodation: {
       isPremium: true,
-      starsCount: `5`,
+      starsCount: 5,
       title: `Nice, cozy, warm big bed apartment`,
       type: `hotel`,
       bedroomsCount: `10`,
