@@ -7,11 +7,12 @@ import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 
 const App = ({leaseCount, offers, reviews}) => {
+
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <MainPage leaseCount={leaseCount} />
+          <MainPage leaseCount={leaseCount} offers={offers} />
         </Route>
         <Route exact path="/login">
           <LoginPage />
@@ -34,7 +35,7 @@ App.propTypes = {
     images: PropTypes.array.isRequired,
     accommodation: PropTypes.shape({
       isPremium: PropTypes.bool.isRequired,
-      starsCount: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       bedroomsCount: PropTypes.string.isRequired,
