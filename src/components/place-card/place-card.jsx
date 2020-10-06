@@ -26,10 +26,8 @@ const PlaceCard = ({offer}) => {
   const rating = getRating(offer.accommodation.rating);
 
   return (
-    <article key={offer.id} className="cities__place-card place-card">
-      <div className="place-card__mark">
-        {offer.accommodation.isPremium ? <span>Premium</span> : <span />}
-      </div>
+    <React.Fragment>
+      {offer.accommodation.isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={offer.images[0]} width="260" height="200" alt="Place image" />
@@ -59,7 +57,7 @@ const PlaceCard = ({offer}) => {
         </h2>
         <p className="place-card__type">{offer.accommodation.type}</p>
       </div>
-    </article>
+    </ React.Fragment>
   );
 };
 
