@@ -100,7 +100,26 @@ const MainPage = ({leaseCount, offers}) => {
 };
 
 MainPage.propTypes = {
-  leaseCount: PropTypes.number.isRequired
+  leaseCount: PropTypes.number.isRequired,
+  offers: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+    accommodation: PropTypes.shape({
+      isPremium: PropTypes.bool.isRequired,
+      rating: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      bedroomsCount: PropTypes.string.isRequired,
+      guestsLimit: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      features: PropTypes.array.isRequired,
+    }).isRequired,
+    host: PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default MainPage;
