@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PlaceCard = ({offer}) => {
+const PlaceCard = ({offer, handlePlaceCardMouseEnter}) => {
 
   const getRating = (rating) => {
     let result = ``;
@@ -26,7 +26,7 @@ const PlaceCard = ({offer}) => {
   const rating = getRating(offer.accommodation.rating);
 
   return (
-    <React.Fragment>
+    <article className="cities__place-card place-card" onMouseEnter={() => handlePlaceCardMouseEnter(offer.id)}>
       {offer.accommodation.isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -57,7 +57,7 @@ const PlaceCard = ({offer}) => {
         </h2>
         <p className="place-card__type">{offer.accommodation.type}</p>
       </div>
-    </ React.Fragment>
+    </article>
   );
 };
 
@@ -75,7 +75,8 @@ PlaceCard.propTypes = {
       price: PropTypes.string.isRequired,
       features: PropTypes.array.isRequired,
     }).isRequired,
-  }).isRequired
+  }).isRequired,
+  handlePlaceCardMouseEnter: PropTypes.func.isRequired
 };
 
 export default PlaceCard;

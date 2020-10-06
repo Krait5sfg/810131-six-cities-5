@@ -5,16 +5,17 @@ import PropTypes from 'prop-types';
 export default class PlacesList extends PureComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      activeCardId: null
+    };
+    this.handlePlaceCardMouseEnter = this.handlePlaceCardMouseEnter.bind(this);
   }
 
   render() {
     const {offers} = this.props;
-
     const placeCards = offers.map((offer) => {
       return (
-        <article key={offer.id} className="cities__place-card place-card" onMouseEnter={() => console.log(offer.id)}>
-          <PlaceCard offer={offer} />
-        </article>
+        <PlaceCard offer={offer} handlePlaceCardMouseEnter={this.handlePlaceCardMouseEnter} key={offer.id} />
       );
     });
 
@@ -24,6 +25,16 @@ export default class PlacesList extends PureComponent {
       </div>
     );
   }
+
+  handlePlaceCardMouseEnter(offerId) {
+    this.setState(() => {
+      return {
+        activeCardId: offerId,
+      };
+    });
+  }
+
+
 }
 
 PlacesList.propTypes = {
