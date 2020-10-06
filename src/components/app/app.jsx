@@ -8,6 +8,8 @@ import OfferPage from '../offer-page/offer-page';
 
 const App = ({leaseCount, offers, reviews}) => {
 
+  const [firstOffer] = offers;
+
   return (
     <BrowserRouter>
       <Switch>
@@ -21,7 +23,7 @@ const App = ({leaseCount, offers, reviews}) => {
           <FavoritePage />
         </Route>
         <Route exact path="/offer/:id">
-          <OfferPage />
+          <OfferPage offer={firstOffer} reviews={reviews} />
         </Route>
       </Switch>
     </BrowserRouter>

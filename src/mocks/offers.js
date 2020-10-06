@@ -9,7 +9,7 @@ export default [
       `img/apartment-01.jpg`],
     accommodation: {
       isPremium: true,
-      rating: 2.5,
+      rating: 3,
       title: `Beautiful & luxurious apartment at great location`,
       type: `appartment`,
       bedroomsCount: `3`,
@@ -24,7 +24,9 @@ export default [
         `Dishwasher`,
         `Towels`,
         `Baby seat`,
-        `Cabel TV`
+        `Cabel TV`,
+        `Bycicle`,
+        `Car`
       ]
     },
     host: {

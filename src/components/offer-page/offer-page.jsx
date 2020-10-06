@@ -1,6 +1,66 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {getRating} from '../../utils/common';
 
-const OfferPage = () => {
+const OfferPage = ({offer, reviews}) => {
+  const {id, images, accommodation, host, description} = offer;
+  const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
+
+  const offerPageReviews = reviews.filter((review) => {
+    if (review.offerId === id) {
+      return true;
+    }
+    return false;
+  }).sort((firstReview, secondReview) => firstReview < secondReview ? -1 : 1);
+
+  const reviewCount = offerPageReviews.length;
+
+  const imagesElemenst = images.map((image, index) => {
+    return (
+      <div className="property__image-wrapper" key={index}>
+        <img className="property__image" src={image} alt="Photo studio" />
+      </div>
+    );
+  });
+
+  const featuresElements = features.map((feature, index) => {
+    return (
+      <li className="property__inside-item" key={index}>
+        {feature}
+      </li>
+    );
+  });
+
+  const reviewsElements = offerPageReviews.map((review, index) => {
+    const date = review.date.toLocaleString(`en-US`, {year: `numeric`, month: `long`});
+    const dateTime = `${review.date.toISOString().substr(0, 10)}`;
+
+    return (
+      <li className="reviews__item" key={index}>
+        <div className="reviews__user user">
+          <div className="reviews__avatar-wrapper user__avatar-wrapper">
+            <img className="reviews__avatar user__avatar" src={review.avatar} width="54" height="54" alt="Reviews avatar" />
+          </div>
+          <span className="reviews__user-name">
+            {review.name}
+          </span>
+        </div>
+        <div className="reviews__info">
+          <div className="reviews__rating rating">
+            <div className="reviews__stars rating__stars">
+              <span style={{width: getRating(review.starsCount)}}></span>
+              <span className="visually-hidden">Rating</span>
+            </div>
+          </div>
+          <p className="reviews__text">
+            {review.commentText}
+          </p>
+          <time className="reviews__time" dateTime={dateTime}>{date}</time>
+        </div>
+      </li>
+    );
+  });
+
   return (
     <div className="page">
       <header className="header">
@@ -30,34 +90,18 @@ const OfferPage = () => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
+              {imagesElemenst}
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              <div className="property__mark">
-                <span>Premium</span>
-              </div>
+              {isPremium ?
+                <div className="property__mark">
+                  <span>Premium</span>
+                </div> : ``}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
-                  Beautiful &amp; luxurious studio at great location
+                  {title}
                 </h1>
                 <button className="property__bookmark-button button" type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
@@ -68,105 +112,52 @@ const OfferPage = () => {
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={{width: `80%`}}></span>
+                  <span style={{width: getRating(rating)}}></span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">4.8</span>
+                <span className="property__rating-value rating__value">{rating}</span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  Apartment
+                  {type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  3 Bedrooms
+                  {bedroomsCount} Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max 4 adults
+                  Max {guestsLimit} adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;120</b>
+                <b className="property__price-value">&euro;{price}</b>
                 <span className="property__price-text">&nbsp;{` `}night</span>
               </div>
               <div className="property__inside">
                 <h2 className="property__inside-title">What&apos;s inside</h2>
                 <ul className="property__inside-list">
-                  <li className="property__inside-item">
-                    Wi-Fi
-                  </li>
-                  <li className="property__inside-item">
-                    Washing machine
-                  </li>
-                  <li className="property__inside-item">
-                    Towels
-                  </li>
-                  <li className="property__inside-item">
-                    Heating
-                  </li>
-                  <li className="property__inside-item">
-                    Coffee machine
-                  </li>
-                  <li className="property__inside-item">
-                    Baby seat
-                  </li>
-                  <li className="property__inside-item">
-                    Kitchen
-                  </li>
-                  <li className="property__inside-item">
-                    Dishwasher
-                  </li>
-                  <li className="property__inside-item">
-                    Cabel TV
-                  </li>
-                  <li className="property__inside-item">
-                    Fridge
-                  </li>
+                  {featuresElements}
                 </ul>
               </div>
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
                   <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                    <img className="property__avatar user__avatar" src="img/avatar-angelina.jpg" width="74" height="74" alt="Host avatar" />
+                    <img className="property__avatar user__avatar" src={host.avatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">
-                    Angelina
+                    {host.name}
                   </span>
                 </div>
                 <div className="property__description">
                   <p className="property__text">
-                    A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                  </p>
-                  <p className="property__text">
-                    An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.
+                    {description}
                   </p>
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewCount}</span></h2>
                 <ul className="reviews__list">
-                  <li className="reviews__item">
-                    <div className="reviews__user user">
-                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src="img/avatar-max.jpg" width="54" height="54" alt="Reviews avatar" />
-                      </div>
-                      <span className="reviews__user-name">
-                        Max
-                      </span>
-                    </div>
-                    <div className="reviews__info">
-                      <div className="reviews__rating rating">
-                        <div className="reviews__stars rating__stars">
-                          <span style={{width: `80%`}}></span>
-                          <span className="visually-hidden">Rating</span>
-                        </div>
-                      </div>
-                      <p className="reviews__text">
-                        A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
-                      </p>
-                      <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
-                    </div>
-                  </li>
+                  {reviewsElements}
                 </ul>
                 <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -324,6 +315,36 @@ const OfferPage = () => {
       </main>
     </div >
   );
+};
+
+OfferPage.propTypes = {
+  offer: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    images: PropTypes.array.isRequired,
+    accommodation: PropTypes.shape({
+      isPremium: PropTypes.bool.isRequired,
+      rating: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      bedroomsCount: PropTypes.string.isRequired,
+      guestsLimit: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      features: PropTypes.array.isRequired,
+    }).isRequired,
+    host: PropTypes.shape({
+      avatar: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape({
+    offerId: PropTypes.number.isRequired,
+    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    starsCount: PropTypes.number.isRequired,
+    commentText: PropTypes.string.isRequired,
+    date: PropTypes.object.isRequired,
+  })).isRequired,
 };
 
 export default OfferPage;

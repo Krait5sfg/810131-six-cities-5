@@ -1,28 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {getRating} from '../../utils/common';
 
 const PlaceCard = ({offer, handlePlaceCardMouseEnter}) => {
 
-  const getRating = (rating) => {
-    let result = ``;
-    switch (Math.floor(rating)) {
-      case 1:
-        result = `20%`;
-        break;
-      case 2:
-        result = `40%`;
-        break;
-      case 3:
-        result = `60%`;
-        break;
-      case 4:
-        result = `80%`;
-        break;
-      case 5:
-        result = `100%`;
-    }
-    return result;
-  };
   const rating = getRating(offer.accommodation.rating);
 
   return (

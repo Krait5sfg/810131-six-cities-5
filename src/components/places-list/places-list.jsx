@@ -33,8 +33,6 @@ export default class PlacesList extends PureComponent {
       };
     });
   }
-
-
 }
 
 PlacesList.propTypes = {
