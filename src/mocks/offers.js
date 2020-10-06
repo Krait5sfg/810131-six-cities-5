@@ -1,5 +1,6 @@
 export default [
   {
+    city: `Amsterdam`,
     id: 1704,
     images: [`img/apartment-01.jpg`,
       `img/apartment-01.jpg`,
@@ -9,9 +10,9 @@ export default [
       `img/apartment-01.jpg`],
     accommodation: {
       isPremium: true,
-      rating: 3,
+      rating: 3.4,
       title: `Beautiful & luxurious apartment at great location`,
-      type: `appartment`,
+      type: `apartment`,
       bedroomsCount: `3`,
       guestsLimit: `4`,
       price: `120`,
@@ -34,8 +35,10 @@ export default [
       name: `Angellina`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
+    isFavorites: true,
   },
   {
+    city: `Amsterdam`,
     id: 1705,
     images: [`img/room.jpg`,
       `img/room.jpg`,
@@ -63,8 +66,10 @@ export default [
       name: `Angellina-2`
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
+    isFavorites: true,
   },
   {
+    city: `Amsterdam`,
     id: 1706,
     images: [`img/apartment-02.jpg`,
       `img/apartment-02.jpg`,
@@ -97,8 +102,10 @@ export default [
       name: `Angellina-3`
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
+    isFavorites: false,
   },
   {
+    city: `Brussels`,
     id: 1707,
     images: [`img/apartment-03.jpg`,
       `img/apartment-03.jpg`,
@@ -131,5 +138,6 @@ export default [
       name: `Angellina-4`
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
+    isFavorites: true,
   },
 ];

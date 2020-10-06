@@ -37,6 +37,7 @@ export default class PlacesList extends PureComponent {
 
 PlacesList.propTypes = {
   offers: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     images: PropTypes.array.isRequired,
     accommodation: PropTypes.shape({
@@ -54,5 +55,6 @@ PlacesList.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
     description: PropTypes.string.isRequired,
+    isFavorites: PropTypes.bool.isRequired,
   })).isRequired,
 };

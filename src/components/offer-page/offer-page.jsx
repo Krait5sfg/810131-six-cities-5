@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
+import {TypeAccomodation} from '../../utils/const';
 
 const OfferPage = ({offer, reviews}) => {
   const {id, images, accommodation, host, description} = offer;
@@ -119,7 +120,7 @@ const OfferPage = ({offer, reviews}) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {type}
+                  {TypeAccomodation[type.toUpperCase()]}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedroomsCount} Bedrooms
@@ -319,6 +320,7 @@ const OfferPage = ({offer, reviews}) => {
 
 OfferPage.propTypes = {
   offer: PropTypes.shape({
+    city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     images: PropTypes.array.isRequired,
     accommodation: PropTypes.shape({
@@ -336,6 +338,7 @@ OfferPage.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
     description: PropTypes.string.isRequired,
+    isFavorites: PropTypes.bool.isRequired,
   }).isRequired,
   reviews: PropTypes.arrayOf(PropTypes.shape({
     offerId: PropTypes.number.isRequired,

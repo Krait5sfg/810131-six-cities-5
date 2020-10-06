@@ -102,6 +102,7 @@ const MainPage = ({leaseCount, offers}) => {
 MainPage.propTypes = {
   leaseCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(PropTypes.shape({
+    city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     images: PropTypes.array.isRequired,
     accommodation: PropTypes.shape({
@@ -119,6 +120,7 @@ MainPage.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
     description: PropTypes.string.isRequired,
+    isFavorites: PropTypes.bool.isRequired,
   })).isRequired,
 };
 

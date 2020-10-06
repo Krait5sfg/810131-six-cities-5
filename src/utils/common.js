@@ -1,5 +1,5 @@
 export const getRating = (rating) => {
-  switch (Math.floor(rating)) {
+  switch (Math.round(rating)) {
     case 1:
       return `20%`;
     case 2:
