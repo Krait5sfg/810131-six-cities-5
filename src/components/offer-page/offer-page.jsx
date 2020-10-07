@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccomodation} from '../../utils/const';
 
-const OfferPage = ({offer, reviews}) => {
+const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
   const {id, images, accommodation, host, description} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
@@ -75,7 +75,7 @@ const OfferPage = ({offer, reviews}) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailCick}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>

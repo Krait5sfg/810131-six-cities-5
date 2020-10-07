@@ -13,11 +13,24 @@ const App = ({leaseCount, offers, reviews}) => {
   const favoriteOffers = offers.filter((offer) => offer.isFavorites ? true : false);
   const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM ? true : false);
 
+  const handleLinkEmailClick = (evt, history) => {
+    evt.preventDefault();
+    history.push(`/favorites`);
+  };
+
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <MainPage leaseCount={leaseCount} offers={amsterdamOffers} />
+        <Route exact path="/" render={({history}) => (
+          <MainPage
+            leaseCount={leaseCount}
+            offers={amsterdamOffers}
+            onLinkCardClick={(evt) => {
+              evt.preventDefault();
+              history.push(`/offer/1704`);
+            }}
+            onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
+        )}>
         </Route>
         <Route exact path="/login">
           <LoginPage />
@@ -25,8 +38,13 @@ const App = ({leaseCount, offers, reviews}) => {
         <Route exact path="/favorites">
           <FavoritePage favoriteOffers={favoriteOffers} />
         </Route>
-        <Route exact path="/offer/:id">
-          <OfferPage offer={firstOffer} reviews={reviews} />
+        <Route exact path="/offer/:id" render={({history}) => (
+          <OfferPage
+            offer={firstOffer}
+            reviews={reviews}
+            onLinkEmailCick={(evt) => handleLinkEmailClick(evt, history)} />
+        )}>
+
         </Route>
       </Switch>
     </BrowserRouter>

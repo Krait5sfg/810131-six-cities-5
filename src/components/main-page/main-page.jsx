@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlacesList from '../places-list/places-list';
 
-const MainPage = ({leaseCount, offers}) => {
-
+const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -17,7 +16,7 @@ const MainPage = ({leaseCount, offers}) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#">
+                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailClick}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
@@ -87,7 +86,7 @@ const MainPage = ({leaseCount, offers}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <PlacesList offers={offers} />
+              <PlacesList offers={offers} onLinkCardClick={onLinkCardClick} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />

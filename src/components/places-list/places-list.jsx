@@ -15,7 +15,10 @@ export default class PlacesList extends PureComponent {
     const {offers} = this.props;
     const placeCards = offers.map((offer) => {
       return (
-        <PlaceCard offer={offer} handlePlaceCardMouseEnter={this.handlePlaceCardMouseEnter} key={offer.id} />
+        <PlaceCard offer={offer}
+          handlePlaceCardMouseEnter={this.handlePlaceCardMouseEnter}
+          key={offer.id}
+          onLinkCardClick={this.props.onLinkCardClick} />
       );
     });
 
