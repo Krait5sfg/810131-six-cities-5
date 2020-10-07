@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccomodation} from '../../utils/const';
+import ReviewForm from '../review-form/review-form';
 
 const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
   const {id, images, accommodation, host, description} = offer;
@@ -160,7 +161,8 @@ const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
                 <ul className="reviews__list">
                   {reviewsElements}
                 </ul>
-                <form className="reviews__form form" action="#" method="post">
+                <ReviewForm />
+                {/* <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
                     <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
@@ -205,7 +207,7 @@ const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
                     </p>
                     <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
                   </div>
-                </form>
+                </form> */}
               </section>
             </div>
           </div>
