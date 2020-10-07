@@ -7,11 +7,12 @@ import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 import {City} from '../../utils/const';
 
-const App = ({leaseCount, offers, reviews}) => {
+const App = ({offers, reviews}) => {
 
   const [firstOffer] = offers;
   const favoriteOffers = offers.filter((offer) => offer.isFavorites ? true : false);
   const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM ? true : false);
+
 
   const handleLinkEmailClick = (evt, history) => {
     evt.preventDefault();
@@ -28,7 +29,7 @@ const App = ({leaseCount, offers, reviews}) => {
       <Switch>
         <Route exact path="/" render={({history}) => (
           <MainPage
-            leaseCount={leaseCount}
+            leaseCount={amsterdamOffers.length}
             offers={amsterdamOffers}
             onLinkCardClick={(evt) => handleLinkCardClick(evt, history)}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
@@ -55,7 +56,6 @@ const App = ({leaseCount, offers, reviews}) => {
 };
 
 App.propTypes = {
-  leaseCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(PropTypes.shape({
     city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
 
-export default class PlacesList extends PureComponent {
+export default class PlaceCardList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ export default class PlacesList extends PureComponent {
     const placeCards = offers.map((offer) => {
       return (
         <PlaceCard offer={offer}
-          handlePlaceCardMouseEnter={this.handlePlaceCardMouseEnter}
+          onPlaceCardMouseEnter={this.handlePlaceCardMouseEnter}
           key={offer.id}
           onLinkCardClick={this.props.onLinkCardClick} />
       );
@@ -30,15 +30,11 @@ export default class PlacesList extends PureComponent {
   }
 
   handlePlaceCardMouseEnter(offerId) {
-    this.setState(() => {
-      return {
-        activeCardId: offerId,
-      };
-    });
+    this.setState({activeCardId: offerId});
   }
 }
 
-PlacesList.propTypes = {
+PlaceCardList.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(PropTypes.shape({
     city: PropTypes.string.isRequired,

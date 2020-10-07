@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlacesList from '../places-list/places-list';
+import PlaceCardList from '../place-card-list/place-card-list';
 
 const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
   return (
@@ -86,7 +86,7 @@ const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <PlacesList offers={offers} onLinkCardClick={onLinkCardClick} />
+              <PlaceCardList offers={offers} onLinkCardClick={onLinkCardClick} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />

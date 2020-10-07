@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccomodation} from '../../utils/const';
 
-const PlaceCard = ({offer, handlePlaceCardMouseEnter, onLinkCardClick}) => {
+const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 
   const {id, images, accommodation, isFavorites} = offer;
   const {isPremium, price, title, type} = accommodation;
@@ -12,7 +12,7 @@ const PlaceCard = ({offer, handlePlaceCardMouseEnter, onLinkCardClick}) => {
   const rating = getRating(offer.accommodation.rating);
 
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => handlePlaceCardMouseEnter(id)}>
+    <article className="cities__place-card place-card" onMouseEnter={() => onPlaceCardMouseEnter(id)}>
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#" onClick={onLinkCardClick}>
@@ -65,7 +65,7 @@ PlaceCard.propTypes = {
     }).isRequired,
     isFavorites: PropTypes.bool.isRequired,
   }).isRequired,
-  handlePlaceCardMouseEnter: PropTypes.func.isRequired
+  onPlaceCardMouseEnter: PropTypes.func.isRequired
 };
 
 export default PlaceCard;
