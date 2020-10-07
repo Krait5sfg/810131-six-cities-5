@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccomodation} from '../../utils/const';
+import {PropertyType} from '../../utils/property-type';
 
 const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 
@@ -49,23 +50,8 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 
 PlaceCard.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
-  offer: PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    images: PropTypes.array.isRequired,
-    accommodation: PropTypes.shape({
-      isPremium: PropTypes.bool.isRequired,
-      rating: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      bedroomsCount: PropTypes.string.isRequired,
-      guestsLimit: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      features: PropTypes.array.isRequired,
-    }).isRequired,
-    isFavorites: PropTypes.bool.isRequired,
-  }).isRequired,
-  onPlaceCardMouseEnter: PropTypes.func.isRequired
+  onPlaceCardMouseEnter: PropTypes.func.isRequired,
+  offer: PropertyType.OFFER,
 };
 
 export default PlaceCard;

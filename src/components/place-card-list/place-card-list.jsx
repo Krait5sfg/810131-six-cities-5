@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
+import {PropertyType} from '../../utils/property-type';
 
 export default class PlaceCardList extends PureComponent {
   constructor(props) {
@@ -36,25 +37,5 @@ export default class PlaceCardList extends PureComponent {
 
 PlaceCardList.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    images: PropTypes.array.isRequired,
-    accommodation: PropTypes.shape({
-      isPremium: PropTypes.bool.isRequired,
-      rating: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      bedroomsCount: PropTypes.string.isRequired,
-      guestsLimit: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      features: PropTypes.array.isRequired,
-    }).isRequired,
-    host: PropTypes.shape({
-      avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    description: PropTypes.string.isRequired,
-    isFavorites: PropTypes.bool.isRequired,
-  })).isRequired,
+  offers: PropTypes.arrayOf(PropertyType.OFFER).isRequired,
 };

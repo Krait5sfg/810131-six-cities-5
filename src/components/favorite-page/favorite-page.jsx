@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoriteLocationList from '../favorite-location-list/favorite-location-list';
+import {PropertyType} from '../../utils/property-type';
 
 const FavoritePage = ({favoriteOffers, onLinkCardClick}) => {
 
@@ -64,27 +65,7 @@ const FavoritePage = ({favoriteOffers, onLinkCardClick}) => {
 
 FavoritePage.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
-  favoriteOffers: PropTypes.arrayOf(PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    images: PropTypes.array.isRequired,
-    accommodation: PropTypes.shape({
-      isPremium: PropTypes.bool.isRequired,
-      rating: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      bedroomsCount: PropTypes.string.isRequired,
-      guestsLimit: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      features: PropTypes.array.isRequired,
-    }).isRequired,
-    host: PropTypes.shape({
-      avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    description: PropTypes.string.isRequired,
-    isFavorites: PropTypes.bool.isRequired,
-  })).isRequired,
+  favoriteOffers: PropTypes.arrayOf(PropertyType.OFFER).isRequired,
 };
 
 export default FavoritePage;

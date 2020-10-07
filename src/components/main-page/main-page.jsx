@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
+import {PropertyType} from '../../utils/property-type';
 
 const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
   return (
@@ -102,27 +103,7 @@ MainPage.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   leaseCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    images: PropTypes.array.isRequired,
-    accommodation: PropTypes.shape({
-      isPremium: PropTypes.bool.isRequired,
-      rating: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      bedroomsCount: PropTypes.string.isRequired,
-      guestsLimit: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      features: PropTypes.array.isRequired,
-    }).isRequired,
-    host: PropTypes.shape({
-      avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    description: PropTypes.string.isRequired,
-    isFavorites: PropTypes.bool.isRequired,
-  })).isRequired,
+  offers: PropTypes.arrayOf(PropertyType.OFFER).isRequired,
 };
 
 export default MainPage;
