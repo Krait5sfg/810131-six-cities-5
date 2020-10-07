@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
 
-const FavoriteLocationList = ({city, cityFavoriteOffers}) => {
+const FavoriteLocationList = ({city, cityFavoriteOffers, onLinkCardClick}) => {
 
   const cityFavoriteOffersElements = cityFavoriteOffers.map((offer, index) => {
     return (
-      <FavoritePlaceCard favoriteOffer={offer} key={index} />
+      <FavoritePlaceCard favoriteOffer={offer} key={index} onLinkCardClick={onLinkCardClick} />
     );
   });
 
@@ -27,6 +27,7 @@ const FavoriteLocationList = ({city, cityFavoriteOffers}) => {
 };
 
 FavoriteLocationList.propTypes = {
+  onLinkCardClick: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
   cityFavoriteOffers: PropTypes.arrayOf(PropTypes.shape({
     images: PropTypes.array.isRequired,

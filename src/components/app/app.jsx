@@ -18,6 +18,11 @@ const App = ({leaseCount, offers, reviews}) => {
     history.push(`/favorites`);
   };
 
+  const handleLinkCardClick = (evt, history) => {
+    evt.preventDefault();
+    history.push(`/offer/1704`);
+  };
+
   return (
     <BrowserRouter>
       <Switch>
@@ -25,18 +30,17 @@ const App = ({leaseCount, offers, reviews}) => {
           <MainPage
             leaseCount={leaseCount}
             offers={amsterdamOffers}
-            onLinkCardClick={(evt) => {
-              evt.preventDefault();
-              history.push(`/offer/1704`);
-            }}
+            onLinkCardClick={(evt) => handleLinkCardClick(evt, history)}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>
         <Route exact path="/login">
           <LoginPage />
         </Route>
-        <Route exact path="/favorites">
-          <FavoritePage favoriteOffers={favoriteOffers} />
+        <Route exact path="/favorites" render={({history}) => (
+          <FavoritePage favoriteOffers={favoriteOffers}
+            onLinkCardClick={(evt) => handleLinkCardClick(evt, history)} />
+        )}>
         </Route>
         <Route exact path="/offer/:id" render={({history}) => (
           <OfferPage

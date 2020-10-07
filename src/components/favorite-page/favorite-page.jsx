@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FavoriteLocationList from '../favorite-location-list/favorite-location-list';
 
-const FavoritePage = ({favoriteOffers}) => {
+const FavoritePage = ({favoriteOffers, onLinkCardClick}) => {
 
   const allCities = favoriteOffers.map((offer) => offer.city);
   const uniqueCities = [...new Set(allCities)];
@@ -10,7 +10,11 @@ const FavoritePage = ({favoriteOffers}) => {
   const favoriteLocationListElements = uniqueCities.map((city, index) => {
     const cityFavoriteOffers = favoriteOffers.filter((offer) => offer.city === city);
     return (
-      <FavoriteLocationList city={city} key={index} cityFavoriteOffers={cityFavoriteOffers} />
+      <FavoriteLocationList
+        city={city}
+        key={index}
+        cityFavoriteOffers={cityFavoriteOffers}
+        onLinkCardClick={onLinkCardClick} />
     );
   });
 
@@ -59,6 +63,7 @@ const FavoritePage = ({favoriteOffers}) => {
 };
 
 FavoritePage.propTypes = {
+  onLinkCardClick: PropTypes.func.isRequired,
   favoriteOffers: PropTypes.arrayOf(PropTypes.shape({
     city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

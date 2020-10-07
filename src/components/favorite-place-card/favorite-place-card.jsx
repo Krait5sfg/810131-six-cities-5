@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {TypeAccomodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
 
-const FavoritePlaceCard = ({favoriteOffer}) => {
+const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
   const {images, accommodation} = favoriteOffer;
   const [firstImage] = images;
   const {price, rating, title, type} = accommodation;
@@ -11,7 +11,7 @@ const FavoritePlaceCard = ({favoriteOffer}) => {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <a href="#" onClick={onLinkCardClick}>
           <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
         </a>
       </div>
@@ -35,7 +35,7 @@ const FavoritePlaceCard = ({favoriteOffer}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={onLinkCardClick}>{title}</a>
         </h2>
         <p className="place-card__type">{TypeAccomodation[type.toUpperCase()]}</p>
       </div>
@@ -44,6 +44,7 @@ const FavoritePlaceCard = ({favoriteOffer}) => {
 };
 
 FavoritePlaceCard.propTypes = {
+  onLinkCardClick: PropTypes.func.isRequired,
   favoriteOffer: PropTypes.shape({
     images: PropTypes.array.isRequired,
     accommodation: PropTypes.shape({
