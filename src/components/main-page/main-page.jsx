@@ -99,6 +99,8 @@ const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
 };
 
 MainPage.propTypes = {
+  onLinkCardClick: PropTypes.func.isRequired,
+  onLinkEmailClick: PropTypes.func.isRequired,
   leaseCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(PropTypes.shape({
     city: PropTypes.string.isRequired,

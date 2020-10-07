@@ -319,6 +319,7 @@ const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
 };
 
 OfferPage.propTypes = {
+  onLinkEmailCick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

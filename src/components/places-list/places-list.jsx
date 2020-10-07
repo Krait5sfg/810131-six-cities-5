@@ -39,6 +39,7 @@ export default class PlacesList extends PureComponent {
 }
 
 PlacesList.propTypes = {
+  onLinkCardClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(PropTypes.shape({
     city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

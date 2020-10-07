@@ -48,6 +48,7 @@ const PlaceCard = ({offer, handlePlaceCardMouseEnter, onLinkCardClick}) => {
 };
 
 PlaceCard.propTypes = {
+  onLinkCardClick: PropTypes.func.isRequired,
   offer: PropTypes.shape({
     city: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

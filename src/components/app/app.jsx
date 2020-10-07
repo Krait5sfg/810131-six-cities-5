@@ -44,7 +44,6 @@ const App = ({leaseCount, offers, reviews}) => {
             reviews={reviews}
             onLinkEmailCick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
-
         </Route>
       </Switch>
     </BrowserRouter>
