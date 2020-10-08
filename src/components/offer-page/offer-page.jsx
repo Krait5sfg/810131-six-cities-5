@@ -31,6 +31,8 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
     );
   });
 
+  const premiumMarkElement = isPremium ? <div className="property__mark"><span>Premium</span></div> : ``;
+
   const reviewsElements = offerPageReviews.map((review, index) => {
     const date = review.date.toLocaleString(`en-US`, {year: `numeric`, month: `long`});
     const dateTime = `${review.date.toISOString().substr(0, 10)}`;
@@ -95,10 +97,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {isPremium ?
-                <div className="property__mark">
-                  <span>Premium</span>
-                </div> : ``}
+              {premiumMarkElement}
               <div className="property__name-wrapper">
                 <h1 className="property__name">
                   {title}
