@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 
-const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
+const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -71,7 +72,7 @@ const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{leaseCount} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by{` `}</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -102,7 +103,6 @@ const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
 MainPage.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
-  leaseCount: PropTypes.number.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };
 

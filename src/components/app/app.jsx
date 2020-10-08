@@ -39,7 +39,6 @@ const App = ({offers, reviews}) => {
       <Switch>
         <Route exact path={PagePath.MAIN} render={({history}) => (
           <MainPage
-            leaseCount={amsterdamOffers.length}
             offers={amsterdamOffers}
             onLinkCardClick={(evt) => handleLinkCardClick(evt, history)}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
