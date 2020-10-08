@@ -7,8 +7,8 @@ export default class ReviewForm extends PureComponent {
     this._handleFieldChange = this._handleFieldChange.bind(this);
 
     this.state = {
-      rating: null,
-      review: null
+      rating: ``,
+      review: ``
     };
   }
 
