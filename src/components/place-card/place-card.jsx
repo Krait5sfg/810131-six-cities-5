@@ -7,10 +7,10 @@ import {OfferPropTypes} from '../../utils/property-type';
 const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 
   const {id, images, accommodation, isFavorites} = offer;
-  const {isPremium, price, title, type} = accommodation;
+  const {isPremium, price, title, type, rating} = accommodation;
   const [firstImage] = images;
 
-  const rating = getRating(offer.accommodation.rating);
+  const formattedRating = getRating(rating);
 
   return (
     <article className="cities__place-card place-card" onMouseEnter={() => onPlaceCardMouseEnter(id)}>
@@ -35,7 +35,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: rating}}></span>
+            <span style={{width: formattedRating}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
