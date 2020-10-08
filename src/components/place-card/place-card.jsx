@@ -11,6 +11,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
   const [firstImage] = images;
 
   const formattedRating = getRating(rating);
+  const favoriteButtonClass = isFavorites ? `place-card__bookmark-button--active` : ``;
 
   return (
     <article className="cities__place-card place-card" onMouseEnter={() => onPlaceCardMouseEnter(id)}>
@@ -26,7 +27,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
             <b className="place-card__price-value">&euro;{price}{` `}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={isFavorites ? `place-card__bookmark-button button place-card__bookmark-button--active` : `place-card__bookmark-button button `} type="button">
+          <button className={`place-card__bookmark-button button ${favoriteButtonClass}`} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
