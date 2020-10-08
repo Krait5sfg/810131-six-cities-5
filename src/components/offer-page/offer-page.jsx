@@ -9,12 +9,9 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
   const {id, images, accommodation, host, description} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
-  const offerPageReviews = reviews.filter((review) => {
-    if (review.offerId === id) {
-      return true;
-    }
-    return false;
-  }).sort((firstReview, secondReview) => firstReview < secondReview ? -1 : 1);
+  const offerPageReviews = reviews
+    .filter((review) => review.offerId === id)
+    .sort((firstReview, secondReview) => firstReview < secondReview ? -1 : 1);
 
   const reviewCount = offerPageReviews.length;
 
