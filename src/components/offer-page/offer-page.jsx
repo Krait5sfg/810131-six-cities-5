@@ -6,7 +6,7 @@ import ReviewForm from '../review-form/review-form';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
 const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
-  const {id, images, accommodation, host, description} = offer;
+  const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
   const offerPageReviews = reviews
@@ -14,6 +14,8 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
     .sort((firstReview, secondReview) => firstReview < secondReview ? -1 : 1);
 
   const reviewCount = offerPageReviews.length;
+
+  const favoriteButtonClass = isFavorite ? `property__bookmark-button--active` : ``;
 
   const imagesElements = images.map((image, index) => {
     return (
@@ -102,7 +104,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className="property__bookmark-button button" type="button">
+                <button className={`property__bookmark-button button ${favoriteButtonClass}`} type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
