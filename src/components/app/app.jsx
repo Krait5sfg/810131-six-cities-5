@@ -8,7 +8,6 @@ import OfferPage from '../offer-page/offer-page';
 import {City} from '../../utils/const';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
-const ID = 1704;
 
 const PagePath = {
   MAIN: `/`,
@@ -31,7 +30,7 @@ const App = ({offers, reviews}) => {
 
   const handleLinkCardClick = (evt, history) => {
     evt.preventDefault();
-    history.push(`${PagePath.OFFER}${ID}`);
+    history.push(`/offer/:1704`); // временно
   };
 
   return (
