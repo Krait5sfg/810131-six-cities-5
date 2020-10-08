@@ -13,13 +13,13 @@ export default class PlaceCardList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, onLinkCardClick} = this.props;
     const placeCards = offers.map((offer) => {
       return (
         <PlaceCard offer={offer}
           onPlaceCardMouseEnter={this._handlePlaceCardMouseEnter}
           key={offer.id}
-          onLinkCardClick={this.props.onLinkCardClick} />
+          onLinkCardClick={onLinkCardClick} />
       );
     });
 
