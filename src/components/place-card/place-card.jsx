@@ -6,12 +6,12 @@ import {OfferPropTypes} from '../../utils/property-type';
 
 const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 
-  const {id, images, accommodation, isFavorites} = offer;
+  const {id, images, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
   const [firstImage] = images;
 
   const formattedRating = getRating(rating);
-  const favoriteButtonClass = isFavorites ? `place-card__bookmark-button--active` : ``;
+  const favoriteButtonClass = isFavorite ? `place-card__bookmark-button--active` : ``;
 
   return (
     <article className="cities__place-card place-card" onMouseEnter={() => onPlaceCardMouseEnter(id)}>

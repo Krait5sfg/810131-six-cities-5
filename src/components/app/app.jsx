@@ -19,7 +19,7 @@ const PagePath = {
 const App = ({offers, reviews}) => {
 
   const [firstOffer] = offers;
-  const favoriteOffers = offers.filter((offer) => offer.isFavorites);
+  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
   const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
 
 

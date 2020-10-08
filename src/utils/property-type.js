@@ -19,7 +19,7 @@ export const OfferPropTypes = PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
   description: PropTypes.string.isRequired,
-  isFavorites: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
 }).isRequired;
 
 

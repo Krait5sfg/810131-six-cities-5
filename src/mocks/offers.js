@@ -35,7 +35,7 @@ export default [
       name: `Angellina`
     },
     description: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century. An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`,
-    isFavorites: true,
+    isFavorite: true,
   },
   {
     city: `Amsterdam`,
@@ -66,7 +66,7 @@ export default [
       name: `Angellina-2`
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
-    isFavorites: true,
+    isFavorite: true,
   },
   {
     city: `Amsterdam`,
@@ -102,7 +102,7 @@ export default [
       name: `Angellina-3`
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
-    isFavorites: false,
+    isFavorite: false,
   },
   {
     city: `Brussels`,
@@ -138,6 +138,6 @@ export default [
       name: `Angellina-4`
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
-    isFavorites: true,
+    isFavorite: true,
   },
 ];
