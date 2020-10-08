@@ -15,7 +15,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
 
   const reviewCount = offerPageReviews.length;
 
-  const imagesElemenst = images.map((image, index) => {
+  const imagesElements = images.map((image, index) => {
     return (
       <div className="property__image-wrapper" key={index}>
         <img className="property__image" src={image} alt="Photo studio" />
@@ -90,7 +90,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {imagesElemenst}
+              {imagesElements}
             </div>
           </div>
           <div className="property__container container">
