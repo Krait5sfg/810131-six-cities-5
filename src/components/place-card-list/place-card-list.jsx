@@ -9,7 +9,7 @@ export default class PlaceCardList extends PureComponent {
     this.state = {
       activeCardId: null
     };
-    this.handlePlaceCardMouseEnter = this.handlePlaceCardMouseEnter.bind(this);
+    this._handlePlaceCardMouseEnter = this._handlePlaceCardMouseEnter.bind(this);
   }
 
   render() {
@@ -17,7 +17,7 @@ export default class PlaceCardList extends PureComponent {
     const placeCards = offers.map((offer) => {
       return (
         <PlaceCard offer={offer}
-          onPlaceCardMouseEnter={this.handlePlaceCardMouseEnter}
+          onPlaceCardMouseEnter={this._handlePlaceCardMouseEnter}
           key={offer.id}
           onLinkCardClick={this.props.onLinkCardClick} />
       );
@@ -30,7 +30,7 @@ export default class PlaceCardList extends PureComponent {
     );
   }
 
-  handlePlaceCardMouseEnter(offerId) {
+  _handlePlaceCardMouseEnter(offerId) {
     this.setState({activeCardId: offerId});
   }
 }
