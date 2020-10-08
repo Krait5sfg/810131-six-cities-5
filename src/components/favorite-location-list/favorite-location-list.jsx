@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 
 const FavoriteLocationList = ({city, cityFavoriteOffers, onLinkCardClick}) => {
 
@@ -30,7 +30,7 @@ const FavoriteLocationList = ({city, cityFavoriteOffers, onLinkCardClick}) => {
 FavoriteLocationList.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
-  cityFavoriteOffers: PropTypes.arrayOf(PropertyType.OFFER).isRequired
+  cityFavoriteOffers: PropTypes.arrayOf(OfferPropTypes).isRequired
 };
 
 export default FavoriteLocationList;

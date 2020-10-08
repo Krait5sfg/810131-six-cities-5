@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccomodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
 const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
   const {id, images, accommodation, host, description} = offer;
@@ -277,8 +277,8 @@ const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
 
 OfferPage.propTypes = {
   onLinkEmailCick: PropTypes.func.isRequired,
-  offer: PropertyType.OFFER,
-  reviews: PropTypes.arrayOf(PropertyType.REVIEW).isRequired,
+  offer: OfferPropTypes,
+  reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
 };
 
 export default OfferPage;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 
 const MainPage = ({leaseCount, offers, onLinkCardClick, onLinkEmailClick}) => {
   return (
@@ -103,7 +103,7 @@ MainPage.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   leaseCount: PropTypes.number.isRequired,
-  offers: PropTypes.arrayOf(PropertyType.OFFER).isRequired,
+  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };
 
 export default MainPage;

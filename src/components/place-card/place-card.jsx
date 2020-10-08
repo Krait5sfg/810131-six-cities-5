@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccomodation} from '../../utils/const';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 
 const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 
@@ -51,7 +51,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, onLinkCardClick}) => {
 PlaceCard.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
   onPlaceCardMouseEnter: PropTypes.func.isRequired,
-  offer: PropertyType.OFFER,
+  offer: OfferPropTypes,
 };
 
 export default PlaceCard;

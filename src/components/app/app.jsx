@@ -6,7 +6,7 @@ import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 import {City} from '../../utils/const';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
 const App = ({offers, reviews}) => {
 
@@ -57,8 +57,8 @@ const App = ({offers, reviews}) => {
 };
 
 App.propTypes = {
-  offers: PropTypes.arrayOf(PropertyType.OFFER).isRequired,
-  reviews: PropTypes.arrayOf(PropertyType.REVIEW).isRequired,
+  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
 };
 
 export default App;

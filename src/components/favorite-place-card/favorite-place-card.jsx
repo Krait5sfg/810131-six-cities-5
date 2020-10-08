@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {TypeAccomodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 
 const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
   const {images, accommodation} = favoriteOffer;
@@ -46,7 +46,7 @@ const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
 
 FavoritePlaceCard.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
-  favoriteOffer: PropertyType.OFFER,
+  favoriteOffer: OfferPropTypes,
 };
 
 export default FavoritePlaceCard;

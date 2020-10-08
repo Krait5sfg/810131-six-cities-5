@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
-import {PropertyType} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 
 export default class PlaceCardList extends PureComponent {
   constructor(props) {
@@ -37,5 +37,5 @@ export default class PlaceCardList extends PureComponent {
 
 PlaceCardList.propTypes = {
   onLinkCardClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(PropertyType.OFFER).isRequired,
+  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };
