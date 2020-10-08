@@ -5,7 +5,7 @@ import {TypeAccomodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
-const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
+const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
   const {id, images, accommodation, host, description} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
@@ -77,7 +77,7 @@ const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
             <nav className="header__nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailCick}>
+                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailClick}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
@@ -276,7 +276,7 @@ const OfferPage = ({offer, reviews, onLinkEmailCick}) => {
 };
 
 OfferPage.propTypes = {
-  onLinkEmailCick: PropTypes.func.isRequired,
+  onLinkEmailClick: PropTypes.func.isRequired,
   offer: OfferPropTypes,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
 };

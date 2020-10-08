@@ -57,7 +57,7 @@ const App = ({offers, reviews}) => {
           <OfferPage
             offer={firstOffer}
             reviews={reviews}
-            onLinkEmailCick={(evt) => handleLinkEmailClick(evt, history)} />
+            onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>
       </Switch>
