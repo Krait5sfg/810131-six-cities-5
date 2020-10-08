@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {TypeAccomodation} from '../../utils/const';
+import {TypeAccommodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
 import {OfferPropTypes} from '../../utils/property-type';
 
@@ -38,7 +38,7 @@ const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
         <h2 className="place-card__name">
           <a href="#" onClick={onLinkCardClick}>{title}</a>
         </h2>
-        <p className="place-card__type">{TypeAccomodation[type.toUpperCase()]}</p>
+        <p className="place-card__type">{TypeAccommodation[type.toUpperCase()]}</p>
       </div>
     </article >
   );

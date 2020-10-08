@@ -1,4 +1,4 @@
-export const TypeAccomodation = {
+export const TypeAccommodation = {
   APARTMENT: `Apartment`,
   ROOM: `Private Room`,
   HOUSE: `House`,

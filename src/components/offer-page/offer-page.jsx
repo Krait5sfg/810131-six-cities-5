@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
-import {TypeAccomodation} from '../../utils/const';
+import {TypeAccommodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
@@ -122,7 +122,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
-                  {TypeAccomodation[type.toUpperCase()]}
+                  {TypeAccommodation[type.toUpperCase()]}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
                   {bedroomsCount} Bedrooms
