@@ -11,7 +11,7 @@ import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 const App = ({offers, reviews}) => {
 
   const [firstOffer] = offers;
-  const favoriteOffers = offers.filter((offer) => offer.isFavorites ? true : false);
+  const favoriteOffers = offers.filter((offer) => offer.isFavorites);
   const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM ? true : false);
 
 
