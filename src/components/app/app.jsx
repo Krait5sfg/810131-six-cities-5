@@ -12,7 +12,7 @@ const App = ({offers, reviews}) => {
 
   const [firstOffer] = offers;
   const favoriteOffers = offers.filter((offer) => offer.isFavorites);
-  const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM ? true : false);
+  const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
 
 
   const handleLinkEmailClick = (evt, history) => {
