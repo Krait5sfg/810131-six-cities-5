@@ -8,6 +8,15 @@ import OfferPage from '../offer-page/offer-page';
 import {City} from '../../utils/const';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 
+const ID = 1704;
+
+const PagePath = {
+  MAIN: `/`,
+  FAVORITE: `/favorites`,
+  OFFER: `/offer/:id`,
+  LOGIN: `/login`
+};
+
 const App = ({offers, reviews}) => {
 
   const [firstOffer] = offers;
@@ -17,18 +26,18 @@ const App = ({offers, reviews}) => {
 
   const handleLinkEmailClick = (evt, history) => {
     evt.preventDefault();
-    history.push(`/favorites`);
+    history.push(PagePath.FAVORITE);
   };
 
   const handleLinkCardClick = (evt, history) => {
     evt.preventDefault();
-    history.push(`/offer/1704`);
+    history.push(`${PagePath.OFFER}${ID}`);
   };
 
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" render={({history}) => (
+        <Route exact path={PagePath.MAIN} render={({history}) => (
           <MainPage
             leaseCount={amsterdamOffers.length}
             offers={amsterdamOffers}
@@ -36,15 +45,15 @@ const App = ({offers, reviews}) => {
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>
-        <Route exact path="/login">
+        <Route exact path={PagePath.LOGIN}>
           <LoginPage />
         </Route>
-        <Route exact path="/favorites" render={({history}) => (
+        <Route exact path={PagePath.FAVORITE} render={({history}) => (
           <FavoritePage favoriteOffers={favoriteOffers}
             onLinkCardClick={(evt) => handleLinkCardClick(evt, history)} />
         )}>
         </Route>
-        <Route exact path="/offer/:id" render={({history}) => (
+        <Route exact path={PagePath.OFFER} render={({history}) => (
           <OfferPage
             offer={firstOffer}
             reviews={reviews}
