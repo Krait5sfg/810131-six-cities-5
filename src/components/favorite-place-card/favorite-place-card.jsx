@@ -1,10 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {TypeAccommodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
 import {OfferPropTypes} from '../../utils/property-type';
+import {Link} from 'react-router-dom';
 
-const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
+
+const FavoritePlaceCard = ({favoriteOffer}) => {
   const {images, accommodation} = favoriteOffer;
   const [firstImage] = images;
   const {price, rating, title, type} = accommodation;
@@ -12,9 +13,9 @@ const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <a href="#" onClick={onLinkCardClick}>
+        <Link to="/offer/:1704">
           <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
-        </a>
+        </Link>
       </div>
       <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
@@ -36,7 +37,7 @@ const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={onLinkCardClick}>{title}</a>
+          <Link to="/offer/:1704">{title}</Link>
         </h2>
         <p className="place-card__type">{TypeAccommodation[type.toUpperCase()]}</p>
       </div>
@@ -45,7 +46,6 @@ const FavoritePlaceCard = ({favoriteOffer, onLinkCardClick}) => {
 };
 
 FavoritePlaceCard.propTypes = {
-  onLinkCardClick: PropTypes.func.isRequired,
   favoriteOffer: OfferPropTypes,
 };
 

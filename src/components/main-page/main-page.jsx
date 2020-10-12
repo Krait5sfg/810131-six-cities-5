@@ -5,7 +5,7 @@ import {OfferPropTypes} from '../../utils/property-type';
 import MainPageMap from '../main-page-map/main-page-map';
 
 
-const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
+const MainPage = ({offers, onLinkEmailClick}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -90,7 +90,7 @@ const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <PlaceCardList offers={offers} onLinkCardClick={onLinkCardClick} />
+              <PlaceCardList offers={offers} />
             </section>
             <div className="cities__right-section">
               <MainPageMap offers={offers} />
@@ -103,7 +103,6 @@ const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
 };
 
 MainPage.propTypes = {
-  onLinkCardClick: PropTypes.func.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };

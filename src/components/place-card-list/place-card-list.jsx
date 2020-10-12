@@ -13,13 +13,12 @@ export default class PlaceCardList extends PureComponent {
   }
 
   render() {
-    const {offers, onLinkCardClick} = this.props;
+    const {offers} = this.props;
     const placeCards = offers.map((offer) => {
       return (
         <PlaceCard offer={offer}
           onPlaceCardMouseEnter={this._handlePlaceCardMouseEnter}
-          key={offer.id}
-          onLinkCardClick={onLinkCardClick} />
+          key={offer.id} />
       );
     });
 
@@ -36,6 +35,5 @@ export default class PlaceCardList extends PureComponent {
 }
 
 PlaceCardList.propTypes = {
-  onLinkCardClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };

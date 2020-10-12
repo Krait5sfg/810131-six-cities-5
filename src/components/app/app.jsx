@@ -27,28 +27,20 @@ const App = ({offers, reviews}) => {
     history.push(PagePath.FAVORITE);
   };
 
-  const handleLinkCardClick = (evt, history) => {
-    evt.preventDefault();
-    history.push(`/offer/:1704`); // временно
-  };
-
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={PagePath.MAIN} render={({history}) => (
           <MainPage
             offers={amsterdamOffers}
-            onLinkCardClick={(evt) => handleLinkCardClick(evt, history)}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>
         <Route exact path={PagePath.LOGIN}>
           <LoginPage />
         </Route>
-        <Route exact path={PagePath.FAVORITE} render={({history}) => (
-          <FavoritePage favoriteOffers={favoriteOffers}
-            onLinkCardClick={(evt) => handleLinkCardClick(evt, history)} />
-        )}>
+        <Route exact path={PagePath.FAVORITE}>
+          <FavoritePage favoriteOffers={favoriteOffers} />
         </Route>
         <Route exact path={`/offer/:id`} render={({history}) => (
           <OfferPage
