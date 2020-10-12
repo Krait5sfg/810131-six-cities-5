@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
-import '../../../node_modules/leaflet/dist/leaflet.css';
+import MainPageMap from '../main-page-map/main-page-map';
+
 
 const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
 
@@ -92,7 +93,7 @@ const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
               <PlaceCardList offers={offers} onLinkCardClick={onLinkCardClick} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <MainPageMap />
             </div>
           </div >
         </div >
