@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 import {OfferPropTypes} from '../../utils/property-type';
 
 const ICON_PATH = `img/pin.svg`;
+const AMSTERDAM_COORDINATES = [52.38333, 4.9];
+const ID_MAP_CONTAINER = `map`;
 
 export default class MainPageMap extends PureComponent {
 
 
   componentDidMount() {
-    const offerCoordinates = this.props.offers.map((offer) => offer.coordinates);
-
-    const amsterdamCoordinates = [52.38333, 4.9];
+    const {offers} = this.props;
+    const offerCoordinates = offers.map((offer) => offer.coordinates);
 
     const icon = leaflet.icon({
       iconUrl: ICON_PATH,
@@ -20,13 +21,13 @@ export default class MainPageMap extends PureComponent {
     });
 
     const zoom = 12;
-    const map = leaflet.map(`map`, {
-      center: amsterdamCoordinates,
+    const map = leaflet.map(ID_MAP_CONTAINER, {
+      center: AMSTERDAM_COORDINATES,
       zoom,
       zoomControl: false,
       marker: true
     });
-    map.setView(amsterdamCoordinates, zoom);
+    map.setView(AMSTERDAM_COORDINATES, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
