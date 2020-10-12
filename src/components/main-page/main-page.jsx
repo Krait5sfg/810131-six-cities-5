@@ -93,7 +93,7 @@ const MainPage = ({offers, onLinkCardClick, onLinkEmailClick}) => {
               <PlaceCardList offers={offers} onLinkCardClick={onLinkCardClick} />
             </section>
             <div className="cities__right-section">
-              <MainPageMap />
+              <MainPageMap offers={offers} />
             </div>
           </div >
         </div >
