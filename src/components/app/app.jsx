@@ -12,7 +12,6 @@ import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 const PagePath = {
   MAIN: `/`,
   FAVORITE: `/favorites`,
-  OFFER: `/offer/:id`,
   LOGIN: `/login`
 };
 
@@ -51,7 +50,7 @@ const App = ({offers, reviews}) => {
             onLinkCardClick={(evt) => handleLinkCardClick(evt, history)} />
         )}>
         </Route>
-        <Route exact path={PagePath.OFFER} render={({history}) => (
+        <Route exact path={`/offer/:id`} render={({history}) => (
           <OfferPage
             offer={firstOffer}
             reviews={reviews}
