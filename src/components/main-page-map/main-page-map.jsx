@@ -15,6 +15,7 @@ export default class MainPageMap extends PureComponent {
     const {offers} = this.props;
     const offerCoordinates = offers.map((offer) => offer.coordinates);
 
+    // настройки leaflet
     const icon = leaflet.icon({
       iconUrl: ICON_PATH,
       iconSize: [27, 39]
@@ -35,7 +36,7 @@ export default class MainPageMap extends PureComponent {
       })
       .addTo(map);
 
-
+    // добавляет координаты на карту leaflet
     offerCoordinates.forEach((coordinates) => {
       leaflet
         .marker(coordinates, {icon})
