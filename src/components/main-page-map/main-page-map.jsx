@@ -4,8 +4,10 @@ import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 import {OfferPropTypes} from '../../utils/property-type';
 
+const ICON_PATH = `img/pin.svg`;
 
 export default class MainPageMap extends PureComponent {
+
 
   componentDidMount() {
     const offerCoordinates = this.props.offers.map((offer) => offer.coordinates);
@@ -13,7 +15,7 @@ export default class MainPageMap extends PureComponent {
     const amsterdamCoordinates = [52.38333, 4.9];
 
     const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: ICON_PATH,
       iconSize: [27, 39]
     });
 
