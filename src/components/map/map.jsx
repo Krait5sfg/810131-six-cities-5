@@ -10,7 +10,6 @@ const ID_MAP_CONTAINER = `map`;
 
 export default class Map extends PureComponent {
 
-
   componentDidMount() {
     const {offers} = this.props;
     const offerCoordinates = offers.map((offer) => offer.coordinates);
@@ -45,10 +44,17 @@ export default class Map extends PureComponent {
   }
 
   render() {
-    return <section id="map" className="cities__map map"></section>;
+    const {classMap} = this.props;
+    return this._getComponentMap(classMap);
   }
+
+  _getComponentMap(classMap) {
+    return <section id="map" className={`${classMap} map`}></section>;
+  }
+
 }
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  classMap: PropTypes.string.isRequired
 };

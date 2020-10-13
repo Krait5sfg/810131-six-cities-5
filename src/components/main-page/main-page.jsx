@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
-
+import {ClassMap} from '../../utils/const';
 
 const MainPage = ({offers, onLinkEmailClick}) => {
 
@@ -93,7 +93,7 @@ const MainPage = ({offers, onLinkEmailClick}) => {
               <PlaceCardList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} />
+              <Map offers={offers} classMap={ClassMap.MAIN_PAGE} />
             </div>
           </div >
         </div >
