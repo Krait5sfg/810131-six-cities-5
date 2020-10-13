@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
 import {OfferPropTypes} from '../../utils/property-type';
+import {TypePage} from '../../utils/const';
 
 export default class PlaceCardList extends PureComponent {
   constructor(props) {
@@ -13,19 +14,27 @@ export default class PlaceCardList extends PureComponent {
   }
 
   render() {
-    const {offers, classPlaceCardList} = this.props;
+    const {offers, typePage} = this.props;
     const placeCards = offers.map((offer) => {
       return (
         <PlaceCard offer={offer}
           onPlaceCardMouseEnter={this._handlePlaceCardMouseEnter}
-          key={offer.id} />
+          key={offer.id}
+          typePage={typePage} />
       );
     });
 
+    let elementClassName = ``;
+    if (typePage === TypePage.MAIN) {
+      elementClassName = `cities__places-list tabs__content`;
+    } else if (this.props.typePage === TypePage.OFFER) {
+      elementClassName = `near-places__list`;
+    }
+
     return (
-      <div className={`${classPlaceCardList} places__list`}>
+      <div className={`${elementClassName} places__list`}>
         {placeCards}
-      </div>
+      </div >
     );
   }
 
@@ -36,5 +45,5 @@ export default class PlaceCardList extends PureComponent {
 
 PlaceCardList.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
-  classPlaceCardList: PropTypes.string.isRequired,
+  typePage: PropTypes.string.isRequired,
 };

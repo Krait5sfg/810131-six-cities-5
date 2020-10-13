@@ -5,8 +5,9 @@ import {TypeAccommodation} from '../../utils/const';
 import {OfferPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
 import {PagePath} from '../../utils/const';
+import {TypePage} from '../../utils/const';
 
-const PlaceCard = ({offer, onPlaceCardMouseEnter}) => {
+const PlaceCard = ({offer, onPlaceCardMouseEnter, typePage}) => {
 
   const {id, images, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
@@ -15,10 +16,20 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter}) => {
   const formattedRating = getRating(rating);
   const favoriteButtonClass = isFavorite ? `place-card__bookmark-button--active` : ``;
 
+  let classNameArticleTag = ``;
+  let classNameFirstDivTag = ``;
+  if (typePage === TypePage.MAIN) {
+    classNameArticleTag = `cities__place-card`;
+    classNameFirstDivTag = `cities__image-wrapper`;
+  } else if (typePage === TypePage.OFFER) {
+    classNameArticleTag = `near-places__card`;
+    classNameFirstDivTag = `near-places__image-wrapper`;
+  }
+
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => onPlaceCardMouseEnter(id)}>
+    <article className={`${classNameArticleTag} place-card`} onMouseEnter={() => onPlaceCardMouseEnter(id)}>
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
         <Link to={`${PagePath.OFFER}:1704`}>
           <img className="place-card__image" src={firstImage} width="260" height="200" alt="Place image" />
         </ Link>
@@ -54,6 +65,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter}) => {
 PlaceCard.propTypes = {
   onPlaceCardMouseEnter: PropTypes.func.isRequired,
   offer: OfferPropTypes,
+  typePage: PropTypes.string.isRequired
 };
 
 export default PlaceCard;

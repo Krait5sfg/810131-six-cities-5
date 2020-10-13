@@ -15,11 +15,6 @@ export const TypePage = {
   OFFER: `offer`
 };
 
-export const ClassPlaceCardList = {
-  MAIN_PAGE: `cities__places-list tabs__content`,
-  OFFER_PAGE: `near-places__list`
-};
-
 export const PagePath = {
   MAIN: `/`,
   FAVORITE: `/favorites`,
