@@ -45,10 +45,6 @@ export default class Map extends PureComponent {
 
   render() {
     const {classMap} = this.props;
-    return this._getComponentMap(classMap);
-  }
-
-  _getComponentMap(classMap) {
     return <section id="map" className={`${classMap} map`}></section>;
   }
 
