@@ -14,3 +14,8 @@ export const ClassMap = {
   MAIN_PAGE: `cities__map`,
   OFFER_PAGE: `property__map`
 };
+
+export const ClassPlaceCardList = {
+  MAIN_PAGE: `cities__places-list tabs__content`,
+  OFFER_PAGE: `near-places__list`
+};

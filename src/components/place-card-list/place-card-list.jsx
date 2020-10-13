@@ -13,7 +13,7 @@ export default class PlaceCardList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, classPlaceCardList} = this.props;
     const placeCards = offers.map((offer) => {
       return (
         <PlaceCard offer={offer}
@@ -23,7 +23,7 @@ export default class PlaceCardList extends PureComponent {
     });
 
     return (
-      <div className="cities__places-list places__list tabs__content">
+      <div className={`${classPlaceCardList} places__list`}>
         {placeCards}
       </div>
     );
@@ -36,4 +36,5 @@ export default class PlaceCardList extends PureComponent {
 
 PlaceCardList.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  classPlaceCardList: PropTypes.string.isRequired,
 };
