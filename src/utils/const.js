@@ -10,9 +10,9 @@ export const City = {
   BRUSSELS: `Brussels`
 };
 
-export const ClassMap = {
-  MAIN_PAGE: `cities__map`,
-  OFFER_PAGE: `property__map`
+export const TypePage = {
+  MAIN: `main`,
+  OFFER: `offer`
 };
 
 export const ClassPlaceCardList = {

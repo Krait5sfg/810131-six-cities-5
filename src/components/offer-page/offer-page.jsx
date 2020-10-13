@@ -6,7 +6,7 @@ import ReviewForm from '../review-form/review-form';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import ReviewList from '../review-list/review-list';
 import Map from '../map/map';
-import {ClassMap} from '../../utils/const';
+import {TypePage} from '../../utils/const';
 
 const OfferPage = ({offer, reviews, onLinkEmailClick, offers}) => {
   const {id, images, accommodation, host, description, isFavorite} = offer;
@@ -136,7 +136,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers}) => {
               </section>
             </div>
           </div>
-          <Map offers={otherOffers} classMap={ClassMap.OFFER_PAGE} />
+          <Map offers={otherOffers} typePage={TypePage.OFFER} />
         </section>
         <div className="container">
           <section className="near-places places">
