@@ -7,6 +7,11 @@ import {OfferPropTypes} from '../../utils/property-type';
 const ICON_PATH = `img/pin.svg`;
 const AMSTERDAM_COORDINATES = [52.38333, 4.9];
 const ID_MAP_CONTAINER = `map`;
+const ZOOM = 12;
+const IconSize = {
+  WIDTH: 27,
+  HEIGHT: 39
+};
 
 export default class Map extends PureComponent {
 
@@ -17,17 +22,16 @@ export default class Map extends PureComponent {
     // настройки leaflet
     const icon = leaflet.icon({
       iconUrl: ICON_PATH,
-      iconSize: [27, 39]
+      iconSize: [IconSize.WIDTH, IconSize.HEIGHT]
     });
 
-    const zoom = 12;
     const map = leaflet.map(ID_MAP_CONTAINER, {
       center: AMSTERDAM_COORDINATES,
-      zoom,
+      zoom: ZOOM,
       zoomControl: false,
       marker: true
     });
-    map.setView(AMSTERDAM_COORDINATES, zoom);
+    map.setView(AMSTERDAM_COORDINATES, ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
