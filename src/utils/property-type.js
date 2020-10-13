@@ -20,6 +20,7 @@ export const OfferPropTypes = PropTypes.shape({
   }).isRequired,
   description: PropTypes.string.isRequired,
   isFavorite: PropTypes.bool.isRequired,
+  coordinates: PropTypes.array.isRequired,
 }).isRequired;
 
 

@@ -4,16 +4,21 @@ import {getRating} from '../../utils/common';
 import {TypeAccommodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
+import ReviewList from '../review-list/review-list';
+import Map from '../map/map';
+import {ClassMap} from '../../utils/const';
 
-const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers}) => {
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
+
+  // три предложения за исключением выведенного на страницу
+  const otherOffers = offers.filter((offering) => offering.id !== id).slice(0, 3);
 
   const offerPageReviews = reviews
     .filter((review) => review.offerId === id)
     .sort((firstReview, secondReview) => firstReview < secondReview ? -1 : 1);
 
-  const reviewCount = offerPageReviews.length;
 
   const favoriteButtonClass = isFavorite ? `property__bookmark-button--active` : ``;
 
@@ -34,36 +39,6 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
   });
 
   const premiumMarkElement = isPremium ? <div className="property__mark"><span>Premium</span></div> : ``;
-
-  const reviewsElements = offerPageReviews.map((review, index) => {
-    const date = review.date.toLocaleString(`en-US`, {year: `numeric`, month: `long`});
-    const dateTime = `${review.date.toISOString().substr(0, 10)}`;
-
-    return (
-      <li className="reviews__item" key={index}>
-        <div className="reviews__user user">
-          <div className="reviews__avatar-wrapper user__avatar-wrapper">
-            <img className="reviews__avatar user__avatar" src={review.avatar} width="54" height="54" alt="Reviews avatar" />
-          </div>
-          <span className="reviews__user-name">
-            {review.name}
-          </span>
-        </div>
-        <div className="reviews__info">
-          <div className="reviews__rating rating">
-            <div className="reviews__stars rating__stars">
-              <span style={{width: getRating(review.starsCount)}}></span>
-              <span className="visually-hidden">Rating</span>
-            </div>
-          </div>
-          <p className="reviews__text">
-            {review.commentText}
-          </p>
-          <time className="reviews__time" dateTime={dateTime}>{date}</time>
-        </div>
-      </li>
-    );
-  });
 
   return (
     <div className="page">
@@ -156,15 +131,12 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewCount}</span></h2>
-                <ul className="reviews__list">
-                  {reviewsElements}
-                </ul>
+                <ReviewList offerPageReviews={offerPageReviews} />
                 <ReviewForm />
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map offers={otherOffers} classMap={ClassMap.OFFER_PAGE} />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -276,6 +248,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
 OfferPage.propTypes = {
   onLinkEmailClick: PropTypes.func.isRequired,
   offer: OfferPropTypes,
+  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
 };
 

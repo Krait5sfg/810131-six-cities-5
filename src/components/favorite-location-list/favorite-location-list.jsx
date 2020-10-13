@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
 import {OfferPropTypes} from '../../utils/property-type';
 
-const FavoriteLocationList = ({city, cityFavoriteOffers, onLinkCardClick}) => {
+const FavoriteLocationList = ({city, cityFavoriteOffers}) => {
 
   const cityFavoriteOffersElements = cityFavoriteOffers.map((offer, index) => {
     return (
-      <FavoritePlaceCard favoriteOffer={offer} key={index} onLinkCardClick={onLinkCardClick} />
+      <FavoritePlaceCard favoriteOffer={offer} key={index} />
     );
   });
 
@@ -28,7 +28,6 @@ const FavoriteLocationList = ({city, cityFavoriteOffers, onLinkCardClick}) => {
 };
 
 FavoriteLocationList.propTypes = {
-  onLinkCardClick: PropTypes.func.isRequired,
   city: PropTypes.string.isRequired,
   cityFavoriteOffers: PropTypes.arrayOf(OfferPropTypes).isRequired
 };
