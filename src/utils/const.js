@@ -19,3 +19,10 @@ export const ClassPlaceCardList = {
   MAIN_PAGE: `cities__places-list tabs__content`,
   OFFER_PAGE: `near-places__list`
 };
+
+export const PagePath = {
+  MAIN: `/`,
+  FAVORITE: `/favorites`,
+  LOGIN: `/login`,
+  OFFER: `/offer/`
+};

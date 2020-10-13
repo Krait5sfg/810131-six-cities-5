@@ -3,7 +3,7 @@ import {TypeAccommodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
 import {OfferPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
-
+import {PagePath} from '../../utils/const';
 
 const FavoritePlaceCard = ({favoriteOffer}) => {
   const {images, accommodation} = favoriteOffer;
@@ -13,7 +13,7 @@ const FavoritePlaceCard = ({favoriteOffer}) => {
   return (
     <article className="favorites__card place-card">
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <Link to="/offer/:1704">
+        <Link to={`${PagePath.OFFER}:1704`}>
           <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
         </Link>
       </div>
@@ -37,7 +37,7 @@ const FavoritePlaceCard = ({favoriteOffer}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="/offer/:1704">{title}</Link>
+          <Link to={`${PagePath.OFFER}:1704`}>{title}</Link>
         </h2>
         <p className="place-card__type">{TypeAccommodation[type.toUpperCase()]}</p>
       </div>

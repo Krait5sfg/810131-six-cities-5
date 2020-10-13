@@ -4,7 +4,7 @@ import {getRating} from '../../utils/common';
 import {TypeAccommodation} from '../../utils/const';
 import {OfferPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
-
+import {PagePath} from '../../utils/const';
 
 const PlaceCard = ({offer, onPlaceCardMouseEnter}) => {
 
@@ -19,7 +19,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter}) => {
     <article className="cities__place-card place-card" onMouseEnter={() => onPlaceCardMouseEnter(id)}>
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to="/offer/:1704">
+        <Link to={`${PagePath.OFFER}:1704`}>
           <img className="place-card__image" src={firstImage} width="260" height="200" alt="Place image" />
         </ Link>
       </div>
@@ -43,7 +43,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to="/offer/:1704">{title}</Link>
+          <Link to={`${PagePath.OFFER}:1704`}>{title}</Link>
         </h2>
         <p className="place-card__type">{TypeAccommodation[type.toUpperCase()]}</p>
       </div>
