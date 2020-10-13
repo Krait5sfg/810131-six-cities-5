@@ -8,7 +8,7 @@ const ICON_PATH = `img/pin.svg`;
 const AMSTERDAM_COORDINATES = [52.38333, 4.9];
 const ID_MAP_CONTAINER = `map`;
 
-export default class MainPageMap extends PureComponent {
+export default class Map extends PureComponent {
 
 
   componentDidMount() {
@@ -49,6 +49,6 @@ export default class MainPageMap extends PureComponent {
   }
 }
 
-MainPageMap.propTypes = {
+Map.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };

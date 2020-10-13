@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
-import MainPageMap from '../main-page-map/main-page-map';
+import Map from '../map/map';
 
 
 const MainPage = ({offers, onLinkEmailClick}) => {
@@ -93,7 +93,7 @@ const MainPage = ({offers, onLinkEmailClick}) => {
               <PlaceCardList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <MainPageMap offers={offers} />
+              <Map offers={offers} />
             </div>
           </div >
         </div >
