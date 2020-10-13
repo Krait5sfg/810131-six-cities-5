@@ -5,10 +5,15 @@ import {TypeAccommodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import ReviewList from '../review-list/review-list';
+import Map from '../map/map';
+import {ClassMap} from '../../utils/const';
 
-const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers}) => {
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
+
+  // три предложения за исключением выведенного на страницу
+  const otherOffers = offers.filter((offering) => offering.id !== id).slice(0, 3);
 
   const offerPageReviews = reviews
     .filter((review) => review.offerId === id)
@@ -131,7 +136,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map offers={otherOffers} classMap={ClassMap.OFFER_PAGE} />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -243,6 +248,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick}) => {
 OfferPage.propTypes = {
   onLinkEmailClick: PropTypes.func.isRequired,
   offer: OfferPropTypes,
+  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
 };
 

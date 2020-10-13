@@ -45,6 +45,7 @@ const App = ({offers, reviews}) => {
         <Route exact path={`/offer/:id`} render={({history}) => (
           <OfferPage
             offer={firstOffer}
+            offers={offers}
             reviews={reviews}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
