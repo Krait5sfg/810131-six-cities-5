@@ -3,10 +3,16 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 import {OfferPropTypes} from '../../utils/property-type';
+import {TypePage} from '../../utils/const';
 
 const ICON_PATH = `img/pin.svg`;
 const AMSTERDAM_COORDINATES = [52.38333, 4.9];
 const ID_MAP_CONTAINER = `map`;
+const ZOOM = 12;
+const IconSize = {
+  WIDTH: 27,
+  HEIGHT: 39
+};
 
 export default class Map extends PureComponent {
 
@@ -17,17 +23,16 @@ export default class Map extends PureComponent {
     // настройки leaflet
     const icon = leaflet.icon({
       iconUrl: ICON_PATH,
-      iconSize: [27, 39]
+      iconSize: [IconSize.WIDTH, IconSize.HEIGHT]
     });
 
-    const zoom = 12;
     const map = leaflet.map(ID_MAP_CONTAINER, {
       center: AMSTERDAM_COORDINATES,
-      zoom,
+      zoom: ZOOM,
       zoomControl: false,
       marker: true
     });
-    map.setView(AMSTERDAM_COORDINATES, zoom);
+    map.setView(AMSTERDAM_COORDINATES, ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -44,13 +49,21 @@ export default class Map extends PureComponent {
   }
 
   render() {
-    const {classMap} = this.props;
-    return <section id="map" className={`${classMap} map`}></section>;
+    const {typePage} = this.props;
+
+    let elementClassName = ``;
+    if (typePage === TypePage.MAIN) {
+      elementClassName = `cities__map`;
+    } else if (typePage === TypePage.OFFER) {
+      elementClassName = `property__map`;
+    }
+
+    return <section id="map" className={`${elementClassName} map`}></section>;
   }
 
 }
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
-  classMap: PropTypes.string.isRequired
+  typePage: PropTypes.string.isRequired
 };

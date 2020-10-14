@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
-import {ClassMap, ClassPlaceCardList} from '../../utils/const';
+import {TypePage} from '../../utils/const';
 
 const MainPage = ({offers, onLinkEmailClick}) => {
 
@@ -90,10 +90,10 @@ const MainPage = ({offers, onLinkEmailClick}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul> */}
               </form>
-              <PlaceCardList offers={offers} classPlaceCardList={ClassPlaceCardList.MAIN_PAGE} />
+              <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} classMap={ClassMap.MAIN_PAGE} />
+              <Map offers={offers} typePage={TypePage.MAIN} />
             </div>
           </div >
         </div >

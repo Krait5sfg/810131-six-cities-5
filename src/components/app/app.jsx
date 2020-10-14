@@ -7,13 +7,7 @@ import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 import {City} from '../../utils/const';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
-
-
-const PagePath = {
-  MAIN: `/`,
-  FAVORITE: `/favorites`,
-  LOGIN: `/login`
-};
+import {PagePath} from '../../utils/const';
 
 const App = ({offers, reviews}) => {
 
@@ -42,7 +36,7 @@ const App = ({offers, reviews}) => {
         <Route exact path={PagePath.FAVORITE}>
           <FavoritePage favoriteOffers={favoriteOffers} />
         </Route>
-        <Route exact path={`/offer/:id`} render={({history}) => (
+        <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
           <OfferPage
             offer={firstOffer}
             offers={offers}
