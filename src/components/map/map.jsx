@@ -26,25 +26,26 @@ export default class Map extends PureComponent {
       iconSize: [IconSize.WIDTH, IconSize.HEIGHT]
     });
 
-    const map = leaflet.map(ID_MAP_CONTAINER, {
+    this._map = leaflet.map(ID_MAP_CONTAINER, {
       center: AMSTERDAM_COORDINATES,
       zoom: ZOOM,
       zoomControl: false,
       marker: true
     });
-    map.setView(AMSTERDAM_COORDINATES, ZOOM);
+
+    this._map.setView(AMSTERDAM_COORDINATES, ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(map);
+      .addTo(this._map);
 
     // добавляет координаты на карту leaflet
     offerCoordinates.forEach((coordinates) => {
       leaflet
         .marker(coordinates, {icon})
-        .addTo(map);
+        .addTo(this._map);
     });
   }
 

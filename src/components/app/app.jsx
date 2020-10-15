@@ -5,7 +5,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
-import {City} from '../../utils/const';
+// import {City} from '../../utils/const';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import {PagePath} from '../../utils/const';
 
@@ -13,7 +13,7 @@ const App = ({offers, reviews}) => {
 
   const [firstOffer] = offers;
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
-  const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
+  // const amsterdamOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
 
 
   const handleLinkEmailClick = (evt, history) => {
@@ -26,7 +26,6 @@ const App = ({offers, reviews}) => {
       <Switch>
         <Route exact path={PagePath.MAIN} render={({history}) => (
           <MainPage
-            offers={amsterdamOffers}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>

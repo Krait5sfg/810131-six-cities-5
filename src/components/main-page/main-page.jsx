@@ -4,8 +4,17 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
+import {connect} from "react-redux";
+import {ActionCreator} from '../../store/action';
 
-const MainPage = ({offers, onLinkEmailClick}) => {
+const MainPage = (props) => {
+  const {city, offers, changeCity, getOffers, onLinkEmailClick} = props;
+  console.log(`offers`, offers)
+  const handleCityClick = (evt) => {
+    evt.preventDefault();
+    changeCity(evt.target.textContent);
+    getOffers();
+  };
 
   return (
     <div className="page page--gray page--main">
@@ -38,32 +47,32 @@ const MainPage = ({offers, onLinkEmailClick}) => {
           <section className="locations container">
             <ul className="locations__list tabs__list">
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
                   <span>Paris</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
                   <span>Cologne</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
                   <span>Brussels</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
+                <a className="locations__item-link tabs__item tabs__item--active" onClick={handleCityClick}>
                   <span>Amsterdam</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
                   <span>Hamburg</span>
                 </a>
               </li>
               <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
+                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
                   <span>Dusseldorf</span>
                 </a>
               </li>
@@ -74,7 +83,7 @@ const MainPage = ({offers, onLinkEmailClick}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+              <b className="places__found">{offers.length} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by{` `}</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -107,4 +116,22 @@ MainPage.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };
 
-export default MainPage;
+// связывает store c пропсами компонента
+// state - это initalState в reducer.js
+const mapStateToProps = ((state) => ({
+  city: state.city,
+  offers: state.offers
+}));
+
+// связывает методы сo store
+const mapDispatchToProps = ((dispatch) => ({
+  changeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
+  },
+  getOffers() {
+    dispatch(ActionCreator.getOffers());
+  }
+}));
+
+export {MainPage};
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
