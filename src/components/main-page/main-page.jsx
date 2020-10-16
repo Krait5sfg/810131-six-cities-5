@@ -4,7 +4,7 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
-import {connect} from "react-redux";
+import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import CityList from '../city-list/city-list';
 
@@ -74,7 +74,7 @@ const MainPage = (props) => {
               <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} typePage={TypePage.MAIN} city={city} />
+              <Map typePage={TypePage.MAIN} city={city} offers={offers} />
             </div>
           </div >
         </div >

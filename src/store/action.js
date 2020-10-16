@@ -1,6 +1,7 @@
 export const ActionType = {
   CHANGE_CITY: `CHANGE_CITY`,
-  GET_OFFERS: `GET_OFFERS`
+  GET_OFFERS: `GET_OFFERS`,
+  GET_ACTIVE_OFFER: `GET_ACTIVE_OFFER`
 };
 
 export const ActionCreator = {
@@ -11,5 +12,9 @@ export const ActionCreator = {
   getOffers: () => ({
     type: ActionType.GET_OFFERS,
     payload: []
+  }),
+  getActiveOffer: (offer) => ({
+    type: ActionType.GET_ACTIVE_OFFER,
+    payload: offer
   })
 };

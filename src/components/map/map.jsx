@@ -23,6 +23,12 @@ const CityCoordinate = {
 };
 
 export default class Map extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      offersForRender: []
+    };
+  }
 
   componentDidMount() {
     this._setMap();
