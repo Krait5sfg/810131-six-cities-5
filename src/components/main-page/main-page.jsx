@@ -5,16 +5,9 @@ import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/action';
 import CityList from '../city-list/city-list';
 
-const MainPage = ({city, offers, changeCity, getOffers, onLinkEmailClick, cities}) => {
-
-  const onCityLinkClick = (evt) => {
-    evt.preventDefault();
-    changeCity(evt.target.textContent);
-    getOffers();
-  };
+const MainPage = ({city, offers, onLinkEmailClick}) => {
 
   return (
     <div className="page page--gray page--main">
@@ -45,7 +38,7 @@ const MainPage = ({city, offers, changeCity, getOffers, onLinkEmailClick, cities
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <CityList onCityLinkClick={onCityLinkClick} cities={cities} activeCity={city} />
+            <CityList />
           </section>
         </div>
         <div className="cities">
@@ -84,27 +77,13 @@ MainPage.propTypes = {
   city: PropTypes.string.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
-  changeCity: PropTypes.func.isRequired,
-  getOffers: PropTypes.func.isRequired,
-  cities: PropTypes.array.isRequired
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({city, offers, cities}) => ({
+const mapStateToProps = (({city, offers}) => ({
   city,
-  offers,
-  cities
-}));
-
-// связывает методы сo store
-const mapDispatchToProps = ((dispatch) => ({
-  changeCity(city) {
-    dispatch(ActionCreator.changeCity(city));
-  },
-  getOffers() {
-    dispatch(ActionCreator.getOffers());
-  }
+  offers
 }));
 
 export {MainPage};
-export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps)(MainPage);
