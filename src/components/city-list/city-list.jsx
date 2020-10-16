@@ -8,7 +8,7 @@ const CityList = ({onCityLinkClick, cities, activeCity}) => {
     <CityItem key={index}
       onCityLinkClick={onCityLinkClick}
       city={city}
-      activeCity={activeCity}
+      isActive={activeCity === city}
     />);
 
   return (
