@@ -181,4 +181,41 @@ export default [
     isFavorite: true,
     coordinates: [52.4009553943508, 4.939309666406198],
   },
+  {
+    city: `Brussels`,
+    id: 1711,
+    images: [`img/apartment-03.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-03.jpg`,
+      `img/apartment-03.jpg`],
+    accommodation: {
+      isPremium: true,
+      rating: 5,
+      title: `Nice, cozy, warm big bed apartment`,
+      type: `hotel`,
+      bedroomsCount: `10`,
+      guestsLimit: `10`,
+      price: `200`,
+      features: [`Wi-Fi`,
+        `Heating`,
+        `Kitchen`,
+        `Fridge`,
+        `Washing mashine`,
+        `Coffee machine`,
+        `Dishwasher`,
+        `Towels`,
+        `Baby seat`,
+        `Cabel TV`
+      ]
+    },
+    host: {
+      avatar: `img/avatar-angelina.jpg`,
+      name: `Angellina-4`
+    },
+    description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
+    isFavorite: true,
+    coordinates: [52.4209553943508, 4.939309666406198],
+  },
 ];

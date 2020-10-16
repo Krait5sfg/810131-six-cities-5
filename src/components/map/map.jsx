@@ -17,6 +17,28 @@ const IconSize = {
 export default class Map extends PureComponent {
 
   componentDidMount() {
+    this._setMap();
+  }
+
+  componentDidUpdate() {
+    this._resetMap();
+    this._setMap();
+  }
+
+  render() {
+    const {typePage} = this.props;
+
+    let elementClassName = ``;
+    if (typePage === TypePage.MAIN) {
+      elementClassName = `cities__map`;
+    } else if (typePage === TypePage.OFFER) {
+      elementClassName = `property__map`;
+    }
+
+    return <section id="map" className={`${elementClassName} map`}></section>;
+  }
+
+  _setMap() {
     const {offers} = this.props;
     const offerCoordinates = offers.map((offer) => offer.coordinates);
 
@@ -49,19 +71,9 @@ export default class Map extends PureComponent {
     });
   }
 
-  render() {
-    const {typePage} = this.props;
-
-    let elementClassName = ``;
-    if (typePage === TypePage.MAIN) {
-      elementClassName = `cities__map`;
-    } else if (typePage === TypePage.OFFER) {
-      elementClassName = `property__map`;
-    }
-
-    return <section id="map" className={`${elementClassName} map`}></section>;
+  _resetMap() {
+    this._map.remove();
   }
-
 }
 
 Map.propTypes = {
