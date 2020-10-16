@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {city: action.payload});
-    case ActionType.GET_OFFERS:
+    case ActionType.UPDATE_OFFERS:
       return Object.assign({}, state, {offers: offers.filter((offer) => offer.city === state.city)});
     case ActionType.GET_ACTIVE_OFFER:
       return Object.assign({}, state, {activeOffer: action.payload});

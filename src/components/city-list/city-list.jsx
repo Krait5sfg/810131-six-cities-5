@@ -4,12 +4,12 @@ import CityItem from '../city-item/city-item';
 import {ActionCreator} from '../../store/action';
 import {connect} from 'react-redux';
 
-const CityList = ({cities, activeCity, changeCity, getOffers}) => {
+const CityList = ({cities, activeCity, changeCity, updateOffers}) => {
 
   const onCityLinkClick = (evt) => {
     evt.preventDefault();
     changeCity(evt.target.textContent);
-    getOffers();
+    updateOffers();
   };
 
   const cityItemElements = cities.map((city, index) =>
@@ -30,7 +30,7 @@ CityList.propTypes = {
   cities: PropTypes.array.isRequired,
   activeCity: PropTypes.string.isRequired,
   changeCity: PropTypes.func.isRequired,
-  getOffers: PropTypes.func.isRequired,
+  updateOffers: PropTypes.func.isRequired,
 };
 
 // связывает store c пропсами компонента
@@ -44,8 +44,8 @@ const mapDispatchToProps = ((dispatch) => ({
   changeCity(city) {
     dispatch(ActionCreator.changeCity(city));
   },
-  getOffers() {
-    dispatch(ActionCreator.getOffers());
+  updateOffers() {
+    dispatch(ActionCreator.updateOffers());
   }
 }));
 
