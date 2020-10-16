@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CityItem = (props) => {
-  const {onCityLinkClick, city, activeCity} = props;
+const CityItem = ({onCityLinkClick, city, activeCity}) => {
   const activeClassName = city === activeCity ? `tabs__item--active` : ``;
   return (
     <li className="locations__item">
