@@ -6,11 +6,14 @@ import Map from '../map/map';
 import {TypePage} from '../../utils/const';
 import {connect} from "react-redux";
 import {ActionCreator} from '../../store/action';
+import CityList from '../city-list/city-list';
+
+const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
 
 const MainPage = (props) => {
   const {city, offers, changeCity, getOffers, onLinkEmailClick} = props;
-  console.log(`offers`, offers)
-  const handleCityClick = (evt) => {
+
+  const onCityLinkClick = (evt) => {
     evt.preventDefault();
     changeCity(evt.target.textContent);
     getOffers();
@@ -45,38 +48,7 @@ const MainPage = (props) => {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active" onClick={handleCityClick}>
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#" onClick={handleCityClick}>
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <CityList onCityLinkClick={onCityLinkClick} cities={CITIES} activeCity={city} />
           </section>
         </div>
         <div className="cities">
