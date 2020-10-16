@@ -8,8 +8,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 
-const FavoritePlaceCard = (props) => {
-  const {favoriteOffer, city, changeCity} = props;
+const FavoritePlaceCard = ({favoriteOffer, city, changeCity}) => {
 
   const {images, accommodation} = favoriteOffer;
   const [firstImage] = images;

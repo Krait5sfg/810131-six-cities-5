@@ -7,8 +7,7 @@ import {Link} from 'react-router-dom';
 import {PagePath} from '../../utils/const';
 import {TypePage} from '../../utils/const';
 
-const PlaceCard = (props) => {
-  const {offer, onPlaceCardMouseEnter, typePage} = props;
+const PlaceCard = ({offer, onPlaceCardMouseEnter, typePage}) => {
 
   const {id, images, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
