@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 
 const PlaceCard = (props) => {
-  const {offer, onPlaceCardMouseEnter, typePage, getActiveOffer} = props;
+  const {offer, onPlaceCardMouseEnter, typePage, updateActiveOffer} = props;
 
   const {id, images, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
@@ -30,7 +30,7 @@ const PlaceCard = (props) => {
   }
 
   const handleArticleClick = () => {
-    getActiveOffer(offer);
+    updateActiveOffer(offer);
   };
 
   return (
@@ -77,13 +77,13 @@ PlaceCard.propTypes = {
   onPlaceCardMouseEnter: PropTypes.func.isRequired,
   offer: OfferPropTypes,
   typePage: PropTypes.string.isRequired,
-  getActiveOffer: PropTypes.func.isRequired
+  updateActiveOffer: PropTypes.func.isRequired
 };
 
 // связывает методы сo store
 const mapDispatchToProps = ((dispatch) => ({
-  getActiveOffer(offer) {
-    dispatch(ActionCreator.getActiveOffer(offer));
+  updateActiveOffer(offer) {
+    dispatch(ActionCreator.updateActiveOffer(offer));
   }
 }));
 
