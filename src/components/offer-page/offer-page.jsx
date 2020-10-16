@@ -11,8 +11,7 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
 
 
-const OfferPage = (props) => {
-  const {offer, reviews, onLinkEmailClick, offers, city} = props;
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
 
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
