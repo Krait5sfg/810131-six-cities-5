@@ -112,8 +112,11 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
+  city: PropTypes.string.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  changeCity: PropTypes.func.isRequired,
+  getOffers: PropTypes.func.isRequired
 };
 
 // связывает store c пропсами компонента
