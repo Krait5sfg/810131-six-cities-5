@@ -163,9 +163,8 @@ OfferPage.propTypes = {
 };
 
 // связывает store c пропсами компонента
-// state - это initalState в reducer.js
-const mapStateToProps = ((state) => ({
-  city: state.city,
+const mapStateToProps = (({city}) => ({
+  city
 }));
 
 export {OfferPage};
