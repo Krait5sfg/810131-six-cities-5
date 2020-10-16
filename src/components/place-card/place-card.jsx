@@ -6,11 +6,9 @@ import {OfferPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
 import {PagePath} from '../../utils/const';
 import {TypePage} from '../../utils/const';
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../store/action';
 
 const PlaceCard = (props) => {
-  const {offer, onPlaceCardMouseEnter, typePage, updateActiveOffer} = props;
+  const {offer, onPlaceCardMouseEnter, typePage} = props;
 
   const {id, images, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
@@ -29,15 +27,10 @@ const PlaceCard = (props) => {
     classNameFirstDivTag = `near-places__image-wrapper`;
   }
 
-  const handleArticleClick = () => {
-    updateActiveOffer(offer);
-  };
-
   return (
     <article
       className={`${classNameArticleTag} place-card`}
       onMouseEnter={() => onPlaceCardMouseEnter(id)}
-      onClick={handleArticleClick}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
@@ -77,16 +70,6 @@ PlaceCard.propTypes = {
   onPlaceCardMouseEnter: PropTypes.func.isRequired,
   offer: OfferPropTypes,
   typePage: PropTypes.string.isRequired,
-  updateActiveOffer: PropTypes.func.isRequired
 };
 
-// связывает методы сo store
-const mapDispatchToProps = ((dispatch) => ({
-  updateActiveOffer(offer) {
-    dispatch(ActionCreator.updateActiveOffer(offer));
-  }
-}));
-
-export {PlaceCard};
-export default connect(null, mapDispatchToProps)(PlaceCard);
-
+export default PlaceCard;
