@@ -8,10 +8,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import CityList from '../city-list/city-list';
 
-const CITIES = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`];
-
-const MainPage = (props) => {
-  const {city, offers, changeCity, getOffers, onLinkEmailClick} = props;
+const MainPage = ({city, offers, changeCity, getOffers, onLinkEmailClick, cities}) => {
 
   const onCityLinkClick = (evt) => {
     evt.preventDefault();
@@ -48,7 +45,7 @@ const MainPage = (props) => {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <CityList onCityLinkClick={onCityLinkClick} cities={CITIES} activeCity={city} />
+            <CityList onCityLinkClick={onCityLinkClick} cities={cities} activeCity={city} />
           </section>
         </div>
         <div className="cities">
@@ -88,13 +85,15 @@ MainPage.propTypes = {
   onLinkEmailClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   changeCity: PropTypes.func.isRequired,
-  getOffers: PropTypes.func.isRequired
+  getOffers: PropTypes.func.isRequired,
+  cities: PropTypes.array.isRequired
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({city, offers}) => ({
+const mapStateToProps = (({city, offers, cities}) => ({
   city,
-  offers
+  offers,
+  cities
 }));
 
 // связывает методы сo store

@@ -7,7 +7,8 @@ const defaultOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
 const initialState = {
   city: City.AMSTERDAM,
   offers: defaultOffers,
-  activeOffer: {}
+  activeOffer: {},
+  cities: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
 };
 
 const reducer = (state = initialState, action) => {
