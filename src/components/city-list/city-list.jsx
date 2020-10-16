@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CityItem from '../city-item/city-item';
 
-const CityList = (props) => {
-  const {onCityLinkClick, cities, activeCity} = props;
+const CityList = ({onCityLinkClick, cities, activeCity}) => {
 
   const cityItemElements = cities.map((city, index) =>
     <CityItem key={index}
