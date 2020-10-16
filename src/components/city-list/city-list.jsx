@@ -4,7 +4,6 @@ import CityItem from '../city-item/city-item';
 
 const CityList = (props) => {
   const {onCityLinkClick, cities, activeCity} = props;
-  // console.log(cities);
 
   const cityItemElements = cities.map((city, index) =>
     <CityItem key={index}
