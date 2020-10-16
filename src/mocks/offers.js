@@ -179,7 +179,7 @@ export default [
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
     isFavorite: true,
-    coordinates: [52.4009553943508, 4.939309666406198],
+    coordinates: [50.87045, 4.35878],
   },
   {
     city: `Brussels`,
@@ -216,6 +216,6 @@ export default [
     },
     description: `Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit, molestiae earum? Odio illo nemo maiores dolore officia beatae? Facere tempora aliquam quos ipsa, aspernatur cum exercitationem reprehenderit cupiditate ipsum molestiae.`,
     isFavorite: true,
-    coordinates: [52.4209553943508, 4.939309666406198],
+    coordinates: [50.85045, 4.34878],
   },
 ];

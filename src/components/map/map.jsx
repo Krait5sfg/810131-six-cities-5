@@ -6,12 +6,20 @@ import {OfferPropTypes} from '../../utils/property-type';
 import {TypePage} from '../../utils/const';
 
 const ICON_PATH = `img/pin.svg`;
-const AMSTERDAM_COORDINATES = [52.38333, 4.9];
 const ID_MAP_CONTAINER = `map`;
 const ZOOM = 12;
+
 const IconSize = {
   WIDTH: 27,
   HEIGHT: 39
+};
+const CityCoordinate = {
+  AMSTERDAM: {coordinates: [52.38333, 4.9]},
+  BRUSSELS: {coordinates: [50.85045, 4.34878]},
+  PARIS: {coordinates: [48.85341, 2.3488]},
+  COLOGNE: {coordinates: [50.93333, 6.95]},
+  HAMBURG: {coordinates: [53.57532, 10.01534]},
+  DUSSELDORF: {coordinates: [51.22172, 6.77616]},
 };
 
 export default class Map extends PureComponent {
@@ -27,7 +35,6 @@ export default class Map extends PureComponent {
 
   render() {
     const {typePage} = this.props;
-
     let elementClassName = ``;
     if (typePage === TypePage.MAIN) {
       elementClassName = `cities__map`;
@@ -39,7 +46,7 @@ export default class Map extends PureComponent {
   }
 
   _setMap() {
-    const {offers} = this.props;
+    const {offers, city} = this.props;
     const offerCoordinates = offers.map((offer) => offer.coordinates);
 
     // настройки leaflet
@@ -49,13 +56,13 @@ export default class Map extends PureComponent {
     });
 
     this._map = leaflet.map(ID_MAP_CONTAINER, {
-      center: AMSTERDAM_COORDINATES,
+      center: CityCoordinate[city.toUpperCase()].coordinates,
       zoom: ZOOM,
       zoomControl: false,
       marker: true
     });
 
-    this._map.setView(AMSTERDAM_COORDINATES, ZOOM);
+    this._map.setView(CityCoordinate[city.toUpperCase()].coordinates, ZOOM);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -78,5 +85,6 @@ export default class Map extends PureComponent {
 
 Map.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
-  typePage: PropTypes.string.isRequired
+  typePage: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired
 };

@@ -74,7 +74,7 @@ const MainPage = (props) => {
               <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} typePage={TypePage.MAIN} />
+              <Map offers={offers} typePage={TypePage.MAIN} city={city} />
             </div>
           </div >
         </div >
