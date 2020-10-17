@@ -20,23 +20,9 @@ class Sorting extends PureComponent {
   }
 
   render() {
-    const {activeItem, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated} = this.props;
-
-    switch (activeItem) {
-      case SotringType.POPULAR:
-        sortPopular();
-        break;
-      case SotringType.LOW_TO_HIGH:
-        sortLowToHigh();
-        break;
-      case SotringType.HIGH_TO_LOW:
-        sortHighToLow();
-        break;
-      case SotringType.TOP_RATED:
-        sortTopRated();
-    }
-
+    const {activeItem} = this.props;
     const openClassName = this.state.isOpen ? `places__options--opened` : ``;
+
     const sortingItemsElements = sortingItemsNames.map((itemName, index) =>
       <SortingItem
         itemName={itemName}
@@ -59,6 +45,24 @@ class Sorting extends PureComponent {
         </ul>
       </form>
     );
+  }
+
+  componentDidUpdate() {
+    const {activeItem, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated} = this.props;
+
+    switch (activeItem) {
+      case SotringType.POPULAR:
+        sortPopular();
+        break;
+      case SotringType.LOW_TO_HIGH:
+        sortLowToHigh();
+        break;
+      case SotringType.HIGH_TO_LOW:
+        sortHighToLow();
+        break;
+      case SotringType.TOP_RATED:
+        sortTopRated();
+    }
   }
 
   onSortingItemClick(evt) {
