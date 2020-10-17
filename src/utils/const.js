@@ -7,7 +7,11 @@ export const TypeAccommodation = {
 
 export const City = {
   AMSTERDAM: `Amsterdam`,
-  BRUSSELS: `Brussels`
+  BRUSSELS: `Brussels`,
+  PARIS: `Paris`,
+  COLOGNE: `Cologne`,
+  HAMBURG: `Hamburg`,
+  DUSSELDORF: `Dusseldorf`
 };
 
 export const TypePage = {

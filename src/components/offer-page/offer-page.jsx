@@ -8,13 +8,16 @@ import ReviewList from '../review-list/review-list';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
 import PlaceCardList from '../place-card-list/place-card-list';
+import {connect} from 'react-redux';
 
-const OfferPage = ({offer, reviews, onLinkEmailClick, offers}) => {
+
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
+
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
   // три предложения за исключением выведенного на страницу
-  const otherOffers = offers.filter((offering) => offering.id !== id).slice(0, 3);
+  const otherOffers = offers.filter((offering) => offering.id !== id && offering.city === city).slice(0, 3);
 
   const offerPageReviews = reviews
     .filter((review) => review.offerId === id)
@@ -137,7 +140,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers}) => {
               </section>
             </div>
           </div>
-          <Map offers={otherOffers} typePage={TypePage.OFFER} />
+          <Map typePage={TypePage.OFFER} city={city} offers={otherOffers} />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -155,6 +158,13 @@ OfferPage.propTypes = {
   offer: OfferPropTypes,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
+  city: PropTypes.string.isRequired
 };
 
-export default OfferPage;
+// связывает store c пропсами компонента
+const mapStateToProps = (({city}) => ({
+  city
+}));
+
+export {OfferPage};
+export default connect(mapStateToProps)(OfferPage);

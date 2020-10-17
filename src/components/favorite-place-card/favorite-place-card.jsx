@@ -4,14 +4,24 @@ import {getRating} from '../../utils/common';
 import {OfferPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
 import {PagePath} from '../../utils/const';
+import {connect} from 'react-redux';
+import {ActionCreator} from '../../store/action';
+import PropTypes from 'prop-types';
 
-const FavoritePlaceCard = ({favoriteOffer}) => {
+const FavoritePlaceCard = ({favoriteOffer, city, changeCity}) => {
+
   const {images, accommodation} = favoriteOffer;
   const [firstImage] = images;
   const {price, rating, title, type} = accommodation;
 
+  const handleFavoriteCardClick = () => {
+    if (city !== favoriteOffer.city) {
+      changeCity(favoriteOffer.city);
+    }
+  };
+
   return (
-    <article className="favorites__card place-card">
+    <article className="favorites__card place-card" onClick={handleFavoriteCardClick}>
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${PagePath.OFFER}:1704`}>
           <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
@@ -47,6 +57,21 @@ const FavoritePlaceCard = ({favoriteOffer}) => {
 
 FavoritePlaceCard.propTypes = {
   favoriteOffer: OfferPropTypes,
+  city: PropTypes.string.isRequired,
+  changeCity: PropTypes.func.isRequired
 };
 
-export default FavoritePlaceCard;
+// связывает store c пропсами компонента
+const mapStateToProps = (({city}) => ({
+  city
+}));
+
+// связывает методы сo store
+const mapDispatchToProps = ((dispatch) => ({
+  changeCity(city) {
+    dispatch(ActionCreator.changeCity(city));
+  }
+}));
+
+export {FavoritePlaceCard};
+export default connect(mapStateToProps, mapDispatchToProps)(FavoritePlaceCard);

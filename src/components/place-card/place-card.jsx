@@ -27,7 +27,10 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, typePage}) => {
   }
 
   return (
-    <article className={`${classNameArticleTag} place-card`} onMouseEnter={() => onPlaceCardMouseEnter(id)}>
+    <article
+      className={`${classNameArticleTag} place-card`}
+      onMouseEnter={() => onPlaceCardMouseEnter(id)}
+    >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
         <Link to={`${PagePath.OFFER}:1704`}>
@@ -65,7 +68,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, typePage}) => {
 PlaceCard.propTypes = {
   onPlaceCardMouseEnter: PropTypes.func.isRequired,
   offer: OfferPropTypes,
-  typePage: PropTypes.string.isRequired
+  typePage: PropTypes.string.isRequired,
 };
 
 export default PlaceCard;
