@@ -2,7 +2,6 @@ import offers from '../mocks/offers';
 import {City} from '../utils/const';
 import {ActionType} from './action';
 import {SotringType} from '../utils/const';
-import {sortActionTypeUpdateOffers} from '../utils/common';
 
 const defaultOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
 
@@ -19,9 +18,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {city: action.payload});
 
     case ActionType.UPDATE_OFFERS:
-      const {sortingType} = state;
-      const currentCityOffers = offers.filter((offer) => offer.city === state.city);
-      return Object.assign({}, state, {offers: sortActionTypeUpdateOffers(sortingType, currentCityOffers)});
+      return Object.assign({}, state, {offers: offers.filter((offer) => offer.city === state.city)});
 
     case ActionType.UPDATE_SORTING_TYPE:
       return Object.assign({}, state, {sortingType: action.payload});
