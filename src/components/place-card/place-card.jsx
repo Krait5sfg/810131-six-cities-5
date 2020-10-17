@@ -30,6 +30,7 @@ const PlaceCard = ({offer, onPlaceCardMouseEnter, typePage}) => {
     <article
       className={`${classNameArticleTag} place-card`}
       onMouseEnter={() => onPlaceCardMouseEnter(id)}
+      onMouseLeave={() => onPlaceCardMouseEnter(null)}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
