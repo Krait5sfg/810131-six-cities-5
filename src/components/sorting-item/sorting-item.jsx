@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SortingItem = ({itemName, isActive, onSortingItemClick}) => {
   const activeClassName = isActive ? `places__option--active` : ``;
@@ -12,6 +13,12 @@ const SortingItem = ({itemName, isActive, onSortingItemClick}) => {
       {itemName}
     </li>
   );
+};
+
+SortingItem.propTypes = {
+  itemName: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onSortingItemClick: PropTypes.func.isRequired
 };
 
 export default SortingItem;
