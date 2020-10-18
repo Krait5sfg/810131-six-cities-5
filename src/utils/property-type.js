@@ -11,7 +11,7 @@ export const OfferPropTypes = PropTypes.shape({
     type: PropTypes.string.isRequired,
     bedroomsCount: PropTypes.string.isRequired,
     guestsLimit: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     features: PropTypes.array.isRequired,
   }).isRequired,
   host: PropTypes.shape({
