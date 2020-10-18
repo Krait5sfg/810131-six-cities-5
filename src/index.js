@@ -8,5 +8,5 @@ import {Provider} from 'react-redux';
 import {reducer} from './store/reducer';
 
 const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f);
-store.subscribe(() => console.log(store.getState().offers));
+
 ReactDOM.render(<Provider store={store}><App offers={offers} reviews={reviews} /></Provider>, document.querySelector(`#root`));
