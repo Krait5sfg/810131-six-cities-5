@@ -5,7 +5,8 @@ export const ActionType = {
   SORT_LOW_TO_HIGH: `SORT_LOW_TO_HIGH`,
   SORT_POPULAR: `SORT_POPULAR`,
   SORT_HIGH_TO_LOW: `SORT_HIGH_TO_LOW`,
-  SORT_TOP_RATED: `SORT_TOP_RATED`
+  SORT_TOP_RATED: `SORT_TOP_RATED`,
+  UPDATE_ID_ACTIVE_CARD_FOR_MAP: `UPDATE_ID_ACTIVE_CARD_FOR_MAP`,
 };
 
 export const ActionCreator = {
@@ -31,5 +32,9 @@ export const ActionCreator = {
   }),
   sortTopRated: () => ({
     type: ActionType.SORT_TOP_RATED,
+  }),
+  updateIdActiveCardForMap: (id) => ({
+    type: ActionType.UPDATE_ID_ACTIVE_CARD_FOR_MAP,
+    payload: id
   })
 };

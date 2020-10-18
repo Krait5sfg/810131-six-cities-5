@@ -51,7 +51,11 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
               <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
             </section>
             <div className="cities__right-section">
-              <Map typePage={TypePage.MAIN} city={city} offers={offers} />
+              <Map
+                typePage={TypePage.MAIN}
+                city={city}
+                offers={offers}
+              />
             </div>
           </div >
         </div >
@@ -69,7 +73,7 @@ MainPage.propTypes = {
 // связывает store c пропсами компонента
 const mapStateToProps = (({city, offers}) => ({
   city,
-  offers
+  offers,
 }));
 
 export {MainPage};

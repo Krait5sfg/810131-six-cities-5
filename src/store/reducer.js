@@ -9,7 +9,8 @@ const initialState = {
   city: City.AMSTERDAM,
   offers: defaultOffers,
   cities: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
-  sortingType: SotringType.POPULAR
+  sortingType: SotringType.POPULAR,
+  idActiveCardForMap: 0
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,6 +35,9 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.SORT_TOP_RATED:
       return Object.assign({}, state, {offers: state.offers.sort((firstOffer, secondOffer) => firstOffer.accommodation.rating > secondOffer.accommodation.rating ? -1 : 1)});
+
+    case ActionType.UPDATE_ID_ACTIVE_CARD_FOR_MAP:
+      return Object.assign({}, state, {idActiveCardForMap: action.payload});
   }
   return state;
 };
