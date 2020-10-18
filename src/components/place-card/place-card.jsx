@@ -9,6 +9,8 @@ import {TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 
+const REMOVE_ID = 0;
+
 const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
 
   const {id, images, accommodation, isFavorite} = offer;
@@ -32,11 +34,13 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
     <article
       className={`${classNameArticleTag} place-card`}
       onMouseEnter={() => updateIdActiveCardForMap(id)}
-      onMouseLeave={() => updateIdActiveCardForMap(0)}
+      onMouseLeave={() => updateIdActiveCardForMap(REMOVE_ID)}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
-        <Link to={`${PagePath.OFFER}:1704`}>
+        <Link to={`${PagePath.OFFER}:1704`}
+          onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
+        >
           <img className="place-card__image" src={firstImage} width="260" height="200" alt="Place image" />
         </ Link>
       </div>
@@ -60,7 +64,12 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${PagePath.OFFER}:1704`}>{title}</Link>
+          <Link
+            to={`${PagePath.OFFER}:1704`}
+            onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
+          >
+            {title}
+          </Link>
         </h2>
         <p className="place-card__type">{TypeAccommodation[type.toUpperCase()]}</p>
       </div>
