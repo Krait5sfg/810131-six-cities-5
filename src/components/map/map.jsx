@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {Component} from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
@@ -26,7 +26,7 @@ const CityCoordinate = {
   DUSSELDORF: {coordinates: [51.22172, 6.77616]},
 };
 
-class Map extends PureComponent {
+class Map extends Component {
 
   componentDidMount() {
     this._setMap();
@@ -47,6 +47,13 @@ class Map extends PureComponent {
     }
 
     return <section id="map" className={`${elementClassName} map`}></section>;
+  }
+
+  shouldComponentUpdate({city, idActiveCardForMap}) {
+    if (city === this.props.city && idActiveCardForMap === this.props.idActiveCardForMap) {
+      return false;
+    }
+    return true;
   }
 
   _setMap() {
