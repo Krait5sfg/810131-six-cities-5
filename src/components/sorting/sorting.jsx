@@ -16,7 +16,7 @@ class Sorting extends PureComponent {
     };
 
     this._handleSortingClick = this._handleSortingClick.bind(this);
-    this.onSortingItemClick = this.onSortingItemClick.bind(this);
+    this._onSortingItemClick = this._onSortingItemClick.bind(this);
   }
 
   render() {
@@ -28,7 +28,7 @@ class Sorting extends PureComponent {
         itemName={itemName}
         key={index}
         isActive={sortingType === itemName}
-        onSortingItemClick={this.onSortingItemClick}
+        onSortingItemClick={this._onSortingItemClick}
       />);
 
     return (
@@ -65,7 +65,7 @@ class Sorting extends PureComponent {
     }
   }
 
-  onSortingItemClick(evt) {
+  _onSortingItemClick(evt) {
     this.props.updateSortingType(evt.target.dataset.sorting);
     this.setState((previusState) => ({
       isOpen: !previusState.isOpen,
