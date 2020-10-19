@@ -20,14 +20,14 @@ class Sorting extends PureComponent {
   }
 
   render() {
-    const {activeItem} = this.props;
+    const {sortingType} = this.props;
     const openClassName = this.state.isOpen ? `places__options--opened` : ``;
 
     const sortingItemsElements = sortingItemsNames.map((itemName, index) =>
       <SortingItem
         itemName={itemName}
         key={index}
-        isActive={activeItem === itemName}
+        isActive={sortingType === itemName}
         onSortingItemClick={this.onSortingItemClick}
       />);
 
@@ -35,7 +35,7 @@ class Sorting extends PureComponent {
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by{` `}</span>
         <span className="places__sorting-type" tabIndex="0" onClick={this._handleSortingClick}>
-          {activeItem}
+          {sortingType}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select" />
           </svg>
@@ -48,9 +48,9 @@ class Sorting extends PureComponent {
   }
 
   componentDidUpdate() {
-    const {activeItem, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated} = this.props;
+    const {sortingType, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated} = this.props;
 
-    switch (activeItem) {
+    switch (sortingType) {
       case SotringType.POPULAR:
         sortPopular();
         break;
@@ -73,14 +73,14 @@ class Sorting extends PureComponent {
   }
 
   _handleSortingClick() {
-    this.setState((previusState) => ({
-      isOpen: !previusState.isOpen
+    this.setState(({isOpen}) => ({
+      isOpen: !isOpen
     }));
   }
 }
 
 Sorting.propTypes = {
-  activeItem: PropTypes.string.isRequired,
+  sortingType: PropTypes.string.isRequired,
   updateSortingType: PropTypes.func.isRequired,
   sortPopular: PropTypes.func.isRequired,
   sortLowToHigh: PropTypes.func.isRequired,
@@ -90,7 +90,7 @@ Sorting.propTypes = {
 
 const mapStateToProps = (({sortingType}) => {
   return {
-    activeItem: sortingType,
+    sortingType,
   };
 });
 
