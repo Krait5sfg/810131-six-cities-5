@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import SortingItem from '../sorting-item/sorting-item';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
@@ -8,57 +8,50 @@ import withSorting from '../../hocs/with-sorting/with-sorting';
 
 const sortingItemsNames = Object.values(SotringType);
 
-class Sorting extends PureComponent {
+const Sorting = ({sortingType, isOpen, onSortingClick, updateSortingType, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated}) => {
 
-  render() {
-    const {sortingType, isOpen, onSortingClick, updateSortingType} = this.props;
-    const openClassName = isOpen ? `places__options--opened` : ``;
-
-    const sortingItemsElements = sortingItemsNames.map((itemName, index) =>
-      <SortingItem
-        itemName={itemName}
-        key={index}
-        isActive={sortingType === itemName}
-        onSortingItemClick={(evt) => {
-          updateSortingType(evt.target.dataset.sorting);
-          onSortingClick();
-        }}
-      />);
-
-    return (
-      <form className="places__sorting" action="#" method="get">
-        <span className="places__sorting-caption">Sort by{` `}</span>
-        <span className="places__sorting-type" tabIndex="0" onClick={onSortingClick}>
-          {sortingType}
-          <svg className="places__sorting-arrow" width="7" height="4">
-            <use xlinkHref="#icon-arrow-select" />
-          </svg>
-        </span>
-        <ul className={`places__options places__options--custom ${openClassName}`}>
-          {sortingItemsElements}
-        </ul>
-      </form>
-    );
+  switch (sortingType) {
+    case SotringType.POPULAR:
+      sortPopular();
+      break;
+    case SotringType.LOW_TO_HIGH:
+      sortLowToHigh();
+      break;
+    case SotringType.HIGH_TO_LOW:
+      sortHighToLow();
+      break;
+    case SotringType.TOP_RATED:
+      sortTopRated();
   }
 
-  componentDidUpdate() {
-    const {sortingType, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated} = this.props;
+  const openClassName = isOpen ? `places__options--opened` : ``;
 
-    switch (sortingType) {
-      case SotringType.POPULAR:
-        sortPopular();
-        break;
-      case SotringType.LOW_TO_HIGH:
-        sortLowToHigh();
-        break;
-      case SotringType.HIGH_TO_LOW:
-        sortHighToLow();
-        break;
-      case SotringType.TOP_RATED:
-        sortTopRated();
-    }
-  }
-}
+  const sortingItemsElements = sortingItemsNames.map((itemName, index) =>
+    <SortingItem
+      itemName={itemName}
+      key={index}
+      isActive={sortingType === itemName}
+      onSortingItemClick={(evt) => {
+        updateSortingType(evt.target.dataset.sorting);
+        onSortingClick();
+      }}
+    />);
+
+  return (
+    <form className="places__sorting" action="#" method="get">
+      <span className="places__sorting-caption">Sort by{` `}</span>
+      <span className="places__sorting-type" tabIndex="0" onClick={onSortingClick}>
+        {sortingType}
+        <svg className="places__sorting-arrow" width="7" height="4">
+          <use xlinkHref="#icon-arrow-select" />
+        </svg>
+      </span>
+      <ul className={`places__options places__options--custom ${openClassName}`}>
+        {sortingItemsElements}
+      </ul>
+    </form>
+  );
+};
 
 Sorting.propTypes = {
   sortingType: PropTypes.string.isRequired,
