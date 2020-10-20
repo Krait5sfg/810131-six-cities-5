@@ -4,37 +4,31 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 import {SotringType} from '../../utils/const';
+import withSorting from '../../hocs/with-sorting/with-sorting';
 
 const sortingItemsNames = Object.values(SotringType);
 
 class Sorting extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isOpen: false,
-    };
-
-    this._handleSortingClick = this._handleSortingClick.bind(this);
-    this._onSortingItemClick = this._onSortingItemClick.bind(this);
-  }
 
   render() {
-    const {sortingType} = this.props;
-    const openClassName = this.state.isOpen ? `places__options--opened` : ``;
+    const {sortingType, isOpen, onSortingClick, updateSortingType} = this.props;
+    const openClassName = isOpen ? `places__options--opened` : ``;
 
     const sortingItemsElements = sortingItemsNames.map((itemName, index) =>
       <SortingItem
         itemName={itemName}
         key={index}
         isActive={sortingType === itemName}
-        onSortingItemClick={this._onSortingItemClick}
+        onSortingItemClick={(evt) => {
+          updateSortingType(evt.target.dataset.sorting);
+          onSortingClick();
+        }}
       />);
 
     return (
       <form className="places__sorting" action="#" method="get">
         <span className="places__sorting-caption">Sort by{` `}</span>
-        <span className="places__sorting-type" tabIndex="0" onClick={this._handleSortingClick}>
+        <span className="places__sorting-type" tabIndex="0" onClick={onSortingClick}>
           {sortingType}
           <svg className="places__sorting-arrow" width="7" height="4">
             <use xlinkHref="#icon-arrow-select" />
@@ -64,23 +58,12 @@ class Sorting extends PureComponent {
         sortTopRated();
     }
   }
-
-  _onSortingItemClick(evt) {
-    this.props.updateSortingType(evt.target.dataset.sorting);
-    this.setState((previusState) => ({
-      isOpen: !previusState.isOpen,
-    }));
-  }
-
-  _handleSortingClick() {
-    this.setState(({isOpen}) => ({
-      isOpen: !isOpen
-    }));
-  }
 }
 
 Sorting.propTypes = {
   sortingType: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onSortingClick: PropTypes.func.isRequired,
   updateSortingType: PropTypes.func.isRequired,
   sortPopular: PropTypes.func.isRequired,
   sortLowToHigh: PropTypes.func.isRequired,
@@ -112,5 +95,5 @@ const mapDispatchToProps = ((dispatch) => ({
   }
 }));
 
-export {Sorting};
-export default connect(mapStateToProps, mapDispatchToProps)(Sorting);
+export const EnhancedSorting = withSorting(Sorting);
+export default connect(mapStateToProps, mapDispatchToProps)(withSorting(Sorting));
