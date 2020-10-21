@@ -7,8 +7,15 @@ import {TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
 import CityList from '../city-list/city-list';
 import Sorting from '../sorting/sorting';
+import NoPlace from '../no-place/no-place';
 
 const MainPage = ({city, offers, onLinkEmailClick}) => {
+
+  // опред классы для стр. в зависимости пустая или нет
+  const isMainPageEmpty = offers.length ? false : true;
+  const classNameForMainTag = isMainPageEmpty ? `page__main--index-empty` : ``;
+  const classNameForPlaceContainer = isMainPageEmpty ? `cities__places-container--empty` : ``;
+  const classNameForSection = isMainPageEmpty ? `cities__no-places` : `cities__places places`;
 
   return (
     <div className="page page--gray page--main">
@@ -35,7 +42,7 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
         </div>
       </header>
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index ${classNameForMainTag}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
@@ -43,19 +50,26 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
           </section>
         </div>
         <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in {city}</b>
-              <Sorting />
-              <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
+          <div className={`cities__places-container ${classNameForPlaceContainer} container`}>
+            <section className={`${classNameForSection}`}>
+              {isMainPageEmpty
+                ? <NoPlace city={city} />
+                : <React.Fragment>
+                  <h2 className="visually-hidden">Places</h2>
+                  <b className="places__found">{offers.length} places to stay in {city}</b>
+                  <Sorting />
+                  <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
+                </React.Fragment>
+              }
             </section>
             <div className="cities__right-section">
-              <Map
-                typePage={TypePage.MAIN}
-                city={city}
-                offers={offers}
-              />
+              {isMainPageEmpty
+                ? ``
+                : <Map
+                  typePage={TypePage.MAIN}
+                  city={city}
+                  offers={offers}
+                />}
             </div>
           </div >
         </div >
