@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import CityList from '../city-list/city-list';
 import Sorting from '../sorting/sorting';
 import NoPlace from '../no-place/no-place';
+import YesPlace from '../yes-place/yes-place';
 
 const MainPage = ({city, offers, onLinkEmailClick}) => {
 
@@ -15,7 +16,6 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
   const isMainPageEmpty = offers.length ? false : true;
   const classNameForMainTag = isMainPageEmpty ? `page__main--index-empty` : ``;
   const classNameForPlaceContainer = isMainPageEmpty ? `cities__places-container--empty` : ``;
-  const classNameForSection = isMainPageEmpty ? `cities__no-places` : `cities__places places`;
 
   return (
     <div className="page page--gray page--main">
@@ -51,17 +51,13 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
         </div>
         <div className="cities">
           <div className={`cities__places-container ${classNameForPlaceContainer} container`}>
-            <section className={`${classNameForSection}`}>
-              {isMainPageEmpty
-                ? <NoPlace city={city} />
-                : <React.Fragment>
-                  <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{offers.length} places to stay in {city}</b>
-                  <Sorting />
-                  <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
-                </React.Fragment>
-              }
-            </section>
+            {isMainPageEmpty
+              ? <NoPlace city={city} />
+              : <YesPlace offerCount={offers.length} city={city}>
+                <Sorting />
+                <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
+              </YesPlace>
+            }
             <div className="cities__right-section">
               {isMainPageEmpty
                 ? ``
