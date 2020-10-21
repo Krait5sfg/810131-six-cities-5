@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 
-const withSorting = (WrappedComponent) => {
-  return class WithSorting extends PureComponent {
+const withOpen = (WrappedComponent) => {
+  return class WithOpen extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -28,4 +28,4 @@ const withSorting = (WrappedComponent) => {
   };
 };
 
-export default withSorting;
+export default withOpen;

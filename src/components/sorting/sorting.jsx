@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 import {SotringType} from '../../utils/const';
-import withSorting from '../../hocs/with-sorting/with-sorting';
+import withOpen from '../../hocs/with-open/with-open';
 
 const sortingItemsNames = Object.values(SotringType);
 
@@ -88,5 +88,5 @@ const mapDispatchToProps = ((dispatch) => ({
   }
 }));
 
-export const EnhancedSorting = withSorting(Sorting);
-export default connect(mapStateToProps, mapDispatchToProps)(withSorting(Sorting));
+export const EnhancedSorting = withOpen(Sorting);
+export default connect(mapStateToProps, mapDispatchToProps)(withOpen(Sorting));
