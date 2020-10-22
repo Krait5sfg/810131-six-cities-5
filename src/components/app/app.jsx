@@ -7,11 +7,12 @@ import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import {PagePath} from '../../utils/const';
+import {connect} from 'react-redux';
 
-const App = ({offers, reviews}) => {
+const App = ({allOffers, offers, reviews, city}) => {
 
-  const [firstOffer] = offers;
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
+  const [firstOffer] = allOffers;
+  const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
 
   const handleLinkEmailClick = (evt, history) => {
     evt.preventDefault();
@@ -23,6 +24,8 @@ const App = ({offers, reviews}) => {
       <Switch>
         <Route exact path={PagePath.MAIN} render={({history}) => (
           <MainPage
+            offers={offers}
+            city={city}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>
@@ -46,8 +49,18 @@ const App = ({offers, reviews}) => {
 };
 
 App.propTypes = {
+  allOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
+  city: PropTypes.string.isRequired
 };
 
-export default App;
+const mapStateToProps = (({allOffers, offers, city, reviews}) => ({
+  allOffers,
+  offers,
+  city,
+  reviews
+}));
+
+export {App};
+export default connect(mapStateToProps)(App);

@@ -4,7 +4,6 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
-import {connect} from 'react-redux';
 import CityList from '../city-list/city-list';
 import Sorting from '../sorting/sorting';
 import NoPlace from '../no-place/no-place';
@@ -80,11 +79,4 @@ MainPage.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };
 
-// связывает store c пропсами компонента
-const mapStateToProps = (({city, offers}) => ({
-  city,
-  offers,
-}));
-
-export {MainPage};
-export default connect(mapStateToProps)(MainPage);
+export default MainPage;

@@ -1,4 +1,5 @@
 import offers from '../mocks/offers';
+import reviews from '../mocks/reviews';
 import {City} from '../utils/const';
 import {ActionType} from './action';
 import {SotringType} from '../utils/const';
@@ -7,10 +8,12 @@ const defaultOffers = offers.filter((offer) => offer.city === City.AMSTERDAM);
 
 const initialState = {
   city: City.AMSTERDAM,
+  allOffers: offers,
   offers: defaultOffers,
   cities: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
   sortingType: SotringType.POPULAR,
-  idActiveCardForMap: 0
+  idActiveCardForMap: 0,
+  reviews
 };
 
 const reducer = (state = initialState, action) => {
