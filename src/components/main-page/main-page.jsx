@@ -13,7 +13,7 @@ import YesPlace from '../yes-place/yes-place';
 const MainPage = ({city, offers, onLinkEmailClick}) => {
 
   // опред классы для стр. в зависимости пустая или нет
-  const isMainPageEmpty = offers.length ? false : true;
+  const isMainPageEmpty = !offers.length;
   const classNameForMainTag = isMainPageEmpty ? `page__main--index-empty` : ``;
   const classNameForPlaceContainer = isMainPageEmpty ? `cities__places-container--empty` : ``;
 
