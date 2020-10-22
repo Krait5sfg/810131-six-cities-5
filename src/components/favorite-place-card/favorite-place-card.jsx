@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 
-const FavoritePlaceCard = ({favoriteOffer, city, changeCity}) => {
+const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateOffers}) => {
 
   const {images, accommodation} = favoriteOffer;
   const [firstImage] = images;
@@ -17,6 +17,7 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity}) => {
   const handleFavoriteCardClick = () => {
     if (city !== favoriteOffer.city) {
       changeCity(favoriteOffer.city);
+      updateOffers();
     }
   };
 
@@ -58,7 +59,8 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity}) => {
 FavoritePlaceCard.propTypes = {
   favoriteOffer: OfferPropTypes,
   city: PropTypes.string.isRequired,
-  changeCity: PropTypes.func.isRequired
+  changeCity: PropTypes.func.isRequired,
+  updateOffers: PropTypes.func.isRequired,
 };
 
 // связывает store c пропсами компонента
@@ -70,6 +72,9 @@ const mapStateToProps = (({city}) => ({
 const mapDispatchToProps = ((dispatch) => ({
   changeCity(city) {
     dispatch(ActionCreator.changeCity(city));
+  },
+  updateOffers() {
+    dispatch(ActionCreator.updateOffers());
   }
 }));
 
