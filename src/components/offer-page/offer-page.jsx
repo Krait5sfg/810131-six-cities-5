@@ -9,7 +9,8 @@ import Map from '../map/map';
 import {TypePage} from '../../utils/const';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
-
+const MAX_IMAGE_ON_PAGE = 6;
+const MAX_OFFER_ON_PAGE = 3;
 
 const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
 
@@ -17,7 +18,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
   // три предложения за исключением выведенного на страницу
-  const otherOffers = offers.filter((offering) => offering.id !== id && offering.city === city).slice(0, 3);
+  const otherOffers = offers.filter((offering) => offering.id !== id && offering.city === city).slice(0, MAX_OFFER_ON_PAGE);
 
   const offerPageReviews = reviews
     .filter((review) => review.offerId === id)
@@ -26,7 +27,9 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
 
   const favoriteButtonClass = isFavorite ? `property__bookmark-button--active` : ``;
 
-  const imagesElements = images.map((image, index) => {
+  const forRenderImages = images.length > MAX_IMAGE_ON_PAGE ? images.slice(0, MAX_IMAGE_ON_PAGE) : [...images];
+
+  const imagesElements = forRenderImages.map((image, index) => {
     return (
       <div className="property__image-wrapper" key={index}>
         <img className="property__image" src={image} alt="Photo studio" />
@@ -121,7 +124,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
               <div className="property__host">
                 <h2 className="property__host-title">Meet the host</h2>
                 <div className="property__host-user user">
-                  <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
+                  <div className={`property__avatar-wrapper ${host.isPro ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
                     <img className="property__avatar user__avatar" src={host.avatar} width="74" height="74" alt="Host avatar" />
                   </div>
                   <span className="property__user-name">

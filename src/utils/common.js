@@ -6,6 +6,7 @@ export const getRating = (rating) => {
 export const adaptToClient = (offer) => {
   return Object.assign({}, offer, {
     city: offer.city.name,
+    cityLocation: offer.city.location,
     accommodation: {
       isPremium: offer.is_premium,
       rating: offer.rating,
@@ -19,6 +20,7 @@ export const adaptToClient = (offer) => {
     previewImage: offer.preview_image,
     host: Object.assign({}, offer.host, {
       avatar: offer.host.avatar_url,
+      isPro: offer.host.is_pro,
     }),
     isFavorite: offer.is_favorite,
     coordinates: [offer.location.latitude, offer.location.longitude],

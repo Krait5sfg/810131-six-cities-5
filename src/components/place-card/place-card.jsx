@@ -15,7 +15,6 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
 
   const {id, previewImage, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
-  console.log(previewImage);
   const formattedRating = getRating(rating);
   const favoriteButtonClass = isFavorite ? `place-card__bookmark-button--active` : ``;
 
