@@ -13,10 +13,9 @@ const REMOVE_ID = 0;
 
 const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
 
-  const {id, images, accommodation, isFavorite} = offer;
+  const {id, previewImage, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
-  const [firstImage] = images;
-
+  console.log(previewImage);
   const formattedRating = getRating(rating);
   const favoriteButtonClass = isFavorite ? `place-card__bookmark-button--active` : ``;
 
@@ -41,7 +40,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
         <Link to={`${PagePath.OFFER}:${id}`}
           onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
         >
-          <img className="place-card__image" src={firstImage} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
         </ Link>
       </div>
       <div className="place-card__info">

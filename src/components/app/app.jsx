@@ -18,7 +18,7 @@ const App = ({allOffers, offers, reviews, city}) => {
     evt.preventDefault();
     history.push(PagePath.FAVORITE);
   };
-
+  console.log(offers);
   return (
     <BrowserRouter>
       <Switch>

@@ -7,6 +7,7 @@ export const ActionType = {
   SORT_HIGH_TO_LOW: `SORT_HIGH_TO_LOW`,
   SORT_TOP_RATED: `SORT_TOP_RATED`,
   UPDATE_ID_ACTIVE_CARD_FOR_MAP: `UPDATE_ID_ACTIVE_CARD_FOR_MAP`,
+  LOAD_OFFERS: `LOAD_OFFERS`
 };
 
 export const ActionCreator = {
@@ -36,5 +37,9 @@ export const ActionCreator = {
   updateIdActiveCardForMap: (id) => ({
     type: ActionType.UPDATE_ID_ACTIVE_CARD_FOR_MAP,
     payload: id
+  }),
+  loadOffers: (offers) => ({
+    type: ActionType.LOAD_OFFERS,
+    payload: offers,
   })
 };
