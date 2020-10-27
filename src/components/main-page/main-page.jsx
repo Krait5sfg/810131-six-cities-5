@@ -4,16 +4,16 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {OfferPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
-import {connect} from 'react-redux';
 import CityList from '../city-list/city-list';
 import Sorting from '../sorting/sorting';
 import NoPlace from '../no-place/no-place';
 import YesPlace from '../yes-place/yes-place';
+import User from '../user/user';
 
 const MainPage = ({city, offers, onLinkEmailClick}) => {
 
   // опред классы для стр. в зависимости пустая или нет
-  const isMainPageEmpty = offers.length ? false : true;
+  const isMainPageEmpty = !offers.length;
   const classNameForMainTag = isMainPageEmpty ? `page__main--index-empty` : ``;
   const classNameForPlaceContainer = isMainPageEmpty ? `cities__places-container--empty` : ``;
 
@@ -29,13 +29,7 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailClick}>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
+                <User onLinkEmailClick={onLinkEmailClick} />
               </ul>
             </nav>
           </div>
@@ -80,11 +74,4 @@ MainPage.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
 };
 
-// связывает store c пропсами компонента
-const mapStateToProps = (({city, offers}) => ({
-  city,
-  offers,
-}));
-
-export {MainPage};
-export default connect(mapStateToProps)(MainPage);
+export default MainPage;

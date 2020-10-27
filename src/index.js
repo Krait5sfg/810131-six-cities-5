@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
-import offers from './mocks/offers';
-import reviews from './mocks/reviews';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import {reducer} from './store/reducer';
+import thunk from 'redux-thunk';
+import {createApi} from './services/api';
+import {getOffersFromApi, checkAuth} from './store/api-actions';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import rootReducer from './store/reducers/root-reducer';
+import {ActionCreator} from './store/action';
+import {AuthorizationStatus} from './utils/const';
 
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f);
+const api = createApi(() => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)));
 
-ReactDOM.render(<Provider store={store}><App offers={offers} reviews={reviews} /></Provider>, document.querySelector(`#root`));
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
+store.dispatch(getOffersFromApi());
+store.dispatch(checkAuth());
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector(`#root`));

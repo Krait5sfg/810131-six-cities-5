@@ -6,16 +6,24 @@ import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
-import {PagePath} from '../../utils/const';
+import {PagePath, AuthorizationStatus} from '../../utils/const';
+import {connect} from 'react-redux';
+import {selectCityOffers} from '../../selector/selector';
 
-const App = ({offers, reviews}) => {
+const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
 
-  const [firstOffer] = offers;
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
+  const [firstOffer] = allOffers;
+  const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
 
   const handleLinkEmailClick = (evt, history) => {
     evt.preventDefault();
-    history.push(PagePath.FAVORITE);
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(PagePath.LOGIN);
+    } else {
+      history.push(PagePath.FAVORITE);
+    }
+
   };
 
   return (
@@ -23,11 +31,13 @@ const App = ({offers, reviews}) => {
       <Switch>
         <Route exact path={PagePath.MAIN} render={({history}) => (
           <MainPage
+            offers={offers}
+            city={city}
             onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
         )}>
         </Route>
         <Route exact path={PagePath.LOGIN}>
-          <LoginPage />
+          <LoginPage city={city} />
         </Route>
         <Route exact path={PagePath.FAVORITE}>
           <FavoritePage favoriteOffers={favoriteOffers} />
@@ -46,8 +56,20 @@ const App = ({offers, reviews}) => {
 };
 
 App.propTypes = {
+  allOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
+  city: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
-export default App;
+const mapStateToProps = (({DATA, PROCESS, USER}) => ({
+  allOffers: DATA.allOffers,
+  offers: selectCityOffers({DATA, PROCESS}),
+  city: PROCESS.city,
+  reviews: DATA.reviews,
+  authorizationStatus: USER.authorizationStatus,
+}));
+
+export {App};
+export default connect(mapStateToProps)(App);

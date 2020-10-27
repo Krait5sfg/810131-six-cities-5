@@ -7,23 +7,15 @@ import {TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
 
 const ID_MAP_CONTAINER = `map`;
-const ZOOM = 12;
 
 const IconPath = {
   SIMPLE_ICON: `img/pin.svg`,
   ACTIVE_ICON: `img/pin-active.svg`
 };
+
 const IconSize = {
   WIDTH: 27,
   HEIGHT: 39
-};
-const CityCoordinate = {
-  AMSTERDAM: {coordinates: [52.38333, 4.9]},
-  BRUSSELS: {coordinates: [50.85045, 4.34878]},
-  PARIS: {coordinates: [48.85341, 2.3488]},
-  COLOGNE: {coordinates: [50.93333, 6.95]},
-  HAMBURG: {coordinates: [53.57532, 10.01534]},
-  DUSSELDORF: {coordinates: [51.22172, 6.77616]},
 };
 
 class Map extends PureComponent {
@@ -50,7 +42,11 @@ class Map extends PureComponent {
   }
 
   _setMap() {
-    const {offers, city, idActiveCardForMap} = this.props;
+    const {offers, idActiveCardForMap} = this.props;
+    const [firstOffer] = offers;
+
+    const cityCoordinate = [firstOffer.cityLocation.latitude, firstOffer.cityLocation.longitude];
+    const zoom = firstOffer.cityLocation.zoom;
 
     const notActiveOfferCoordinates = offers
       .filter((offer) => offer.id !== idActiveCardForMap)
@@ -71,13 +67,13 @@ class Map extends PureComponent {
     });
 
     this._map = leaflet.map(ID_MAP_CONTAINER, {
-      center: CityCoordinate[city.toUpperCase()].coordinates,
-      zoom: ZOOM,
+      center: cityCoordinate,
+      zoom,
       zoomControl: false,
       marker: true
     });
 
-    this._map.setView(CityCoordinate[city.toUpperCase()].coordinates, ZOOM);
+    this._map.setView(cityCoordinate, zoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
@@ -106,13 +102,12 @@ class Map extends PureComponent {
 Map.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   typePage: PropTypes.string.isRequired,
-  city: PropTypes.string.isRequired,
   idActiveCardForMap: PropTypes.number.isRequired
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({idActiveCardForMap}) => ({
-  idActiveCardForMap
+const mapStateToProps = (({PROCESS}) => ({
+  idActiveCardForMap: PROCESS.idActiveCardForMap,
 }));
 
 export {Map};

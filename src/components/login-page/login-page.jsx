@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const LoginPage = () => {
+const LoginPage = ({city}) => {
   return (
     <div className="page page--gray page--login">
       <header className="header">
@@ -45,7 +46,7 @@ const LoginPage = () => {
           <section className="locations locations--login locations--current">
             <div className="locations__item">
               <a className="locations__item-link" href="#">
-                <span>Amsterdam</span>
+                <span>{city}</span>
               </a>
             </div>
           </section>
@@ -53,6 +54,10 @@ const LoginPage = () => {
       </main>
     </div>
   );
+};
+
+LoginPage.propTypes = {
+  city: PropTypes.string.isRequired
 };
 
 export default LoginPage;
