@@ -17,13 +17,9 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
 
   const handleLinkEmailClick = (evt, history) => {
     evt.preventDefault();
-
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      history.push(PagePath.LOGIN);
-    } else {
-      history.push(PagePath.FAVORITE);
-    }
-
+    history.push(authorizationStatus === AuthorizationStatus.NO_AUTH
+      ? PagePath.LOGIN
+      : PagePath.FAVORITE);
   };
 
   return (
