@@ -6,18 +6,24 @@ import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
-import {PagePath} from '../../utils/const';
+import {PagePath, AuthorizationStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
 
-const App = ({allOffers, offers, reviews, city}) => {
+const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
 
   const [firstOffer] = allOffers;
   const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
 
   const handleLinkEmailClick = (evt, history) => {
     evt.preventDefault();
-    history.push(PagePath.FAVORITE);
+
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(PagePath.LOGIN);
+    } else {
+      history.push(PagePath.FAVORITE);
+    }
+
   };
 
   return (
@@ -31,7 +37,7 @@ const App = ({allOffers, offers, reviews, city}) => {
         )}>
         </Route>
         <Route exact path={PagePath.LOGIN}>
-          <LoginPage />
+          <LoginPage city={city} />
         </Route>
         <Route exact path={PagePath.FAVORITE}>
           <FavoritePage favoriteOffers={favoriteOffers} />
@@ -53,14 +59,16 @@ App.propTypes = {
   allOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
-  city: PropTypes.string.isRequired
+  city: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (({DATA, PROCESS}) => ({
+const mapStateToProps = (({DATA, PROCESS, USER}) => ({
   allOffers: DATA.allOffers,
   offers: selectCityOffers({DATA, PROCESS}),
   city: PROCESS.city,
-  reviews: DATA.reviews
+  reviews: DATA.reviews,
+  authorizationStatus: USER.authorizationStatus,
 }));
 
 export {App};
