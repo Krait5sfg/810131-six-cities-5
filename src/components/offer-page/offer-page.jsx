@@ -9,6 +9,8 @@ import Map from '../map/map';
 import {TypePage} from '../../utils/const';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
+import User from '../user/user';
+
 const MAX_IMAGE_ON_PAGE = 6;
 const MAX_OFFER_ON_PAGE = 3;
 
@@ -59,13 +61,7 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
-                <li className="header__nav-item user">
-                  <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailClick}>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
-                    <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                  </a>
-                </li>
+                <User onLinkEmailClick={onLinkEmailClick} />
               </ul>
             </nav>
           </div>
