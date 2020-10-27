@@ -64,9 +64,9 @@ Sorting.propTypes = {
   sortTopRated: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (({sortingType}) => {
+const mapStateToProps = (({PROCESS}) => {
   return {
-    sortingType,
+    sortingType: PROCESS.sortingType
   };
 });
 

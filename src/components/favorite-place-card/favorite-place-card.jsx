@@ -64,8 +64,8 @@ FavoritePlaceCard.propTypes = {
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({city}) => ({
-  city
+const mapStateToProps = (({DATA}) => ({
+  city: DATA.city
 }));
 
 // связывает методы сo store

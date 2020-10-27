@@ -106,8 +106,8 @@ Map.propTypes = {
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({idActiveCardForMap}) => ({
-  idActiveCardForMap
+const mapStateToProps = (({PROCESS}) => ({
+  idActiveCardForMap: PROCESS.idActiveCardForMap,
 }));
 
 export {Map};

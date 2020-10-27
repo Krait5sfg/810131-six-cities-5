@@ -55,11 +55,11 @@ App.propTypes = {
   city: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (({allOffers, offers, city, reviews}) => ({
-  allOffers,
-  offers,
-  city,
-  reviews
+const mapStateToProps = (({DATA}) => ({
+  allOffers: DATA.allOffers,
+  offers: DATA.offers,
+  city: DATA.city,
+  reviews: DATA.reviews
 }));
 
 export {App};
