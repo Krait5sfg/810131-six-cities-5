@@ -15,15 +15,23 @@ export const getOffersFromApi = () => (dispatch, _getState, api) => (
     })
 );
 
+// проверка авторизован пользователь или нет
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(Request.AUTHORIZATION)
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then((response) => {
+      dispatch(ActionCreator.updateUser(response.data));
+      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+    })
     .catch((error) => {
       throw error;
     })
 );
 
+// авторизация
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(Request.AUTHORIZATION, {email, password})
-    .then(() => dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH)))
+    .then((response) => {
+      dispatch(ActionCreator.updateUser(response.data));
+      dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+    })
 );
