@@ -9,6 +9,7 @@ import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import {PagePath, AuthorizationStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
+import PrivateRoute from '../private-route/private-route';
 
 const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
 
@@ -35,9 +36,10 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
         <Route exact path={PagePath.LOGIN}>
           <LoginPage city={city} />
         </Route>
-        <Route exact path={PagePath.FAVORITE}>
-          <FavoritePage favoriteOffers={favoriteOffers} />
-        </Route>
+        <PrivateRoute component={FavoritePage}
+          path={PagePath.FAVORITE}
+          exact
+          favoriteOffers={favoriteOffers} />
         <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
           <OfferPage
             offer={firstOffer}
