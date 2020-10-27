@@ -8,6 +8,7 @@ import OfferPage from '../offer-page/offer-page';
 import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import {PagePath} from '../../utils/const';
 import {connect} from 'react-redux';
+import {selectCityOffers} from '../../selector/selector';
 
 const App = ({allOffers, offers, reviews, city}) => {
 
@@ -55,10 +56,10 @@ App.propTypes = {
   city: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (({DATA}) => ({
+const mapStateToProps = (({DATA, PROCESS}) => ({
   allOffers: DATA.allOffers,
-  offers: DATA.offers,
-  city: DATA.city,
+  offers: selectCityOffers({DATA, PROCESS}),
+  city: PROCESS.city,
   reviews: DATA.reviews
 }));
 

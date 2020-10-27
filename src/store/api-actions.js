@@ -7,7 +7,6 @@ export const getOffersFromApi = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       const modifiedToClientOffers = data.map((offer) => adaptToClient(offer));
       dispatch(ActionCreator.loadOffers(modifiedToClientOffers));
-      dispatch(ActionCreator.updateOffers());
     })
 );
 

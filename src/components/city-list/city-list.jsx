@@ -36,8 +36,8 @@ CityList.propTypes = {
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({DATA, PROCESS}) => ({
-  activeCity: DATA.city,
+const mapStateToProps = (({PROCESS}) => ({
+  activeCity: PROCESS.city,
   cities: PROCESS.cities,
   sortingType: PROCESS.sortingType
 }));
