@@ -8,21 +8,7 @@ import withOpen from '../../hocs/with-open/with-open';
 
 const sortingItemsNames = Object.values(SotringType);
 
-const Sorting = ({sortingType, isOpen, onSortingClick, updateSortingType, sortPopular, sortLowToHigh, sortHighToLow, sortTopRated}) => {
-
-  switch (sortingType) {
-    case SotringType.POPULAR:
-      sortPopular();
-      break;
-    case SotringType.LOW_TO_HIGH:
-      sortLowToHigh();
-      break;
-    case SotringType.HIGH_TO_LOW:
-      sortHighToLow();
-      break;
-    case SotringType.TOP_RATED:
-      sortTopRated();
-  }
+const Sorting = ({sortingType, isOpen, onSortingClick, updateSortingType}) => {
 
   const openClassName = isOpen ? `places__options--opened` : ``;
 
@@ -58,10 +44,6 @@ Sorting.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onSortingClick: PropTypes.func.isRequired,
   updateSortingType: PropTypes.func.isRequired,
-  sortPopular: PropTypes.func.isRequired,
-  sortLowToHigh: PropTypes.func.isRequired,
-  sortHighToLow: PropTypes.func.isRequired,
-  sortTopRated: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (({PROCESS}) => {
@@ -74,18 +56,6 @@ const mapDispatchToProps = ((dispatch) => ({
   updateSortingType(sortingType) {
     dispatch(ActionCreator.updateSortingType(sortingType));
   },
-  sortLowToHigh() {
-    dispatch(ActionCreator.sortLowToHigh());
-  },
-  sortPopular() {
-    dispatch(ActionCreator.sortPopular());
-  },
-  sortHighToLow() {
-    dispatch(ActionCreator.sortHighToLow());
-  },
-  sortTopRated() {
-    dispatch(ActionCreator.sortTopRated());
-  }
 }));
 
 export const EnhancedSorting = withOpen(Sorting);

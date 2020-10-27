@@ -16,24 +16,9 @@ export const ActionCreator = {
     type: ActionType.CHANGE_CITY,
     payload: city
   }),
-  updateOffers: () => ({
-    type: ActionType.UPDATE_OFFERS
-  }),
   updateSortingType: (sortingType) => ({
     type: ActionType.UPDATE_SORTING_TYPE,
     payload: sortingType
-  }),
-  sortLowToHigh: () => ({
-    type: ActionType.SORT_LOW_TO_HIGH,
-  }),
-  sortPopular: () => ({
-    type: ActionType.SORT_POPULAR,
-  }),
-  sortHighToLow: () => ({
-    type: ActionType.SORT_HIGH_TO_LOW,
-  }),
-  sortTopRated: () => ({
-    type: ActionType.SORT_TOP_RATED,
   }),
   updateIdActiveCardForMap: (id) => ({
     type: ActionType.UPDATE_ID_ACTIVE_CARD_FOR_MAP,
