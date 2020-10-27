@@ -5,6 +5,11 @@ import {OfferPropTypes} from '../../utils/property-type';
 
 const FavoritePage = ({favoriteOffers}) => {
 
+  const isEmpty = favoriteOffers.length ? false : true;
+  const classNameForDiv = isEmpty ? `page--favorites-empty` : ``;
+  const classNameForMain = isEmpty ? `page__main--favorites-empty` : ``;
+  const classNameForFavoriteSection = isEmpty ? `favorites--empty` : ``;
+
   const allCities = favoriteOffers.map((offer) => offer.city);
   const uniqueCities = [...new Set(allCities)];
 
@@ -19,7 +24,7 @@ const FavoritePage = ({favoriteOffers}) => {
   });
 
   return (
-    <div className="page">
+    <div className={`page ${classNameForDiv}`}>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -43,14 +48,27 @@ const FavoritePage = ({favoriteOffers}) => {
         </div>
       </header>
 
-      <main className="page__main page__main--favorites">
+      <main className={`page__main page__main--favorites ${classNameForMain}`}>
         <div className="page__favorites-container container">
-          <section className="favorites">
-            <h1 className="favorites__title">Saved listing</h1>
-            <ul className="favorites__list">
-              {favoriteLocationListElements}
-            </ul>
+          <section className={`favorites ${classNameForFavoriteSection}`}>
+            {isEmpty ?
+              <React.Fragment>
+                <h1 className="visually-hidden">Favorites (empty)</h1>
+                <div className="favorites__status-wrapper">
+                  <b className="favorites__status">Nothing yet saved.</b>
+                  <p className="favorites__status-description">Save properties to narrow down search or plan yor future trips.</p>
+                </div>
+              </React.Fragment>
+              :
+              <React.Fragment>
+                <h1 className="favorites__title">Saved listing</h1>
+                <ul className="favorites__list">
+                  {favoriteLocationListElements}
+                </ul>
+              </React.Fragment>
+            }
           </section>
+
         </div>
       </main>
       <footer className="footer container">
