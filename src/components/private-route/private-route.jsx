@@ -3,16 +3,15 @@ import {Redirect, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {PagePath, AuthorizationStatus} from '../../utils/const';
-import {OfferPropTypes} from '../../utils/property-type';
 
-const PrivateRoute = ({component: FavoritePage, path, exact, authorizationStatus, favoriteOffers}) => {
+const PrivateRoute = ({path, exact, authorizationStatus, render}) => {
   return (
     <Route
       path={path}
       exact={exact}
-      render={() => authorizationStatus === AuthorizationStatus.NO_AUTH
+      render={(props) => authorizationStatus === AuthorizationStatus.NO_AUTH
         ? <Redirect to={PagePath.LOGIN} />
-        : <FavoritePage favoriteOffers={favoriteOffers} />} />
+        : render(props)} />
   );
 };
 
@@ -21,11 +20,10 @@ const mapStateToProps = (({USER}) => ({
 }));
 
 PrivateRoute.propTypes = {
-  component: PropTypes.elementType.isRequired,
   path: PropTypes.string.isRequired,
   exact: PropTypes.bool.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  favoriteOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  render: PropTypes.func.isRequired,
 };
 
 export {PrivateRoute};

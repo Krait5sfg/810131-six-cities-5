@@ -26,3 +26,10 @@ export const adaptToClient = (offer) => {
     coordinates: [offer.location.latitude, offer.location.longitude],
   });
 };
+
+export const adaptToClientUserData = (user) => {
+  return Object.assign({}, user, {
+    avatarUrl: `https://htmlacademy-react-3.appspot.com/six-cities${user.avatar_url}`,
+    isPro: user.is_pro,
+  });
+};
