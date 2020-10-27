@@ -7,7 +7,8 @@ export const ActionType = {
   SORT_HIGH_TO_LOW: `SORT_HIGH_TO_LOW`,
   SORT_TOP_RATED: `SORT_TOP_RATED`,
   UPDATE_ID_ACTIVE_CARD_FOR_MAP: `UPDATE_ID_ACTIVE_CARD_FOR_MAP`,
-  LOAD_OFFERS: `LOAD_OFFERS`
+  LOAD_OFFERS: `LOAD_OFFERS`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
 };
 
 export const ActionCreator = {
@@ -41,5 +42,9 @@ export const ActionCreator = {
   loadOffers: (offers) => ({
     type: ActionType.LOAD_OFFERS,
     payload: offers,
-  })
+  }),
+  requireAuthorization: (status) => ({
+    type: ActionType.REQUIRED_AUTHORIZATION,
+    payload: status
+  }),
 };
