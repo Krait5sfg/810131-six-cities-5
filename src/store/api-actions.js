@@ -36,6 +36,7 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     })
 );
 
+// запрос активного предложения
 export const getActiveOffer = (id) => (dispatch, _getState, api) => (
   api.get(`${Request.OFFER_DATA}/${id}`)
     .then(({data}) => {

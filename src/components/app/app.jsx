@@ -13,7 +13,6 @@ import PrivateRoute from '../private-route/private-route';
 
 const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
 
-  // const [firstOffer] = allOffers;
   const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
 
   const onLinkEmailClick = (evt, history) => {
@@ -48,7 +47,6 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
           exact />
         <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
           <OfferPage
-            // offer={firstOffer}
             offers={offers}
             reviews={reviews}
             onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />

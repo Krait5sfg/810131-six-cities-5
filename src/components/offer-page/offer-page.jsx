@@ -17,8 +17,6 @@ import {getActiveOffer} from '../../store/api-actions';
 const MAX_IMAGE_ON_PAGE = 6;
 const MAX_OFFER_ON_PAGE = 3;
 
-// offer, reviews, onLinkEmailClick, offers, city, authorizationStatus, idActiveOffer, updateActiveOffer - пропсы
-
 class OfferPage extends PureComponent {
   constructor(props) {
     super(props);
@@ -171,17 +169,22 @@ class OfferPage extends PureComponent {
         </div >
       );
     }
-    return <h2>Loading...</h2>;
+    return <h2 style={{position: `absolute`, top: `50%`, left: `50%`, transform: `translate(-50%, -50%)`}}>Loading...</h2>;
   }
 }
 
 OfferPage.propTypes = {
   onLinkEmailClick: PropTypes.func.isRequired,
-  offer: OfferPropTypes,
+  offer: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    OfferPropTypes
+  ]),
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
   city: PropTypes.string.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  idActiveOffer: PropTypes.number.isRequired,
+  updateActiveOffer: PropTypes.func.isRequired
 };
 
 // связывает store c пропсами компонента
