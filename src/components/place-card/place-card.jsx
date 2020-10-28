@@ -37,7 +37,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, updateIdActiveOff
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
-        <Link to={`${PagePath.OFFER}:${id}`}
+        <Link to={`${PagePath.OFFER}${id}`}
           onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
         >
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
@@ -64,7 +64,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, updateIdActiveOff
         </div>
         <h2 className="place-card__name">
           <Link
-            to={`${PagePath.OFFER}:${id}`}
+            to={`${PagePath.OFFER}${id}`}
             onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
           >
             {title}
