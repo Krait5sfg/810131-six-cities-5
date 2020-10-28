@@ -9,7 +9,8 @@ export const ActionType = {
   UPDATE_ID_ACTIVE_CARD_FOR_MAP: `UPDATE_ID_ACTIVE_CARD_FOR_MAP`,
   LOAD_OFFERS: `LOAD_OFFERS`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
-  UPDATE_USER: `UPDATE_USER`
+  UPDATE_USER: `UPDATE_USER`,
+  UPDATE_ID_ACTIVE_OFFER: `UPDATE_ID_ACTIVE_OFFER`,
 };
 
 export const ActionCreator = {
@@ -36,5 +37,9 @@ export const ActionCreator = {
   updateUser: (userInformation) => ({
     type: ActionType.UPDATE_USER,
     payload: userInformation
+  }),
+  updateIdActiveOffer: (id) => ({
+    type: ActionType.UPDATE_ID_ACTIVE_OFFER,
+    payload: id
   }),
 };
