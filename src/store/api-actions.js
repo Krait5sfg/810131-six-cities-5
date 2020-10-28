@@ -35,3 +35,10 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
     })
 );
+
+export const getActiveOffer = () => (dispatch, _getState, api) => (
+  api.get(`/hotels/10`)
+    .then(({data}) => {
+      dispatch(ActionCreator.updateActiveOffer(adaptToClient(data)));
+    })
+);

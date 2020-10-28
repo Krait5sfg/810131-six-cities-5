@@ -11,6 +11,7 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   UPDATE_USER: `UPDATE_USER`,
   UPDATE_ID_ACTIVE_OFFER: `UPDATE_ID_ACTIVE_OFFER`,
+  UPDATE_ACTIVE_OFFER: `UPDATE_ACTIVE_OFFER`
 };
 
 export const ActionCreator = {
@@ -41,5 +42,9 @@ export const ActionCreator = {
   updateIdActiveOffer: (id) => ({
     type: ActionType.UPDATE_ID_ACTIVE_OFFER,
     payload: id
+  }),
+  updateActiveOffer: (activeOffer) => ({
+    type: ActionType.UPDATE_ACTIVE_OFFER,
+    payload: activeOffer
   }),
 };
