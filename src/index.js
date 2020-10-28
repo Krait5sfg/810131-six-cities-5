@@ -19,4 +19,4 @@ store.dispatch(checkAuth());
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector(`#root`));
 
-// store.subscribe(() => console.log(store.getState()));
+store.subscribe(() => console.log(store.getState()));

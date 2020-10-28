@@ -11,13 +11,16 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
 import User from '../user/user';
 import {AuthorizationStatus} from '../../utils/const';
+import {getActiveOffer} from '../../store/api-actions';
 
 
 const MAX_IMAGE_ON_PAGE = 6;
 const MAX_OFFER_ON_PAGE = 3;
 
-const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city, authorizationStatus, idActiveOffer}) => {
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city, authorizationStatus, idActiveOffer, updateActiveOffer}) => {
   console.log(idActiveOffer);
+  updateActiveOffer(idActiveOffer);
+
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
@@ -171,5 +174,11 @@ const mapStateToProps = (({PROCESS, USER}) => ({
   idActiveOffer: PROCESS.idActiveOffer
 }));
 
+const mapDispatchToProps = ((dispatch) => ({
+  updateActiveOffer(id) {
+    dispatch(getActiveOffer(id));
+  }
+}));
+
 export {OfferPage};
-export default connect(mapStateToProps)(OfferPage);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferPage);
