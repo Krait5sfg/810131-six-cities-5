@@ -11,7 +11,7 @@ import {ActionCreator} from '../../store/action';
 
 const REMOVE_ID = 0;
 
-const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, updateIdActiveOffer}) => {
+const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
 
   const {id, previewImage, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
@@ -33,7 +33,6 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, updateIdActiveOff
       className={`${classNameArticleTag} place-card`}
       onMouseEnter={() => updateIdActiveCardForMap(id)}
       onMouseLeave={() => updateIdActiveCardForMap(REMOVE_ID)}
-      onClick={() => updateIdActiveOffer(id)}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
@@ -80,15 +79,11 @@ PlaceCard.propTypes = {
   updateIdActiveCardForMap: PropTypes.func.isRequired,
   offer: OfferPropTypes,
   typePage: PropTypes.string.isRequired,
-  updateIdActiveOffer: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = ((dispatch) => ({
   updateIdActiveCardForMap(id) {
     dispatch(ActionCreator.updateIdActiveCardForMap(id));
-  },
-  updateIdActiveOffer(id) {
-    dispatch(ActionCreator.updateIdActiveOffer(id));
   },
 }));
 

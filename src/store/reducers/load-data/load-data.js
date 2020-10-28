@@ -4,7 +4,8 @@ import reviews from '../../../mocks/reviews';
 const initialState = {
   allOffers: [],
   reviews,
-  activeOffer: {}
+  activeOffer: {},
+  nearbyOffers: []
 };
 
 // reduсer отвечает за загружаемые данные
@@ -15,6 +16,9 @@ const loadData = (state = initialState, action) => {
 
     case ActionType.UPDATE_ACTIVE_OFFER:
       return Object.assign({}, state, {activeOffer: action.payload});
+
+    case ActionType.UPDATE_NEARBY_OFFERS:
+      return Object.assign({}, state, {nearbyOffers: action.payload});
   }
   return state;
 };

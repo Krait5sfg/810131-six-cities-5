@@ -43,3 +43,12 @@ export const getActiveOffer = (id) => (dispatch, _getState, api) => (
       dispatch(ActionCreator.updateActiveOffer(adaptToClient(data)));
     })
 );
+
+// запрос предложений неподалеку
+export const getNearbyOffers = (id) => (dispatch, _getState, api) => (
+  api.get(`${Request.OFFER_DATA}/${id}/nearby`)
+    .then(({data}) => {
+      const modifiedToClientNearbyOffers = data.map((offer) => adaptToClient(offer));
+      dispatch(ActionCreator.updateNearbyOffers(modifiedToClientNearbyOffers));
+    })
+);

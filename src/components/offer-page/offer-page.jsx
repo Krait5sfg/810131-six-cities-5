@@ -11,11 +11,9 @@ import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
 import User from '../user/user';
 import {AuthorizationStatus} from '../../utils/const';
-import {getActiveOffer} from '../../store/api-actions';
-
+import {getActiveOffer, getNearbyOffers} from '../../store/api-actions';
 
 const MAX_IMAGE_ON_PAGE = 6;
-const MAX_OFFER_ON_PAGE = 3;
 
 class OfferPage extends PureComponent {
   constructor(props) {
@@ -23,21 +21,20 @@ class OfferPage extends PureComponent {
   }
 
   componentDidMount() {
-    const {idActiveOffer, updateActiveOffer} = this.props;
+    const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;
 
-    // Запрос на сервер для получения активного предложения
+    // Запросы на сервер
     updateActiveOffer(idActiveOffer);
+    updateNearbyOffers(idActiveOffer);
+
   }
 
   render() {
-    const {offer} = this.props;
-    if (Object.keys(offer).length) {
-      const {offers, reviews, onLinkEmailClick, city, authorizationStatus} = this.props;
-      const {id, images, accommodation, host, description, isFavorite} = offer;
+    const {offer, nearbyOffers} = this.props;
+    if (Object.keys(offer).length && nearbyOffers.length) {
+      const {reviews, onLinkEmailClick, authorizationStatus} = this.props;
+      const {id, images, accommodation, host, description, city, isFavorite} = offer;
       const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
-
-      // три предложения за исключением выведенного на страницу
-      const otherOffers = offers.filter((offering) => offering.id !== id && offering.city === city).slice(0, MAX_OFFER_ON_PAGE);
 
       const offerPageReviews = reviews
         .filter((review) => review.offerId === id)
@@ -157,12 +154,12 @@ class OfferPage extends PureComponent {
                   </section>
                 </div>
               </div>
-              <Map typePage={TypePage.OFFER} city={city} offers={otherOffers} />
+              <Map typePage={TypePage.OFFER} city={city} offers={nearbyOffers} />
             </section>
             <div className="container">
               <section className="near-places places">
                 <h2 className="near-places__title">Other places in the neighbourhood</h2>
-                <PlaceCardList offers={otherOffers} typePage={TypePage.OFFER} />
+                <PlaceCardList offers={nearbyOffers} typePage={TypePage.OFFER} />
               </section>
             </div>
           </main>
@@ -179,25 +176,27 @@ OfferPage.propTypes = {
     PropTypes.object.isRequired,
     OfferPropTypes
   ]),
-  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  nearbyOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
-  city: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   idActiveOffer: PropTypes.number.isRequired,
-  updateActiveOffer: PropTypes.func.isRequired
+  updateActiveOffer: PropTypes.func.isRequired,
+  updateNearbyOffers: PropTypes.func.isRequired
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({PROCESS, USER, DATA}) => ({
-  city: PROCESS.city,
+const mapStateToProps = (({USER, DATA}) => ({
   authorizationStatus: USER.authorizationStatus,
-  idActiveOffer: PROCESS.idActiveOffer,
-  offer: DATA.activeOffer
+  offer: DATA.activeOffer,
+  nearbyOffers: DATA.nearbyOffers
 }));
 
 const mapDispatchToProps = ((dispatch) => ({
   updateActiveOffer(id) {
     dispatch(getActiveOffer(id));
+  },
+  updateNearbyOffers(id) {
+    dispatch(getNearbyOffers(id));
   }
 }));
 

@@ -47,13 +47,13 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
           exact />
         <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
           <OfferPage
-            offers={offers}
+            idActiveOffer={+history.location.pathname.slice(history.location.pathname.search(/[0-9]+/))}
             reviews={reviews}
             onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
         )}>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 };
 

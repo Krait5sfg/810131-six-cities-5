@@ -7,7 +7,6 @@ const initialState = {
   cities: [City.PARIS, City.COLOGNE, City.BRUSSELS, City.AMSTERDAM, City.HAMBURG, City.DUSSELDORF],
   sortingType: SotringType.POPULAR,
   idActiveCardForMap: 0,
-  idActiveOffer: ``
 };
 
 // reducer отвечает за состояние приложения
@@ -21,9 +20,6 @@ const appProcess = (state = initialState, action) => {
 
     case ActionType.CHANGE_CITY:
       return Object.assign({}, state, {city: action.payload});
-
-    case ActionType.UPDATE_ID_ACTIVE_OFFER:
-      return Object.assign({}, state, {idActiveOffer: action.payload});
   }
   return state;
 };
