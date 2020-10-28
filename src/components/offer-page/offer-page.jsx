@@ -10,11 +10,13 @@ import {TypePage} from '../../utils/const';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
 import User from '../user/user';
+import {AuthorizationStatus} from '../../utils/const';
+
 
 const MAX_IMAGE_ON_PAGE = 6;
 const MAX_OFFER_ON_PAGE = 3;
 
-const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city, authorizationStatus}) => {
 
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
@@ -135,7 +137,8 @@ const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city}) => {
               </div>
               <section className="property__reviews reviews">
                 <ReviewList offerPageReviews={offerPageReviews} />
-                <ReviewForm />
+                {authorizationStatus === AuthorizationStatus.AUTH ?
+                  <ReviewForm /> : ``}
               </section>
             </div>
           </div>
@@ -157,12 +160,14 @@ OfferPage.propTypes = {
   offer: OfferPropTypes,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
-  city: PropTypes.string.isRequired
+  city: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({PROCESS}) => ({
-  city: PROCESS.city
+const mapStateToProps = (({PROCESS, USER}) => ({
+  city: PROCESS.city,
+  authorizationStatus: USER.authorizationStatus,
 }));
 
 export {OfferPage};

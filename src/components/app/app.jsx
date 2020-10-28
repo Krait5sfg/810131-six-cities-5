@@ -9,21 +9,18 @@ import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
 import {PagePath, AuthorizationStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
+import PrivateRoute from '../private-route/private-route';
 
 const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
 
   const [firstOffer] = allOffers;
   const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
 
-  const handleLinkEmailClick = (evt, history) => {
+  const onLinkEmailClick = (evt, history) => {
     evt.preventDefault();
-
-    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      history.push(PagePath.LOGIN);
-    } else {
-      history.push(PagePath.FAVORITE);
-    }
-
+    history.push(authorizationStatus === AuthorizationStatus.NO_AUTH
+      ? PagePath.LOGIN
+      : PagePath.FAVORITE);
   };
 
   return (
@@ -33,21 +30,28 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
           <MainPage
             offers={offers}
             city={city}
-            onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
+            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
         )}>
         </Route>
         <Route exact path={PagePath.LOGIN}>
           <LoginPage city={city} />
         </Route>
-        <Route exact path={PagePath.FAVORITE}>
-          <FavoritePage favoriteOffers={favoriteOffers} />
-        </Route>
+        <PrivateRoute
+          render={({history}) => {
+            return (
+              <FavoritePage
+                favoriteOffers={favoriteOffers}
+                onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
+            );
+          }}
+          path={PagePath.FAVORITE}
+          exact />
         <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
           <OfferPage
             offer={firstOffer}
             offers={offers}
             reviews={reviews}
-            onLinkEmailClick={(evt) => handleLinkEmailClick(evt, history)} />
+            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
         )}>
         </Route>
       </Switch>

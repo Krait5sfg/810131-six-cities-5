@@ -4,7 +4,7 @@ import {City} from '../../../utils/const';
 
 const initialState = {
   city: City.AMSTERDAM,
-  cities: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
+  cities: [City.PARIS, City.COLOGNE, City.BRUSSELS, City.AMSTERDAM, City.HAMBURG, City.DUSSELDORF],
   sortingType: SotringType.POPULAR,
   idActiveCardForMap: 0,
 };
