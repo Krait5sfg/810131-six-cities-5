@@ -16,8 +16,8 @@ import {AuthorizationStatus} from '../../utils/const';
 const MAX_IMAGE_ON_PAGE = 6;
 const MAX_OFFER_ON_PAGE = 3;
 
-const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city, authorizationStatus}) => {
-
+const OfferPage = ({offer, reviews, onLinkEmailClick, offers, city, authorizationStatus, idActiveOffer}) => {
+  console.log(idActiveOffer);
   const {id, images, accommodation, host, description, isFavorite} = offer;
   const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
@@ -168,6 +168,7 @@ OfferPage.propTypes = {
 const mapStateToProps = (({PROCESS, USER}) => ({
   city: PROCESS.city,
   authorizationStatus: USER.authorizationStatus,
+  idActiveOffer: PROCESS.idActiveOffer
 }));
 
 export {OfferPage};

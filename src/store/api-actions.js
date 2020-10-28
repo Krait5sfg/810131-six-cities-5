@@ -36,8 +36,8 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     })
 );
 
-export const getActiveOffer = () => (dispatch, _getState, api) => (
-  api.get(`/hotels/10`)
+export const getActiveOffer = (id) => (dispatch, _getState, api) => (
+  api.get(`${Request.OFFER_DATA}/${id}`)
     .then(({data}) => {
       dispatch(ActionCreator.updateActiveOffer(adaptToClient(data)));
     })
