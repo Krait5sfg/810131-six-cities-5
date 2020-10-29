@@ -45,9 +45,9 @@ const App = ({allOffers, offers, city, authorizationStatus}) => {
           }}
           path={PagePath.FAVORITE}
           exact />
-        <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
+        <Route exact path={`${PagePath.OFFER}:id`} render={({history, match}) => (
           <OfferPage
-            idActiveOffer={+history.location.pathname.slice(history.location.pathname.search(/[0-9]+/))}
+            idActiveOffer={+match.params.id}
             onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
         )}>
         </Route>

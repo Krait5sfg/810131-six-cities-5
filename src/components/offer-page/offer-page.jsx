@@ -16,9 +16,6 @@ import {getActiveOffer, getNearbyOffers} from '../../store/api-actions';
 const MAX_IMAGE_ON_PAGE = 6;
 
 class OfferPage extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;

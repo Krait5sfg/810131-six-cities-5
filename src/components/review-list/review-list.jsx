@@ -6,9 +6,6 @@ import {connect} from 'react-redux';
 import {getActiveOfferComments} from '../../store/api-actions';
 
 class ReviewList extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const {updateActiveOfferComments, idActiveOffer} = this.props;
