@@ -17,6 +17,15 @@ const MAX_IMAGE_ON_PAGE = 6;
 
 class OfferPage extends PureComponent {
 
+  componentDidUpdate(previousProps) {
+    const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;
+    if (previousProps.idActiveOffer !== idActiveOffer) {
+      updateActiveOffer(idActiveOffer);
+      updateNearbyOffers(idActiveOffer);
+    }
+
+  }
+
   componentDidMount() {
     const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;
 
