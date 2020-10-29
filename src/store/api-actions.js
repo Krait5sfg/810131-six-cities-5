@@ -1,10 +1,11 @@
 import {ActionCreator} from '../store/action';
-import {adaptToClient, adaptToClientUserData} from '../utils/common';
+import {adaptToClient, adaptToClientUserData, adaptToClientComments} from '../utils/common';
 import {AuthorizationStatus} from '../utils/const';
 
 const Request = {
   AUTHORIZATION: `/login`,
   OFFER_DATA: `/hotels`,
+  OFFER_COMMENT: `/comments/`
 };
 
 export const getOffersFromApi = () => (dispatch, _getState, api) => (
@@ -50,5 +51,14 @@ export const getNearbyOffers = (id) => (dispatch, _getState, api) => (
     .then(({data}) => {
       const modifiedToClientNearbyOffers = data.map((offer) => adaptToClient(offer));
       dispatch(ActionCreator.updateNearbyOffers(modifiedToClientNearbyOffers));
+    })
+);
+
+// запрос комментариев активного предложения
+export const getActiveOfferComments = (id) => (dispatch, _getState, api) => (
+  api.get(`${Request.OFFER_COMMENT}${id}`)
+    .then(({data}) => {
+      const modifiedComments = data.map((comment) => adaptToClientComments(comment));
+      dispatch(ActionCreator.updateActiveOfferComments(modifiedComments));
     })
 );

@@ -1,24 +1,52 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import {ReviewPropTypes} from '../../utils/property-type';
 import Review from '../review/review';
+import {connect} from 'react-redux';
+import {getActiveOfferComments} from '../../store/api-actions';
 
-const ReviewList = ({offerPageReviews}) => {
-  const reviewCount = offerPageReviews.length;
-  const reviewElements = offerPageReviews.map((review, index) => <Review review={review} key={index} />);
+class ReviewList extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <React.Fragment>
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewCount}</span></h2>
-      <ul className="reviews__list">
-        {reviewElements}
-      </ul>
-    </React.Fragment>
-  );
-};
+  componentDidMount() {
+    const {updateActiveOfferComments, idActiveOffer} = this.props;
+    updateActiveOfferComments(idActiveOffer);
+  }
+
+  render() {
+    const {activeOfferComments} = this.props;
+
+    const commentCount = activeOfferComments.length;
+    const commentElements = activeOfferComments.map((comment, index) => <Review comment={comment} key={index} />);
+
+    return (
+      <React.Fragment>
+        <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{commentCount}</span></h2>
+        <ul className="reviews__list">
+          {commentElements}
+        </ul>
+      </React.Fragment>
+    );
+  }
+}
 
 ReviewList.propTypes = {
-  offerPageReviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
+  activeOfferComments: PropTypes.arrayOf(ReviewPropTypes).isRequired,
+  updateActiveOfferComments: PropTypes.func.isRequired,
+  idActiveOffer: PropTypes.number.isRequired
 };
 
-export default ReviewList;
+const mapStateToProps = (({DATA}) => ({
+  activeOfferComments: DATA.activeOfferComments,
+}));
+
+const mapDispatchToProps = ((dispatch) => ({
+  updateActiveOfferComments(idActiveOffer) {
+    dispatch(getActiveOfferComments(idActiveOffer));
+  }
+}));
+
+export {ReviewList};
+export default connect(mapStateToProps, mapDispatchToProps)(ReviewList);

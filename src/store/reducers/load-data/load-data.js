@@ -1,9 +1,8 @@
 import {ActionType} from '../../action';
-import reviews from '../../../mocks/reviews';
 
 const initialState = {
   allOffers: [],
-  reviews,
+  activeOfferComments: [],
   activeOffer: {},
   nearbyOffers: []
 };
@@ -19,6 +18,9 @@ const loadData = (state = initialState, action) => {
 
     case ActionType.UPDATE_NEARBY_OFFERS:
       return Object.assign({}, state, {nearbyOffers: action.payload});
+
+    case ActionType.UPDATE_ACTIVE_OFFER_COMMENTS:
+      return Object.assign({}, state, {activeOfferComments: action.payload});
   }
   return state;
 };

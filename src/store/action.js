@@ -6,7 +6,8 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   UPDATE_USER: `UPDATE_USER`,
   UPDATE_ACTIVE_OFFER: `UPDATE_ACTIVE_OFFER`,
-  UPDATE_NEARBY_OFFERS: `UPDATE_NEARBY_OFFERS`
+  UPDATE_NEARBY_OFFERS: `UPDATE_NEARBY_OFFERS`,
+  UPDATE_ACTIVE_OFFER_COMMENTS: `UPDATE_ACTIVE_OFFER_COMMENTS`
 };
 
 export const ActionCreator = {
@@ -41,5 +42,9 @@ export const ActionCreator = {
   updateNearbyOffers: (nearbyOffers) => ({
     type: ActionType.UPDATE_NEARBY_OFFERS,
     payload: nearbyOffers
+  }),
+  updateActiveOfferComments: (comments) => ({
+    type: ActionType.UPDATE_ACTIVE_OFFER_COMMENTS,
+    payload: comments,
   }),
 };

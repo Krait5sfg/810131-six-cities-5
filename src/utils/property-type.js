@@ -31,11 +31,12 @@ export const OfferPropTypes = PropTypes.shape({
 
 
 export const ReviewPropTypes = PropTypes.shape({
-  offerId: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  starsCount: PropTypes.number.isRequired,
+  rating: PropTypes.number.isRequired,
   commentText: PropTypes.string.isRequired,
+  isPro: PropTypes.bool.isRequired,
   date: PropTypes.object.isRequired,
 }).isRequired;
 

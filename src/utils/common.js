@@ -33,3 +33,13 @@ export const adaptToClientUserData = (user) => {
     isPro: user.is_pro,
   });
 };
+
+export const adaptToClientComments = ((comment) => {
+  return Object.assign({}, comment, {
+    avatar: comment.user.avatar_url,
+    date: new Date(comment.date),
+    name: comment.user.name,
+    isPro: comment.user.is_pro,
+    commentText: comment.comment
+  });
+});

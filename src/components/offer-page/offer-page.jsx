@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccommodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
-import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 import ReviewList from '../review-list/review-list';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
@@ -32,14 +32,9 @@ class OfferPage extends PureComponent {
   render() {
     const {offer, nearbyOffers} = this.props;
     if (Object.keys(offer).length && nearbyOffers.length) {
-      const {reviews, onLinkEmailClick, authorizationStatus} = this.props;
+      const {onLinkEmailClick, authorizationStatus} = this.props;
       const {id, images, accommodation, host, description, city, isFavorite} = offer;
       const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
-
-      const offerPageReviews = reviews
-        .filter((review) => review.offerId === id)
-        .sort((firstReview, secondReview) => firstReview < secondReview ? -1 : 1);
-
 
       const favoriteButtonClass = isFavorite ? `property__bookmark-button--active` : ``;
 
@@ -148,7 +143,7 @@ class OfferPage extends PureComponent {
                     </div>
                   </div>
                   <section className="property__reviews reviews">
-                    <ReviewList offerPageReviews={offerPageReviews} />
+                    <ReviewList idActiveOffer={id} />
                     {authorizationStatus === AuthorizationStatus.AUTH ?
                       <ReviewForm /> : ``}
                   </section>
@@ -177,7 +172,6 @@ OfferPage.propTypes = {
     OfferPropTypes
   ]),
   nearbyOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
-  reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   idActiveOffer: PropTypes.number.isRequired,
   updateActiveOffer: PropTypes.func.isRequired,
