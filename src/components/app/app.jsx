@@ -22,6 +22,13 @@ const App = ({allOffers, offers, city, authorizationStatus}) => {
       : PagePath.FAVORITE);
   };
 
+  const onFavoriteButtonClick = (evt, history) => {
+    evt.preventDefault();
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(PagePath.LOGIN);
+    }
+  };
+
   return (
     <BrowserRouter>
       <Switch>
@@ -29,7 +36,9 @@ const App = ({allOffers, offers, city, authorizationStatus}) => {
           <MainPage
             offers={offers}
             city={city}
-            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
+            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)}
+            onFavoriteButtonClick={(evt) => onFavoriteButtonClick(evt, history)}
+          />
         )}>
         </Route>
         <Route exact path={PagePath.LOGIN}>
@@ -48,7 +57,9 @@ const App = ({allOffers, offers, city, authorizationStatus}) => {
         <Route exact path={`${PagePath.OFFER}:id`} render={({history, match}) => (
           <OfferPage
             idActiveOffer={+match.params.id}
-            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
+            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)}
+            onFavoriteButtonClick={(evt) => onFavoriteButtonClick(evt, history)}
+          />
         )}>
         </Route>
       </Switch>

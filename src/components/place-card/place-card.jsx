@@ -11,7 +11,7 @@ import {ActionCreator} from '../../store/action';
 
 const REMOVE_ID = 0;
 
-const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
+const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonClick}) => {
 
   const {id, previewImage, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
@@ -48,7 +48,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
             <b className="place-card__price-value">&euro;{price}{` `}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${favoriteButtonClass}`} type="button">
+          <button className={`place-card__bookmark-button button ${favoriteButtonClass}`} type="button" onClick={onFavoriteButtonClick}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -79,6 +79,7 @@ PlaceCard.propTypes = {
   updateIdActiveCardForMap: PropTypes.func.isRequired,
   offer: OfferPropTypes,
   typePage: PropTypes.string.isRequired,
+  onFavoriteButtonClick: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = ((dispatch) => ({

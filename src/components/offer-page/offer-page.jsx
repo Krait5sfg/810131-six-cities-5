@@ -38,7 +38,7 @@ class OfferPage extends PureComponent {
   render() {
     const {offer, nearbyOffers} = this.props;
     if (Object.keys(offer).length && nearbyOffers.length) {
-      const {onLinkEmailClick, authorizationStatus} = this.props;
+      const {onLinkEmailClick, authorizationStatus, onFavoriteButtonClick} = this.props;
       const {id, images, accommodation, host, description, city, isFavorite} = offer;
       const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
@@ -97,7 +97,7 @@ class OfferPage extends PureComponent {
                     <h1 className="property__name">
                       {title}
                     </h1>
-                    <button className={`property__bookmark-button button ${favoriteButtonClass}`} type="button">
+                    <button className={`property__bookmark-button button ${favoriteButtonClass}`} type="button" onClick={onFavoriteButtonClick}>
                       <svg className="property__bookmark-icon" width="31" height="33">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
@@ -160,7 +160,7 @@ class OfferPage extends PureComponent {
             <div className="container">
               <section className="near-places places">
                 <h2 className="near-places__title">Other places in the neighbourhood</h2>
-                <PlaceCardList offers={nearbyOffers} typePage={TypePage.OFFER} />
+                <PlaceCardList offers={nearbyOffers} typePage={TypePage.OFFER} onFavoriteButtonClick={onFavoriteButtonClick} />
               </section>
             </div>
           </main>
@@ -181,14 +181,15 @@ OfferPage.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   idActiveOffer: PropTypes.number.isRequired,
   updateActiveOffer: PropTypes.func.isRequired,
-  updateNearbyOffers: PropTypes.func.isRequired
+  updateNearbyOffers: PropTypes.func.isRequired,
+  onFavoriteButtonClick: PropTypes.func.isRequired
 };
 
 // связывает store c пропсами компонента
 const mapStateToProps = (({USER, DATA}) => ({
   authorizationStatus: USER.authorizationStatus,
   offer: DATA.activeOffer,
-  nearbyOffers: DATA.nearbyOffers
+  nearbyOffers: DATA.nearbyOffers,
 }));
 
 const mapDispatchToProps = ((dispatch) => ({
