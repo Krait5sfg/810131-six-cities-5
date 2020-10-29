@@ -62,3 +62,13 @@ export const getActiveOfferComments = (id) => (dispatch, _getState, api) => (
       dispatch(ActionCreator.updateActiveOfferComments(modifiedComments));
     })
 );
+
+// отправка комментария. в ответ приходят все комментарии к предложению + новое
+// {review: comment, rating} - это деструктуризация
+export const sendComment = (id, {review: comment, rating}) => (dispatch, _getState, api) => (
+  api.post(`${Request.OFFER_COMMENT}${id}`, {comment, rating})
+    .then(({data}) => {
+      const offerModifiedComments = data.map((oneComment) => adaptToClientComments(oneComment));
+      dispatch(ActionCreator.updateActiveOfferComments(offerModifiedComments));
+    })
+);

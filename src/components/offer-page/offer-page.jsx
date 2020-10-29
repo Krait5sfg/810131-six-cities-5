@@ -145,7 +145,7 @@ class OfferPage extends PureComponent {
                   <section className="property__reviews reviews">
                     <ReviewList idActiveOffer={id} />
                     {authorizationStatus === AuthorizationStatus.AUTH ?
-                      <ReviewForm /> : ``}
+                      <ReviewForm idActiveOffer={id} /> : ``}
                   </section>
                 </div>
               </div>
