@@ -5,11 +5,23 @@ const withReviewForm = (WrappedComponent) => {
     constructor() {
       super();
       this._onInputChange = this._onInputChange.bind(this);
+      this._resetState = this._resetState.bind(this);
 
       this.state = {
         rating: ``,
         review: ``
       };
+    }
+
+    render() {
+      const {rating, review} = this.state;
+      return <WrappedComponent
+        rating={rating}
+        review={review}
+        resetState={this._resetState}
+        onChange={this._onInputChange}
+        {...this.props}
+      />;
     }
 
     _onInputChange(evt) {
@@ -18,14 +30,11 @@ const withReviewForm = (WrappedComponent) => {
       this.setState({[name]: value});
     }
 
-    render() {
-      const {rating, review} = this.state;
-      return <WrappedComponent
-        rating={rating}
-        review={review}
-        onChange={this._onInputChange}
-        {...this.props}
-      />;
+    _resetState() {
+      this.setState({
+        rating: ``,
+        review: ``
+      });
     }
   };
 };

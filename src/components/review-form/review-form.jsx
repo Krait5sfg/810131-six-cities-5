@@ -4,6 +4,12 @@ import withReviewForm from '../../hocs/with-review-form/with-review-form';
 import {connect} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 
+const LimitLetter = {
+  MIN: 50,
+  MAX: 300,
+  EMPTY: 0,
+};
+
 class ReviewForm extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,17 +17,20 @@ class ReviewForm extends PureComponent {
   }
 
   _handleFormSubmit(evt) {
-    const {onSubmit, rating, review, idActiveOffer} = this.props;
+    const {onSubmit, rating, review, idActiveOffer, resetState} = this.props;
     evt.preventDefault();
+
+    // отправка комментария
     onSubmit(idActiveOffer, {
       review,
       rating
     });
+
+    resetState(); // обнуляет state при отправке формы
   }
 
   render() {
     const {rating, review, onChange} = this.props;
-
     return (
       <form className="reviews__form form" action="#" method="post" onSubmit={this._handleFormSubmit}>
         <label className="reviews__label form__label" htmlFor="review">Your review</label>
@@ -66,7 +75,12 @@ class ReviewForm extends PureComponent {
           <p className="reviews__help">
             To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
           </p>
-          <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
+          <button
+            className="reviews__submit form__submit button"
+            type="submit"
+            disabled={review.length >= LimitLetter.MIN && review.length <= LimitLetter.MAX && rating.length !== LimitLetter.EMPTY ? false : true} >
+            Submit
+          </button>
         </div>
       </form>
     );
@@ -78,7 +92,8 @@ ReviewForm.propTypes = {
   review: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  idActiveOffer: PropTypes.number.isRequired
+  idActiveOffer: PropTypes.number.isRequired,
+  resetState: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = ((dispatch) => ({
