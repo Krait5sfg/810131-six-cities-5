@@ -7,7 +7,8 @@ export const ActionType = {
   UPDATE_USER: `UPDATE_USER`,
   UPDATE_ACTIVE_OFFER: `UPDATE_ACTIVE_OFFER`,
   UPDATE_NEARBY_OFFERS: `UPDATE_NEARBY_OFFERS`,
-  UPDATE_ACTIVE_OFFER_COMMENTS: `UPDATE_ACTIVE_OFFER_COMMENTS`
+  UPDATE_ACTIVE_OFFER_COMMENTS: `UPDATE_ACTIVE_OFFER_COMMENTS`,
+  UPDATE_FAVORITE_OFFERS: `UPDATE_FAVORITE_OFFERS`
 };
 
 export const ActionCreator = {
@@ -46,5 +47,9 @@ export const ActionCreator = {
   updateActiveOfferComments: (comments) => ({
     type: ActionType.UPDATE_ACTIVE_OFFER_COMMENTS,
     payload: comments,
+  }),
+  updateFavoriteOffers: (favoriteOffers) => ({
+    type: ActionType.UPDATE_FAVORITE_OFFERS,
+    payload: favoriteOffers
   }),
 };

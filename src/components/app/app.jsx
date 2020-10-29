@@ -11,9 +11,9 @@ import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
 import PrivateRoute from '../private-route/private-route';
 
-const App = ({allOffers, offers, city, authorizationStatus}) => {
+const App = ({offers, city, authorizationStatus}) => {
 
-  const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
+  // const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
 
   const onLinkEmailClick = (evt, history) => {
     evt.preventDefault();
@@ -48,7 +48,6 @@ const App = ({allOffers, offers, city, authorizationStatus}) => {
           render={({history}) => {
             return (
               <FavoritePage
-                favoriteOffers={favoriteOffers}
                 onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
             );
           }}
@@ -68,7 +67,6 @@ const App = ({allOffers, offers, city, authorizationStatus}) => {
 };
 
 App.propTypes = {
-  allOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   city: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired

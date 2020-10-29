@@ -5,7 +5,8 @@ import {AuthorizationStatus} from '../utils/const';
 const Request = {
   AUTHORIZATION: `/login`,
   OFFER_DATA: `/hotels`,
-  OFFER_COMMENT: `/comments/`
+  OFFER_COMMENT: `/comments/`,
+  FAVORITE: `/favorite`
 };
 
 export const getOffersFromApi = () => (dispatch, _getState, api) => (
@@ -70,5 +71,14 @@ export const sendComment = (id, {review: comment, rating}) => (dispatch, _getSta
     .then(({data}) => {
       const offerModifiedComments = data.map((oneComment) => adaptToClientComments(oneComment));
       dispatch(ActionCreator.updateActiveOfferComments(offerModifiedComments));
+    })
+);
+
+// загрузка Избранных предложений
+export const getFavoriteOffers = () => (dispatch, _getState, api) => (
+  api.get(Request.FAVORITE)
+    .then(({data}) => {
+      const modifiedFavoriteOffers = data.map((favoriteOffer) => adaptToClient(favoriteOffer));
+      dispatch(ActionCreator.updateFavoriteOffers(modifiedFavoriteOffers));
     })
 );
