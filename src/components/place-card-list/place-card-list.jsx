@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import {OfferPropTypes} from '../../utils/property-type';
 import {TypePage} from '../../utils/const';
 
-const PlaceCardList = ({offers, typePage}) => {
+const PlaceCardList = ({offers, typePage, onFavoriteButtonClick}) => {
 
   const placeCards = offers.map((offer) => {
     return (
       <PlaceCard offer={offer}
         key={offer.id}
-        typePage={typePage} />
+        typePage={typePage}
+        onFavoriteButtonClick={onFavoriteButtonClick}
+      />
     );
   });
 
@@ -32,6 +34,7 @@ const PlaceCardList = ({offers, typePage}) => {
 PlaceCardList.propTypes = {
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   typePage: PropTypes.string.isRequired,
+  onFavoriteButtonClick: PropTypes.func.isRequired
 };
 
 export default PlaceCardList;

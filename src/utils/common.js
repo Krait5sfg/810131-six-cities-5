@@ -29,7 +29,17 @@ export const adaptToClient = (offer) => {
 
 export const adaptToClientUserData = (user) => {
   return Object.assign({}, user, {
-    avatarUrl: `https://htmlacademy-react-3.appspot.com/six-cities${user.avatar_url}`,
+    avatarUrl: user.avatar_url,
     isPro: user.is_pro,
   });
 };
+
+export const adaptToClientComments = ((comment) => {
+  return Object.assign({}, comment, {
+    avatar: comment.user.avatar_url,
+    date: new Date(comment.date),
+    name: comment.user.name,
+    isPro: comment.user.is_pro,
+    commentText: comment.comment
+  });
+});

@@ -5,8 +5,10 @@ import PropTypes from 'prop-types';
 import {OfferPropTypes} from '../../utils/property-type';
 import {TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
+import {selectCityOffers} from '../../selector/selector';
 
 const ID_MAP_CONTAINER = `map`;
+const LIMIT_NEARBY_OFFER = 3;
 
 const IconPath = {
   SIMPLE_ICON: `img/pin.svg`,
@@ -106,8 +108,9 @@ Map.propTypes = {
 };
 
 // связывает store c пропсами компонента
-const mapStateToProps = (({PROCESS}) => ({
-  idActiveCardForMap: PROCESS.idActiveCardForMap,
+const mapStateToProps = (({PROCESS, DATA}, currentProperty) => ({
+  idActiveCardForMap: currentProperty.typePage === TypePage.MAIN ? PROCESS.idActiveCardForMap : DATA.activeOffer.id,
+  offers: currentProperty.typePage === TypePage.MAIN ? selectCityOffers({DATA, PROCESS}) : [...DATA.nearbyOffers.slice(0, LIMIT_NEARBY_OFFER), DATA.activeOffer],
 }));
 
 export {Map};

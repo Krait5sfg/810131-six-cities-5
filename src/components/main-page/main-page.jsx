@@ -10,7 +10,7 @@ import NoPlace from '../no-place/no-place';
 import YesPlace from '../yes-place/yes-place';
 import User from '../user/user';
 
-const MainPage = ({city, offers, onLinkEmailClick}) => {
+const MainPage = ({city, offers, onLinkEmailClick, onFavoriteButtonClick}) => {
 
   // опред классы для стр. в зависимости пустая или нет
   const isMainPageEmpty = !offers.length;
@@ -49,7 +49,7 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
               ? <NoPlace city={city} />
               : <YesPlace offerCount={offers.length} city={city}>
                 <Sorting />
-                <PlaceCardList offers={offers} typePage={TypePage.MAIN} />
+                <PlaceCardList offers={offers} typePage={TypePage.MAIN} onFavoriteButtonClick={onFavoriteButtonClick} />
               </YesPlace>
             }
             <div className="cities__right-section">
@@ -58,7 +58,6 @@ const MainPage = ({city, offers, onLinkEmailClick}) => {
                 : <Map
                   typePage={TypePage.MAIN}
                   city={city}
-                  offers={offers}
                 />}
             </div>
           </div >
@@ -72,6 +71,7 @@ MainPage.propTypes = {
   city: PropTypes.string.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  onFavoriteButtonClick: PropTypes.func.isRequired
 };
 
 export default MainPage;

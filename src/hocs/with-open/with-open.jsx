@@ -2,8 +2,8 @@ import React, {PureComponent} from 'react';
 
 const withOpen = (WrappedComponent) => {
   return class WithOpen extends PureComponent {
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
 
       this.state = {
         isOpen: false,

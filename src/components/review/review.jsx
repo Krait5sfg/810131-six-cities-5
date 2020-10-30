@@ -2,8 +2,8 @@ import React from 'react';
 import {getRating} from '../../utils/common';
 import {ReviewPropTypes} from '../../utils/property-type';
 
-const Review = ({review}) => {
-  const {avatar, name, starsCount, commentText, date} = review;
+const Review = ({comment}) => {
+  const {avatar, name, rating, commentText, date} = comment;
 
   const editingDate = date.toLocaleString(`en-US`, {year: `numeric`, month: `long`});
   const dateTime = `${date.toISOString().substr(0, 10)}`;
@@ -21,7 +21,7 @@ const Review = ({review}) => {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: getRating(starsCount)}}></span>
+            <span style={{width: getRating(rating)}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -35,7 +35,7 @@ const Review = ({review}) => {
 };
 
 Review.propTypes = {
-  review: ReviewPropTypes,
+  comment: ReviewPropTypes,
 };
 
 export default Review;

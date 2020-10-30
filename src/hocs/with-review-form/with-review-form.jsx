@@ -4,8 +4,8 @@ const withReviewForm = (WrappedComponent) => {
   return class WithReviewForm extends PureComponent {
     constructor() {
       super();
-      this._onFormSubmit = this._onFormSubmit.bind(this);
       this._onInputChange = this._onInputChange.bind(this);
+      this._resetState = this._resetState.bind(this);
 
       this.state = {
         rating: ``,
@@ -13,8 +13,15 @@ const withReviewForm = (WrappedComponent) => {
       };
     }
 
-    _onFormSubmit(evt) {
-      evt.preventDefault();
+    render() {
+      const {rating, review} = this.state;
+      return <WrappedComponent
+        rating={rating}
+        review={review}
+        resetState={this._resetState}
+        onChange={this._onInputChange}
+        {...this.props}
+      />;
     }
 
     _onInputChange(evt) {
@@ -23,14 +30,11 @@ const withReviewForm = (WrappedComponent) => {
       this.setState({[name]: value});
     }
 
-    render() {
-      const {rating, review} = this.state;
-      return <WrappedComponent
-        rating={rating}
-        review={review}
-        onSubmit={this._onFormSubmit}
-        onChange={this._onInputChange}
-      />;
+    _resetState() {
+      this.setState({
+        rating: ``,
+        review: ``
+      });
     }
   };
 };

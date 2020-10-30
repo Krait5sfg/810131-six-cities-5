@@ -5,22 +5,26 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
-import {OfferPropTypes, ReviewPropTypes} from '../../utils/property-type';
+import {OfferPropTypes} from '../../utils/property-type';
 import {PagePath, AuthorizationStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
 import PrivateRoute from '../private-route/private-route';
 
-const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
-
-  const [firstOffer] = allOffers;
-  const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
+const App = ({offers, city, authorizationStatus}) => {
 
   const onLinkEmailClick = (evt, history) => {
     evt.preventDefault();
     history.push(authorizationStatus === AuthorizationStatus.NO_AUTH
       ? PagePath.LOGIN
       : PagePath.FAVORITE);
+  };
+
+  const onFavoriteButtonClick = (evt, history) => {
+    evt.preventDefault();
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      history.push(PagePath.LOGIN);
+    }
   };
 
   return (
@@ -30,7 +34,9 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
           <MainPage
             offers={offers}
             city={city}
-            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
+            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)}
+            onFavoriteButtonClick={(evt) => onFavoriteButtonClick(evt, history)}
+          />
         )}>
         </Route>
         <Route exact path={PagePath.LOGIN}>
@@ -40,29 +46,26 @@ const App = ({allOffers, offers, reviews, city, authorizationStatus}) => {
           render={({history}) => {
             return (
               <FavoritePage
-                favoriteOffers={favoriteOffers}
                 onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
             );
           }}
           path={PagePath.FAVORITE}
           exact />
-        <Route exact path={`${PagePath.OFFER}:id`} render={({history}) => (
+        <Route exact path={`${PagePath.OFFER}:id`} render={({history, match}) => (
           <OfferPage
-            offer={firstOffer}
-            offers={offers}
-            reviews={reviews}
-            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)} />
+            idActiveOffer={+match.params.id}
+            onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)}
+            onFavoriteButtonClick={(evt) => onFavoriteButtonClick(evt, history)}
+          />
         )}>
         </Route>
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 };
 
 App.propTypes = {
-  allOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
   offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
-  reviews: PropTypes.arrayOf(ReviewPropTypes).isRequired,
   city: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired
 };
@@ -71,7 +74,6 @@ const mapStateToProps = (({DATA, PROCESS, USER}) => ({
   allOffers: DATA.allOffers,
   offers: selectCityOffers({DATA, PROCESS}),
   city: PROCESS.city,
-  reviews: DATA.reviews,
   authorizationStatus: USER.authorizationStatus,
 }));
 

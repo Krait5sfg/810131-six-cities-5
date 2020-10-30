@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
-import {TypeAccommodation} from '../../utils/const';
 import {OfferPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
-import {PagePath} from '../../utils/const';
-import {TypePage} from '../../utils/const';
+import {TypeAccommodation, PagePath, FavoriteStatus, TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
+import {sendFavoriteStatus} from '../../store/api-actions';
 
 const REMOVE_ID = 0;
 
-const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
+
+const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonClick, updateFavoriteStatus}) => {
 
   const {id, previewImage, accommodation, isFavorite} = offer;
   const {isPremium, price, title, type, rating} = accommodation;
@@ -31,14 +31,12 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
   return (
     <article
       className={`${classNameArticleTag} place-card`}
-      onMouseEnter={() => updateIdActiveCardForMap(id)}
-      onMouseLeave={() => updateIdActiveCardForMap(REMOVE_ID)}
+      onMouseEnter={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(id) : false}
+      onMouseLeave={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(REMOVE_ID) : false}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
-        <Link to={`${PagePath.OFFER}:${id}`}
-          onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
-        >
+        <Link to={`${PagePath.OFFER}${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
         </ Link>
       </div>
@@ -48,7 +46,12 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
             <b className="place-card__price-value">&euro;{price}{` `}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${favoriteButtonClass}`} type="button">
+          <button className={`place-card__bookmark-button button ${favoriteButtonClass}`}
+            type="button"
+            onClick={(evt) => {
+              onFavoriteButtonClick(evt);
+              updateFavoriteStatus(id, isFavorite ? FavoriteStatus.REMOVAL : FavoriteStatus.ADDITION, typePage);
+            }}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -62,10 +65,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link
-            to={`${PagePath.OFFER}:${id}`}
-            onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
-          >
+          <Link to={`${PagePath.OFFER}${id}`} >
             {title}
           </Link>
         </h2>
@@ -79,11 +79,23 @@ PlaceCard.propTypes = {
   updateIdActiveCardForMap: PropTypes.func.isRequired,
   offer: OfferPropTypes,
   typePage: PropTypes.string.isRequired,
+  onFavoriteButtonClick: PropTypes.func.isRequired,
+  updateFavoriteStatus: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = ((dispatch) => ({
   updateIdActiveCardForMap(id) {
     dispatch(ActionCreator.updateIdActiveCardForMap(id));
+  },
+  updateFavoriteStatus(id, status, place) {
+    switch (place) {
+      case TypePage.MAIN:
+        dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusInAllOffers));
+        break;
+      case TypePage.OFFER:
+        dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusNearbyOffers));
+        break;
+    }
   }
 }));
 

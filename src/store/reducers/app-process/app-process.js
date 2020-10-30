@@ -3,7 +3,7 @@ import {ActionType} from '../../action';
 import {City} from '../../../utils/const';
 
 const initialState = {
-  city: City.AMSTERDAM,
+  city: City.PARIS,
   cities: [City.PARIS, City.COLOGNE, City.BRUSSELS, City.AMSTERDAM, City.HAMBURG, City.DUSSELDORF],
   sortingType: SotringType.POPULAR,
   idActiveCardForMap: 0,
