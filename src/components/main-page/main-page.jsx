@@ -58,7 +58,6 @@ const MainPage = ({city, offers, onLinkEmailClick, onFavoriteButtonClick}) => {
                 : <Map
                   typePage={TypePage.MAIN}
                   city={city}
-                  offers={offers}
                 />}
             </div>
           </div >

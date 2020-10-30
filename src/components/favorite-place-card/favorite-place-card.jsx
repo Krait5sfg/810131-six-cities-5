@@ -9,7 +9,7 @@ import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
 import {sendFavoriteStatus} from '../../store/api-actions';
 
-const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatus}) => {
+const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatus, updateIdActiveCardForMap}) => {
 
   const {id, images, accommodation} = favoriteOffer;
   const [firstImage] = images;
@@ -19,10 +19,13 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatu
     if (city !== favoriteOffer.city) {
       changeCity(favoriteOffer.city);
     }
+    updateIdActiveCardForMap(id);
   };
 
   return (
-    <article className="favorites__card place-card" onClick={handleFavoriteCardClick}>
+    <article
+      className="favorites__card place-card"
+      onClick={handleFavoriteCardClick}>
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${PagePath.OFFER}${id}`}>
           <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
@@ -63,7 +66,8 @@ FavoritePlaceCard.propTypes = {
   favoriteOffer: OfferPropTypes,
   city: PropTypes.string.isRequired,
   changeCity: PropTypes.func.isRequired,
-  updateFavoriteStatus: PropTypes.func.isRequired
+  updateFavoriteStatus: PropTypes.func.isRequired,
+  updateIdActiveCardForMap: PropTypes.func.isRequired
 };
 
 // связывает store c пропсами компонента
@@ -78,7 +82,10 @@ const mapDispatchToProps = ((dispatch) => ({
   },
   updateFavoriteStatus(id, status) {
     dispatch(sendFavoriteStatus(id, status, ActionCreator.removeNoFavoriteOffer));
-  }
+  },
+  updateIdActiveCardForMap(id) {
+    dispatch(ActionCreator.updateIdActiveCardForMap(id));
+  },
 }));
 
 export {FavoritePlaceCard};

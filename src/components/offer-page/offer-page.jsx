@@ -163,7 +163,7 @@ class OfferPage extends PureComponent {
                   </section>
                 </div>
               </div>
-              <Map typePage={TypePage.OFFER} city={city} offers={nearbyOffers} />
+              <Map typePage={TypePage.OFFER} city={city} />
             </section>
             <div className="container">
               <section className="near-places places">

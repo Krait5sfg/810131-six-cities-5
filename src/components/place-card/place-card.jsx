@@ -31,14 +31,12 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonC
   return (
     <article
       className={`${classNameArticleTag} place-card`}
-      onMouseEnter={() => updateIdActiveCardForMap(id)}
-      onMouseLeave={() => updateIdActiveCardForMap(REMOVE_ID)}
+      onMouseEnter={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(id) : false}
+      onMouseLeave={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(REMOVE_ID) : false}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>
-        <Link to={`${PagePath.OFFER}${id}`}
-          onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
-        >
+        <Link to={`${PagePath.OFFER}${id}`}>
           <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place image" />
         </ Link>
       </div>
@@ -67,10 +65,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonC
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link
-            to={`${PagePath.OFFER}${id}`}
-            onClick={() => updateIdActiveCardForMap(REMOVE_ID)}
-          >
+          <Link to={`${PagePath.OFFER}${id}`} >
             {title}
           </Link>
         </h2>
