@@ -46,6 +46,9 @@ const loadData = (state = initialState, action) => {
 
     case ActionType.CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER:
       return Object.assign({}, state, {activeOffer: action.payload});
+
+    case ActionType.REMOVE_NO_FAVORITE_OFFER:
+      return Object.assign({}, state, {favoriteOffers: state.favoriteOffers.slice(0).filter((offer) => offer.id !== action.payload.id)});
   }
   return state;
 };

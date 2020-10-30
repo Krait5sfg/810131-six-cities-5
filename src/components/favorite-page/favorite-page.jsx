@@ -8,9 +8,13 @@ import {getFavoriteOffers} from '../../store/api-actions';
 
 class FavoritePage extends PureComponent {
 
-  render() {
-    const {favoriteOffers, onLinkEmailClick, updateFavoriteOffers} = this.props;
+  componentDidMount() {
+    const {updateFavoriteOffers} = this.props;
     updateFavoriteOffers();
+  }
+
+  render() {
+    const {favoriteOffers, onLinkEmailClick} = this.props;
     const isEmpty = favoriteOffers.length ? false : true;
     const classNameForDiv = isEmpty ? `page--favorites-empty` : ``;
     const classNameForMain = isEmpty ? `page__main--favorites-empty` : ``;
