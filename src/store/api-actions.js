@@ -82,3 +82,12 @@ export const getFavoriteOffers = () => (dispatch, _getState, api) => (
       dispatch(ActionCreator.updateFavoriteOffers(modifiedFavoriteOffers));
     })
 );
+
+// обновление статуса избранное в предложении.
+// В зависимости от того где происходит вызов меняется атрибут action
+export const sendFavoriteStatus = (id, status, action) => (dispatch, _getState, api) => (
+  api.post(`${Request.FAVORITE}/${id}/${status}`)
+    .then(({data}) => {
+      dispatch(action(adaptToClient(data)));
+    })
+);

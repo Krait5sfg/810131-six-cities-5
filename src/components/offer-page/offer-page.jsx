@@ -10,8 +10,9 @@ import {TypePage} from '../../utils/const';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {connect} from 'react-redux';
 import User from '../user/user';
-import {AuthorizationStatus} from '../../utils/const';
-import {getActiveOffer, getNearbyOffers} from '../../store/api-actions';
+import {AuthorizationStatus, FavoriteStatus} from '../../utils/const';
+import {getActiveOffer, getNearbyOffers, sendFavoriteStatus} from '../../store/api-actions';
+import {ActionCreator} from '../../store/action';
 
 const MAX_IMAGE_ON_PAGE = 6;
 
@@ -38,7 +39,7 @@ class OfferPage extends PureComponent {
   render() {
     const {offer, nearbyOffers} = this.props;
     if (Object.keys(offer).length && nearbyOffers.length) {
-      const {onLinkEmailClick, authorizationStatus, onFavoriteButtonClick} = this.props;
+      const {onLinkEmailClick, authorizationStatus, onFavoriteButtonClick, updateFavoriteStatus} = this.props;
       const {id, images, accommodation, host, description, city, isFavorite} = offer;
       const {isPremium, rating, title, type, bedroomsCount, guestsLimit, price, features} = accommodation;
 
@@ -97,7 +98,14 @@ class OfferPage extends PureComponent {
                     <h1 className="property__name">
                       {title}
                     </h1>
-                    <button className={`property__bookmark-button button ${favoriteButtonClass}`} type="button" onClick={onFavoriteButtonClick}>
+                    <button className={`property__bookmark-button button ${favoriteButtonClass}`}
+                      type="button"
+                      onClick={
+                        (evt) => {
+                          onFavoriteButtonClick(evt);
+                          updateFavoriteStatus(id, isFavorite ? FavoriteStatus.REMOVAL : FavoriteStatus.ADDITION);
+                        }
+                      }>
                       <svg className="property__bookmark-icon" width="31" height="33">
                         <use xlinkHref="#icon-bookmark" />
                       </svg>
@@ -182,7 +190,8 @@ OfferPage.propTypes = {
   idActiveOffer: PropTypes.number.isRequired,
   updateActiveOffer: PropTypes.func.isRequired,
   updateNearbyOffers: PropTypes.func.isRequired,
-  onFavoriteButtonClick: PropTypes.func.isRequired
+  onFavoriteButtonClick: PropTypes.func.isRequired,
+  updateFavoriteStatus: PropTypes.func.isRequired
 };
 
 // связывает store c пропсами компонента
@@ -198,6 +207,9 @@ const mapDispatchToProps = ((dispatch) => ({
   },
   updateNearbyOffers(id) {
     dispatch(getNearbyOffers(id));
+  },
+  updateFavoriteStatus(id, status) {
+    dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusActiveOffer));
   }
 }));
 

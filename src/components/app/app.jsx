@@ -13,8 +13,6 @@ import PrivateRoute from '../private-route/private-route';
 
 const App = ({offers, city, authorizationStatus}) => {
 
-  // const favoriteOffers = allOffers.filter((offer) => offer.isFavorite);
-
   const onLinkEmailClick = (evt, history) => {
     evt.preventDefault();
     history.push(authorizationStatus === AuthorizationStatus.NO_AUTH
