@@ -15,7 +15,7 @@ class FavoritePage extends PureComponent {
 
   render() {
     const {favoriteOffers, onLinkEmailClick} = this.props;
-    const isEmpty = favoriteOffers.length ? false : true;
+    const isEmpty = !favoriteOffers.length;
     const classNameForDiv = isEmpty ? `page--favorites-empty` : ``;
     const classNameForMain = isEmpty ? `page__main--favorites-empty` : ``;
     const classNameForFavoriteSection = isEmpty ? `favorites--empty` : ``;
