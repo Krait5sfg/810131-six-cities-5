@@ -109,7 +109,7 @@ Map.propTypes = {
 
 // связывает store c пропсами компонента
 const mapStateToProps = (({PROCESS, DATA}, currentProperty) => ({
-  idActiveCardForMap: PROCESS.idActiveCardForMap,
+  idActiveCardForMap: currentProperty.typePage === TypePage.MAIN ? PROCESS.idActiveCardForMap : DATA.activeOffer.id,
   offers: currentProperty.typePage === TypePage.MAIN ? selectCityOffers({DATA, PROCESS}) : [...DATA.nearbyOffers.slice(0, LIMIT_NEARBY_OFFER), DATA.activeOffer],
 }));
 
