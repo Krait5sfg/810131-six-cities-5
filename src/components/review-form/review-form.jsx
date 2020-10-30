@@ -78,7 +78,7 @@ class ReviewForm extends PureComponent {
           <button
             className="reviews__submit form__submit button"
             type="submit"
-            disabled={review.length >= LimitLetter.MIN && review.length <= LimitLetter.MAX && rating.length !== LimitLetter.EMPTY ? false : true} >
+            disabled={review.length < LimitLetter.MIN || review.length > LimitLetter.MAX || rating.length === LimitLetter.EMPTY} >
             Submit
           </button>
         </div>
