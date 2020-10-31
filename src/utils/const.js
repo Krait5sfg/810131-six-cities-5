@@ -1,3 +1,5 @@
+export const REMOVAL_ID_VALUE = 0;
+
 export const TypeAccommodation = {
   APARTMENT: `Apartment`,
   ROOM: `Private Room`,
