@@ -53,7 +53,7 @@ class ReviewForm extends PureComponent {
     const inputElements = RATINGS.map((countRating, index) => {
       return (
         <React.Fragment key={index}>
-          <input className="form__rating-input visually-hidden" name="rating" value={countRating} id={`${countRating}-stars`} type="radio" onChange={onChange} checked={rating === {countRating}} disabled={isDisabled} />
+          <input className="form__rating-input visually-hidden" name="rating" value={countRating} id={`${countRating}-stars`} type="radio" onChange={onChange} checked={rating === countRating} disabled={isDisabled} />
           <label htmlFor={`${countRating}-stars`} className="reviews__rating-label form__rating-label" title="perfect">
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star" />
