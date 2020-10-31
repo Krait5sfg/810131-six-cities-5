@@ -14,6 +14,7 @@ import {AuthorizationStatus, FavoriteStatus} from '../../utils/const';
 import {getActiveOffer, getNearbyOffers, sendFavoriteStatus} from '../../store/api-actions';
 import {ActionCreator} from '../../store/action';
 import Header from '../header/header';
+import Loading from '../loading/loading';
 
 const MAX_IMAGE_ON_PAGE = 6;
 
@@ -163,7 +164,7 @@ class OfferPage extends PureComponent {
         </div >
       );
     }
-    return <h2 style={{position: `absolute`, top: `50%`, left: `50%`, transform: `translate(-50%, -50%)`}}>Loading...</h2>;
+    return <Loading />;
   }
 }
 
