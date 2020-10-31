@@ -10,11 +10,17 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import rootReducer from './store/reducers/root-reducer';
 import {ActionCreator} from './store/action';
 import {AuthorizationStatus} from './utils/const';
+import Error from './components/error/error';
 
 const api = createApi(() => store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH)));
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
-store.dispatch(getOffersFromApi());
 store.dispatch(checkAuth());
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector(`#root`));
+Promise.all([store.dispatch(getOffersFromApi())])
+  .then(() => {
+    ReactDOM.render(<Provider store={store}><App /></Provider>, document.querySelector(`#root`));
+  })
+  .catch(() => {
+    ReactDOM.render(<Error />, document.querySelector(`#root`));
+  });
