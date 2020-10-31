@@ -5,6 +5,7 @@ import {OfferPropTypes} from '../../utils/property-type';
 import User from '../user/user';
 import {connect} from 'react-redux';
 import {getFavoriteOffers} from '../../store/api-actions';
+import Header from '../header/header';
 
 class FavoritePage extends PureComponent {
 
@@ -35,22 +36,9 @@ class FavoritePage extends PureComponent {
 
     return (
       <div className={`page ${classNameForDiv}`}>
-        <header className="header">
-          <div className="container">
-            <div className="header__wrapper">
-              <div className="header__left">
-                <a className="header__logo-link" href="/">
-                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-                </a>
-              </div>
-              <nav className="header__nav">
-                <ul className="header__nav-list">
-                  <User onLinkEmailClick={onLinkEmailClick} />
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
+        <Header>
+          <User onLinkEmailClick={onLinkEmailClick} />
+        </Header>
 
         <main className={`page__main page__main--favorites ${classNameForMain}`}>
           <div className="page__favorites-container container">

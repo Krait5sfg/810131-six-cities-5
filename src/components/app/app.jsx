@@ -39,8 +39,14 @@ const App = ({offers, city, authorizationStatus}) => {
           />
         )}>
         </Route>
-        <Route exact path={PagePath.LOGIN}>
-          <LoginPage city={city} />
+        <Route exact path={PagePath.LOGIN}
+          render={({history}) => (
+            <LoginPage
+              city={city}
+              onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)}
+            />
+          )}
+        >
         </Route>
         <PrivateRoute
           render={({history}) => {

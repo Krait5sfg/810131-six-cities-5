@@ -12,6 +12,7 @@ import User from '../user/user';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {REMOVAL_ID_VALUE} from '../../utils/const';
+import Header from '../header/header';
 
 class MainPage extends PureComponent {
 
@@ -30,22 +31,9 @@ class MainPage extends PureComponent {
 
     return (
       <div className="page page--gray page--main">
-        <header className="header">
-          <div className="container">
-            <div className="header__wrapper">
-              <div className="header__left">
-                <a className="header__logo-link header__logo-link--active">
-                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-                </a>
-              </div>
-              <nav className="header__nav">
-                <ul className="header__nav-list">
-                  <User onLinkEmailClick={onLinkEmailClick} />
-                </ul>
-              </nav>
-            </div>
-          </div >
-        </header >
+        <Header>
+          <User onLinkEmailClick={onLinkEmailClick} />
+        </Header>
 
         <main className={`page__main page__main--index ${classNameForMainTag}`}>
           <h1 className="visually-hidden">Cities</h1>
