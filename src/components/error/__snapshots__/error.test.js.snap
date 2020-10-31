@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error render correctly 1`] = `
+<p
+  style={
+    Object {
+      "fontSize": "30px",
+      "fontWeight": "bold",
+      "left": "50%",
+      "position": "absolute",
+      "top": "50%",
+      "transform": "translate(-50%, -50%)",
+    }
+  }
+>
+  Sorry. The server is unavailable. Please try again later.
+</p>
+`;

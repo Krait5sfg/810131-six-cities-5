@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortingItem render correctly SortingItem close 1`] = `
+<li
+  className="places__option "
+  data-sorting="Popular"
+  onClick={[Function]}
+  tabIndex="0"
+>
+  Popular
+</li>
+`;
+
+exports[`SortingItem render correctly SortingItem open 1`] = `
+<li
+  className="places__option places__option--active"
+  data-sorting="Popular"
+  onClick={[Function]}
+  tabIndex="0"
+>
+  Popular
+</li>
+`;

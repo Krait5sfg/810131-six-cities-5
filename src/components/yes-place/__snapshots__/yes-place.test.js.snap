@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YesPlace render correctly 1`] = `
+<section
+  className="cities__places places"
+>
+  <h2
+    className="visually-hidden"
+  >
+    Places
+  </h2>
+  <b
+    className="places__found"
+  >
+    10
+     places to stay in 
+    Amsterdam
+  </b>
+</section>
+`;

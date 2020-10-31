@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User render correctly User with authorization 1`] = `
+<li
+  className="header__nav-item user"
+>
+  <a
+    className="header__nav-link header__nav-link--profile"
+    href="#"
+    onClick={[Function]}
+  >
+    <div
+      className="header__avatar-wrapper user__avatar-wrapper"
+    />
+    <span
+      className="header__user-name user__name"
+    >
+      test@mail.ru
+    </span>
+  </a>
+</li>
+`;
+
+exports[`User render correctly User without authorization 1`] = `
+<li
+  className="header__nav-item user"
+>
+  <a
+    className="header__nav-link header__nav-link--profile"
+    href="#"
+    onClick={[Function]}
+  >
+    <div
+      className="header__avatar-wrapper user__avatar-wrapper"
+    />
+    <span
+      className="header__login"
+    >
+      Sign in
+    </span>
+  </a>
+</li>
+`;
