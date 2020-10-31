@@ -5,6 +5,7 @@ import {login} from '../../store/api-actions';
 import {Redirect} from 'react-router-dom';
 import {AuthorizationStatus, PagePath} from '../../utils/const';
 
+const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class LoginPage extends PureComponent {
 
@@ -36,7 +37,7 @@ class LoginPage extends PureComponent {
               <nav className="header__nav">
                 <ul className="header__nav-list">
                   <li className="header__nav-item user">
-                    <a className="header__nav-link header__nav-link--profile" href="#">
+                    <a className="header__nav-link header__nav-link--profile">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
                       <span className="header__login">Sign in</span>
@@ -80,12 +81,14 @@ class LoginPage extends PureComponent {
   _handleFormSubmit(evt) {
     const {onSubmit} = this.props;
     evt.preventDefault();
-    onSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
-    });
-  }
 
+    if (EMAIL_REGEXP.test(this.loginRef.current.value)) {
+      onSubmit({
+        login: this.loginRef.current.value,
+        password: this.passwordRef.current.value,
+      });
+    }
+  }
 }
 
 LoginPage.propTypes = {
