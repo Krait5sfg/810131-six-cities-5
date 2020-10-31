@@ -10,7 +10,7 @@ const Error = () => {
     fontWeight: `bold`,
   };
 
-  return <p style={style}>Sorry. Data is not loaded. Please try again later.</p>;
+  return <p style={style}>Sorry. The server is unavailable. Please try again later.</p>;
 };
 
 export default Error;
