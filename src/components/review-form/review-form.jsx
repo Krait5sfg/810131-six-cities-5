@@ -13,7 +13,7 @@ const DisableStatus = {
 };
 const LimitLetter = {
   MIN: 50,
-  MAX: 300,
+  MAX: 299,
   EMPTY: 0,
 };
 
