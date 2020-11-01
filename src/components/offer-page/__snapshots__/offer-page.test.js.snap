@@ -1,0 +1,881 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OfferPage render correctly OfferPage without authorization 1`] = `
+<div
+  className="page"
+>
+  <Header>
+    <User
+      onLinkEmailClick={[Function]}
+    />
+  </Header>
+  <main
+    className="page__main page__main--property"
+  >
+    <section
+      className="property"
+    >
+      <div
+        className="property__gallery-container container"
+      >
+        <div
+          className="property__gallery"
+        >
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="property__container container"
+      >
+        <div
+          className="property__wrapper"
+        >
+          <div
+            className="property__mark"
+          >
+            <span>
+              Premium
+            </span>
+          </div>
+          <div
+            className="property__name-wrapper"
+          >
+            <h1
+              className="property__name"
+            >
+              The Joshua Tree House
+            </h1>
+            <button
+              className="property__bookmark-button button "
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="property__bookmark-icon"
+                height="33"
+                width="31"
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                To bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="property__rating rating"
+          >
+            <div
+              className="property__stars rating__stars"
+            >
+              <span
+                style={
+                  Object {
+                    "width": "80%",
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
+            <span
+              className="property__rating-value rating__value"
+            >
+              4.4
+            </span>
+          </div>
+          <ul
+            className="property__features"
+          >
+            <li
+              className="property__feature property__feature--entire"
+            >
+              Private Room
+            </li>
+            <li
+              className="property__feature property__feature--bedrooms"
+            >
+              1
+               Bedrooms
+            </li>
+            <li
+              className="property__feature property__feature--adults"
+            >
+              Max 
+              2
+               adults
+            </li>
+          </ul>
+          <div
+            className="property__price"
+          >
+            <b
+              className="property__price-value"
+            >
+              €
+              241
+            </b>
+            <span
+              className="property__price-text"
+            >
+               
+               
+              night
+            </span>
+          </div>
+          <div
+            className="property__inside"
+          >
+            <h2
+              className="property__inside-title"
+            >
+              What's inside
+            </h2>
+            <ul
+              className="property__inside-list"
+            >
+              <li
+                className="property__inside-item"
+              >
+                Dishwasher
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Towels
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Washer
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Fridge
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Breakfast
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Laptop friendly workspace
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Baby seat
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Air conditioning
+              </li>
+            </ul>
+          </div>
+          <div
+            className="property__host"
+          >
+            <h2
+              className="property__host-title"
+            >
+              Meet the host
+            </h2>
+            <div
+              className="property__host-user user"
+            >
+              <div
+                className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
+              >
+                <img
+                  alt="Host avatar"
+                  className="property__avatar user__avatar"
+                  height="74"
+                  src="img/avatar-angelina.jpg"
+                  width="74"
+                />
+              </div>
+              <span
+                className="property__user-name"
+              >
+                Angelina
+              </span>
+            </div>
+            <div
+              className="property__description"
+            >
+              <p
+                className="property__text"
+              >
+                This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.
+              </p>
+            </div>
+          </div>
+          <section
+            className="property__reviews reviews"
+          >
+            <ReviewList
+              idActiveOffer={1}
+            />
+            
+          </section>
+        </div>
+      </div>
+      <Map
+        typePage="offer"
+      />
+    </section>
+    <div
+      className="container"
+    >
+      <section
+        className="near-places places"
+      >
+        <h2
+          className="near-places__title"
+        >
+          Other places in the neighbourhood
+        </h2>
+        <PlaceCardList
+          offers={
+            Array [
+              Object {
+                "accommodation": Object {
+                  "bedroomsCount": 2,
+                  "features": Array [
+                    "Laptop friendly workspace",
+                    "Baby seat",
+                    "Air conditioning",
+                  ],
+                  "guestsLimit": 4,
+                  "isPremium": false,
+                  "price": 300,
+                  "rating": 4.5,
+                  "title": "The Joshua Tree House",
+                  "type": "hotel",
+                },
+                "cityLocation": Object {
+                  "latitude": 51.225402,
+                  "longitude": 6.776314,
+                  "zoom": 13,
+                },
+                "coordinates": Array [
+                  51.247402,
+                  6.777314,
+                ],
+                "description": "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you ",
+                "host": Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "isPro": true,
+                  "name": "Angelina",
+                },
+                "id": 2,
+                "images": Array [
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+                ],
+                "isFavorite": false,
+                "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+              },
+              Object {
+                "accommodation": Object {
+                  "bedroomsCount": 3,
+                  "features": Array [
+                    "Laptop friendly workspace",
+                    "Baby seat",
+                    "Air conditioning",
+                  ],
+                  "guestsLimit": 3,
+                  "isPremium": false,
+                  "price": 400,
+                  "rating": 3,
+                  "title": "The Joshua Tree House",
+                  "type": "hotel",
+                },
+                "cityLocation": Object {
+                  "latitude": 51.225402,
+                  "longitude": 6.776314,
+                  "zoom": 13,
+                },
+                "coordinates": Array [
+                  51.257402,
+                  6.787314,
+                ],
+                "description": "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you ",
+                "host": Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "isPro": true,
+                  "name": "Angelina",
+                },
+                "id": 3,
+                "images": Array [
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+                ],
+                "isFavorite": false,
+                "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+              },
+              Object {
+                "accommodation": Object {
+                  "bedroomsCount": 3,
+                  "features": Array [
+                    "Laptop friendly workspace",
+                    "Baby seat",
+                    "Air conditioning",
+                  ],
+                  "guestsLimit": 3,
+                  "isPremium": false,
+                  "price": 100,
+                  "rating": 4.5,
+                  "title": "The Joshua Tree House",
+                  "type": "hotel",
+                },
+                "cityLocation": Object {
+                  "latitude": 51.225402,
+                  "longitude": 6.776314,
+                  "zoom": 13,
+                },
+                "coordinates": Array [
+                  51.267402,
+                  6.797314,
+                ],
+                "description": "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you ",
+                "host": Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "isPro": true,
+                  "name": "Angelina",
+                },
+                "id": 4,
+                "images": Array [
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+                ],
+                "isFavorite": false,
+                "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+              },
+            ]
+          }
+          onFavoriteButtonClick={[Function]}
+          typePage="offer"
+        />
+      </section>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`OfferPage render correctly User with authorization 1`] = `
+<div
+  className="page"
+>
+  <Header>
+    <User
+      onLinkEmailClick={[Function]}
+    />
+  </Header>
+  <main
+    className="page__main page__main--property"
+  >
+    <section
+      className="property"
+    >
+      <div
+        className="property__gallery-container container"
+      >
+        <div
+          className="property__gallery"
+        >
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg"
+            />
+          </div>
+          <div
+            className="property__image-wrapper"
+          >
+            <img
+              alt="Photo studio"
+              className="property__image"
+              src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="property__container container"
+      >
+        <div
+          className="property__wrapper"
+        >
+          <div
+            className="property__mark"
+          >
+            <span>
+              Premium
+            </span>
+          </div>
+          <div
+            className="property__name-wrapper"
+          >
+            <h1
+              className="property__name"
+            >
+              The Joshua Tree House
+            </h1>
+            <button
+              className="property__bookmark-button button "
+              onClick={[Function]}
+              type="button"
+            >
+              <svg
+                className="property__bookmark-icon"
+                height="33"
+                width="31"
+              >
+                <use
+                  xlinkHref="#icon-bookmark"
+                />
+              </svg>
+              <span
+                className="visually-hidden"
+              >
+                To bookmarks
+              </span>
+            </button>
+          </div>
+          <div
+            className="property__rating rating"
+          >
+            <div
+              className="property__stars rating__stars"
+            >
+              <span
+                style={
+                  Object {
+                    "width": "80%",
+                  }
+                }
+              />
+              <span
+                className="visually-hidden"
+              >
+                Rating
+              </span>
+            </div>
+            <span
+              className="property__rating-value rating__value"
+            >
+              4.4
+            </span>
+          </div>
+          <ul
+            className="property__features"
+          >
+            <li
+              className="property__feature property__feature--entire"
+            >
+              Private Room
+            </li>
+            <li
+              className="property__feature property__feature--bedrooms"
+            >
+              1
+               Bedrooms
+            </li>
+            <li
+              className="property__feature property__feature--adults"
+            >
+              Max 
+              2
+               adults
+            </li>
+          </ul>
+          <div
+            className="property__price"
+          >
+            <b
+              className="property__price-value"
+            >
+              €
+              241
+            </b>
+            <span
+              className="property__price-text"
+            >
+               
+               
+              night
+            </span>
+          </div>
+          <div
+            className="property__inside"
+          >
+            <h2
+              className="property__inside-title"
+            >
+              What's inside
+            </h2>
+            <ul
+              className="property__inside-list"
+            >
+              <li
+                className="property__inside-item"
+              >
+                Dishwasher
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Towels
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Washer
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Fridge
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Breakfast
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Laptop friendly workspace
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Baby seat
+              </li>
+              <li
+                className="property__inside-item"
+              >
+                Air conditioning
+              </li>
+            </ul>
+          </div>
+          <div
+            className="property__host"
+          >
+            <h2
+              className="property__host-title"
+            >
+              Meet the host
+            </h2>
+            <div
+              className="property__host-user user"
+            >
+              <div
+                className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper"
+              >
+                <img
+                  alt="Host avatar"
+                  className="property__avatar user__avatar"
+                  height="74"
+                  src="img/avatar-angelina.jpg"
+                  width="74"
+                />
+              </div>
+              <span
+                className="property__user-name"
+              >
+                Angelina
+              </span>
+            </div>
+            <div
+              className="property__description"
+            >
+              <p
+                className="property__text"
+              >
+                This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.
+              </p>
+            </div>
+          </div>
+          <section
+            className="property__reviews reviews"
+          >
+            <ReviewList
+              idActiveOffer={1}
+            />
+            <ReviewForm
+              idActiveOffer={1}
+            />
+          </section>
+        </div>
+      </div>
+      <Map
+        typePage="offer"
+      />
+    </section>
+    <div
+      className="container"
+    >
+      <section
+        className="near-places places"
+      >
+        <h2
+          className="near-places__title"
+        >
+          Other places in the neighbourhood
+        </h2>
+        <PlaceCardList
+          offers={
+            Array [
+              Object {
+                "accommodation": Object {
+                  "bedroomsCount": 2,
+                  "features": Array [
+                    "Laptop friendly workspace",
+                    "Baby seat",
+                    "Air conditioning",
+                  ],
+                  "guestsLimit": 4,
+                  "isPremium": false,
+                  "price": 300,
+                  "rating": 4.5,
+                  "title": "The Joshua Tree House",
+                  "type": "hotel",
+                },
+                "cityLocation": Object {
+                  "latitude": 51.225402,
+                  "longitude": 6.776314,
+                  "zoom": 13,
+                },
+                "coordinates": Array [
+                  51.247402,
+                  6.777314,
+                ],
+                "description": "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you ",
+                "host": Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "isPro": true,
+                  "name": "Angelina",
+                },
+                "id": 2,
+                "images": Array [
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+                ],
+                "isFavorite": false,
+                "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+              },
+              Object {
+                "accommodation": Object {
+                  "bedroomsCount": 3,
+                  "features": Array [
+                    "Laptop friendly workspace",
+                    "Baby seat",
+                    "Air conditioning",
+                  ],
+                  "guestsLimit": 3,
+                  "isPremium": false,
+                  "price": 400,
+                  "rating": 3,
+                  "title": "The Joshua Tree House",
+                  "type": "hotel",
+                },
+                "cityLocation": Object {
+                  "latitude": 51.225402,
+                  "longitude": 6.776314,
+                  "zoom": 13,
+                },
+                "coordinates": Array [
+                  51.257402,
+                  6.787314,
+                ],
+                "description": "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you ",
+                "host": Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "isPro": true,
+                  "name": "Angelina",
+                },
+                "id": 3,
+                "images": Array [
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+                ],
+                "isFavorite": false,
+                "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+              },
+              Object {
+                "accommodation": Object {
+                  "bedroomsCount": 3,
+                  "features": Array [
+                    "Laptop friendly workspace",
+                    "Baby seat",
+                    "Air conditioning",
+                  ],
+                  "guestsLimit": 3,
+                  "isPremium": false,
+                  "price": 100,
+                  "rating": 4.5,
+                  "title": "The Joshua Tree House",
+                  "type": "hotel",
+                },
+                "cityLocation": Object {
+                  "latitude": 51.225402,
+                  "longitude": 6.776314,
+                  "zoom": 13,
+                },
+                "coordinates": Array [
+                  51.267402,
+                  6.797314,
+                ],
+                "description": "This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you ",
+                "host": Object {
+                  "avatar": "img/avatar-angelina.jpg",
+                  "isPro": true,
+                  "name": "Angelina",
+                },
+                "id": 4,
+                "images": Array [
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg",
+                  "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg",
+                ],
+                "isFavorite": false,
+                "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+              },
+            ]
+          }
+          onFavoriteButtonClick={[Function]}
+          typePage="offer"
+        />
+      </section>
+    </div>
+  </main>
+</div>
+`;

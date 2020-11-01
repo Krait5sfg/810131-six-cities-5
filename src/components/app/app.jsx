@@ -77,7 +77,6 @@ App.propTypes = {
 };
 
 const mapStateToProps = (({DATA, PROCESS, USER}) => ({
-  allOffers: DATA.allOffers,
   offers: selectCityOffers({DATA, PROCESS}),
   city: PROCESS.city,
   authorizationStatus: USER.authorizationStatus,

@@ -1,5 +1,11 @@
 {
   "name": "six-cities",
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/src/__mocks__/style.js"
+    }
+  },
   "version": "1.0.0",
   "private": true,
   "description": "Личный проект «Шесть городов» от HTML Academy",

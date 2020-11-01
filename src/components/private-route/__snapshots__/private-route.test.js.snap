@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceCard render correctly PlaceCard with authorization 1`] = `" "`;
+
+exports[`PlaceCard render correctly PlaceCard without authorization 1`] = `" "`;

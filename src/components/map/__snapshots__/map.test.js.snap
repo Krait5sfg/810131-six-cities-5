@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Map render correctly Map on Main page 1`] = `null`;
+
+exports[`Map render correctly Map on Main page without active card 1`] = `null`;
+
+exports[`Map render correctly Map on Offer page 1`] = `null`;
