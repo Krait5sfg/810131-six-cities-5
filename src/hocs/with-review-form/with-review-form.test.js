@@ -1,19 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import withReviewForm from './with-review-form';
-import PropTypes from 'prop-types';
 
-const MockComponent = (props) => {
-  const {children} = props;
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.node.isRequired,
+const MockComponent = () => {
+  return <div />;
 };
 
 const MockComponentWrapped = withReviewForm(MockComponent);

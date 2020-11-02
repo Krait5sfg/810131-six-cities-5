@@ -1,20 +1,9 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import withOpen from './with-open';
-import PropTypes from 'prop-types';
 
-const MockComponent = (props) => {
-  const {children} = props;
-
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.node.isRequired,
+const MockComponent = () => {
+  return <div />;
 };
 
 const MockComponentWrapped = withOpen(MockComponent);
@@ -29,4 +18,3 @@ it(`withOpen is render correctly`, () => {
 
   expect(tree).toMatchSnapshot();
 });
-

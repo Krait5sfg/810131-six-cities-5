@@ -6,7 +6,7 @@ const offers = [
   {
     accommodation: {
       bedroomsCount: 1,
-      features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`, `Breakfast`, `Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
+      features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`],
       guestsLimit: 2,
       isPremium: true,
       price: 241,
