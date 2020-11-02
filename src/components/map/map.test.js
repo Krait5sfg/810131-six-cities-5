@@ -223,7 +223,6 @@ const nearbyAndActiveOffers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
 ];
-jest.mock(`./map`);
 
 describe(`Map render correctly`, () => {
   it(`Map on Main page`, () => {
