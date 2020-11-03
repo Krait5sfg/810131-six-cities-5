@@ -3,7 +3,7 @@ import {loadData} from './load-data';
 import {createApi} from '../../../services/api';
 import {getOffersFromApi} from '../../api-actions';
 import MockAdapter from 'axios-mock-adapter';
-
+import {adaptToClient} from '../../../utils/common';
 const api = createApi(() => {});
 
 const offers = [
@@ -129,6 +129,42 @@ const offers = [
   },
 ];
 
+const offerFromApi = {
+  "bedrooms": 0,
+  "city": {
+    "location": {
+      "latitude": 0,
+      "longitude": 0,
+      "zoom": 0
+    },
+    "name": ``
+  },
+  "description": ``,
+  "goods": [],
+  "host": {
+    "avatar_url": ``,
+    "id": 0,
+    "is_pro": true,
+    "name": ``
+  },
+  "id": 1,
+  "images": [],
+  "is_favorite": false,
+  "is_premium": false,
+  "location": {
+    "latitude": 0,
+    "longitude": 0,
+    "zoom": 0
+  },
+  "max_adults": 0,
+  "preview_image": ``,
+  "price": 0,
+  "rating": 0,
+  "title": ``,
+  "type": ``
+};
+
+
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(loadData(void 0, {})).toEqual({
     allOffers: [],
@@ -159,21 +195,21 @@ it(`Reducer should update offers by load offers`, () => {
 });
 
 describe(`Async operation work correctly`, () => {
-  it(`Should make a correct API call to /hotels`, () => {
+  it(`Should make a correct API call to / hotels`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
     const offerLoader = getOffersFromApi();
 
     apiMock
       .onGet(`/hotels`)
-      .reply(200, [{fake: true}]);
+      .reply(200, [offerFromApi]);
 
     return offerLoader(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_OFFERS,
-          payload: [{fake: true}],
+          payload: [adaptToClient(offerFromApi)],
         });
       });
   });
