@@ -1,13 +1,6 @@
 import {ActionCreator} from '../store/action';
 import {adaptToClient, adaptToClientUserData, adaptToClientComments} from '../utils/common';
-import {AuthorizationStatus} from '../utils/const';
-
-const Request = {
-  AUTHORIZATION: `/login`,
-  OFFER_DATA: `/hotels`,
-  OFFER_COMMENT: `/comments/`,
-  FAVORITE: `/favorite`
-};
+import {AuthorizationStatus, Request} from '../utils/const';
 
 export const getOffersFromApi = () => (dispatch, _getState, api) => (
   api.get(Request.OFFER_DATA)
