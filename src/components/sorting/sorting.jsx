@@ -58,5 +58,6 @@ const mapDispatchToProps = ((dispatch) => ({
   },
 }));
 
+export {Sorting}; // для тестов
 export const EnhancedSorting = withOpen(Sorting);
 export default connect(mapStateToProps, mapDispatchToProps)(withOpen(Sorting));

@@ -23,12 +23,17 @@ const IconSize = {
 class Map extends PureComponent {
 
   componentDidMount() {
-    this._setMap();
+    // setTimeout нужен для корректной работы shapshot тестов
+    setTimeout(() => {
+      this._setMap();
+    });
   }
 
   componentDidUpdate() {
-    this._resetMap();
-    this._setMap();
+    setTimeout(() => {
+      this._resetMap();
+      this._setMap();
+    });
   }
 
   render() {

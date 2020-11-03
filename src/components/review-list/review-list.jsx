@@ -18,10 +18,10 @@ class ReviewList extends PureComponent {
     const {activeOfferComments} = this.props;
 
     // сортировка комментариев чтобы сначала рендерились по свежей дате
-    const sortedCommentsForDate = activeOfferComments.slice().sort((first, second) => first.date > second.date ? -1 : 1).slice(0, LIMIT_COMMENT);
+    const sortedCommentsByDate = activeOfferComments.slice().sort((first, second) => first.date > second.date ? -1 : 1).slice(0, LIMIT_COMMENT);
 
     const commentCount = activeOfferComments.length;
-    const commentElements = sortedCommentsForDate.map((comment, index) => <Review comment={comment} key={index} />);
+    const commentElements = sortedCommentsByDate.map((comment, index) => <Review comment={comment} key={index} />);
 
     return (
       <React.Fragment>

@@ -4,7 +4,10 @@ import {connect} from 'react-redux';
 import {login} from '../../store/api-actions';
 import {Redirect} from 'react-router-dom';
 import {AuthorizationStatus, PagePath} from '../../utils/const';
+import User from '../user/user';
+import Header from '../header/header';
 
+const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class LoginPage extends PureComponent {
 
@@ -17,7 +20,7 @@ class LoginPage extends PureComponent {
   }
 
   render() {
-    const {city, authorizationStatus} = this.props;
+    const {city, authorizationStatus, onLinkEmailClick} = this.props;
 
     if (authorizationStatus === AuthorizationStatus.AUTH) {
       return <Redirect to={PagePath.MAIN} />;
@@ -25,28 +28,9 @@ class LoginPage extends PureComponent {
 
     return (
       <div className="page page--gray page--login">
-        <header className="header">
-          <div className="container">
-            <div className="header__wrapper">
-              <div className="header__left">
-                <a className="header__logo-link" href="/">
-                  <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-                </a>
-              </div>
-              <nav className="header__nav">
-                <ul className="header__nav-list">
-                  <li className="header__nav-item user">
-                    <a className="header__nav-link header__nav-link--profile" href="#">
-                      <div className="header__avatar-wrapper user__avatar-wrapper">
-                      </div>
-                      <span className="header__login">Sign in</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
+        <Header>
+          <User onLinkEmailClick={onLinkEmailClick} />
+        </Header>
 
         <main className="page__main page__main--login">
           <div className="page__login-container container">
@@ -80,18 +64,21 @@ class LoginPage extends PureComponent {
   _handleFormSubmit(evt) {
     const {onSubmit} = this.props;
     evt.preventDefault();
-    onSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value,
-    });
-  }
 
+    if (EMAIL_REGEXP.test(this.loginRef.current.value)) {
+      onSubmit({
+        login: this.loginRef.current.value,
+        password: this.passwordRef.current.value,
+      });
+    }
+  }
 }
 
 LoginPage.propTypes = {
   city: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  onLinkEmailClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (({USER}) => ({

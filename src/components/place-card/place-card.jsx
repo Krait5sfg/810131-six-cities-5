@@ -7,9 +7,7 @@ import {TypeAccommodation, PagePath, FavoriteStatus, TypePage} from '../../utils
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import {sendFavoriteStatus} from '../../store/api-actions';
-
-const REMOVE_ID = 0;
-
+import {REMOVAL_ID_VALUE} from '../../utils/const';
 
 const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonClick, updateFavoriteStatus}) => {
 
@@ -32,7 +30,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonC
     <article
       className={`${classNameArticleTag} place-card`}
       onMouseEnter={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(id) : false}
-      onMouseLeave={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(REMOVE_ID) : false}
+      onMouseLeave={() => typePage === TypePage.MAIN ? updateIdActiveCardForMap(REMOVAL_ID_VALUE) : false}
     >
       {isPremium ? <div className="place-card__mark"><span>Premium</span></div> : ``}
       <div className={`${classNameFirstDivTag} place-card__image-wrapper`}>

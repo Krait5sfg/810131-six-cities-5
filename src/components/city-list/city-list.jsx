@@ -35,7 +35,6 @@ CityList.propTypes = {
 const mapStateToProps = (({PROCESS}) => ({
   activeCity: PROCESS.city,
   cities: PROCESS.cities,
-  sortingType: PROCESS.sortingType
 }));
 
 // связывает методы сo store

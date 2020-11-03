@@ -39,8 +39,14 @@ const App = ({offers, city, authorizationStatus}) => {
           />
         )}>
         </Route>
-        <Route exact path={PagePath.LOGIN}>
-          <LoginPage city={city} />
+        <Route exact path={PagePath.LOGIN}
+          render={({history}) => (
+            <LoginPage
+              city={city}
+              onLinkEmailClick={(evt) => onLinkEmailClick(evt, history)}
+            />
+          )}
+        >
         </Route>
         <PrivateRoute
           render={({history}) => {
@@ -71,7 +77,6 @@ App.propTypes = {
 };
 
 const mapStateToProps = (({DATA, PROCESS, USER}) => ({
-  allOffers: DATA.allOffers,
   offers: selectCityOffers({DATA, PROCESS}),
   city: PROCESS.city,
   authorizationStatus: USER.authorizationStatus,

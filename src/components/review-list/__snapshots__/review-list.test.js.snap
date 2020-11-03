@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewList render correctly 1`] = `
+Array [
+  <h2
+    className="reviews__title"
+  >
+    Reviews · 
+    <span
+      className="reviews__amount"
+    >
+      2
+    </span>
+  </h2>,
+  <ul
+    className="reviews__list"
+  >
+    <Review
+      comment={
+        Object {
+          "avatar": "https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg",
+          "commentText": "Bathed in the nature. Completely unplugged. Unforgettable.",
+          "date": 2020-10-27T09:30:21.000Z,
+          "id": 1,
+          "isPro": true,
+          "name": "Iakov",
+          "rating": 3,
+        }
+      }
+    />
+    <Review
+      comment={
+        Object {
+          "avatar": "https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg",
+          "commentText": "Bathed in the nature. Completely unplugged. Unforgettable.",
+          "date": 2020-10-27T09:29:21.000Z,
+          "id": 1,
+          "isPro": true,
+          "name": "Isaac",
+          "rating": 4,
+        }
+      }
+    />
+  </ul>,
+]
+`;

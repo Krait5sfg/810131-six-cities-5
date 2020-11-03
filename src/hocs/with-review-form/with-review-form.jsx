@@ -6,26 +6,33 @@ const withReviewForm = (WrappedComponent) => {
       super();
       this._onInputChange = this._onInputChange.bind(this);
       this._resetState = this._resetState.bind(this);
+      this._changeDisableFormAttribute = this._changeDisableFormAttribute.bind(this);
 
       this.state = {
         rating: ``,
-        review: ``
+        review: ``,
+        isDisabled: false,
       };
     }
 
     render() {
-      const {rating, review} = this.state;
+      const {rating, review, isDisabled} = this.state;
       return <WrappedComponent
         rating={rating}
         review={review}
         resetState={this._resetState}
         onChange={this._onInputChange}
+        isDisabled={isDisabled}
+        changeDisableFormAttribute={this._changeDisableFormAttribute}
         {...this.props}
       />;
     }
 
+    _changeDisableFormAttribute(status) {
+      this.setState({isDisabled: status});
+    }
+
     _onInputChange(evt) {
-      evt.preventDefault();
       const {name, value} = evt.target;
       this.setState({[name]: value});
     }

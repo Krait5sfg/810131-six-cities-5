@@ -13,6 +13,8 @@ import User from '../user/user';
 import {AuthorizationStatus, FavoriteStatus} from '../../utils/const';
 import {getActiveOffer, getNearbyOffers, sendFavoriteStatus} from '../../store/api-actions';
 import {ActionCreator} from '../../store/action';
+import Header from '../header/header';
+import Loading from '../loading/loading';
 
 const MAX_IMAGE_ON_PAGE = 6;
 
@@ -67,22 +69,9 @@ class OfferPage extends PureComponent {
 
       return (
         <div className="page">
-          <header className="header">
-            <div className="container">
-              <div className="header__wrapper">
-                <div className="header__left">
-                  <a className="header__logo-link" href="/">
-                    <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41" />
-                  </a>
-                </div>
-                <nav className="header__nav">
-                  <ul className="header__nav-list">
-                    <User onLinkEmailClick={onLinkEmailClick} />
-                  </ul>
-                </nav>
-              </div>
-            </div>
-          </header>
+          <Header>
+            <User onLinkEmailClick={onLinkEmailClick} />
+          </Header>
 
           <main className="page__main page__main--property">
             <section className="property">
@@ -175,7 +164,7 @@ class OfferPage extends PureComponent {
         </div >
       );
     }
-    return <h2 style={{position: `absolute`, top: `50%`, left: `50%`, transform: `translate(-50%, -50%)`}}>Loading...</h2>;
+    return <Loading />;
   }
 }
 
