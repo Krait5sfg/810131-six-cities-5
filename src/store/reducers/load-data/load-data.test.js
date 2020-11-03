@@ -112,78 +112,21 @@ it(`Reducer should update favorite offers`, () => {
   });
 });
 
-it(`Reducer should change favorite status in allOffers`, () => {
+it(`Reducer should change favorite status in all offers except favoriteOffers`, () => {
   expect(loadData({
     allOffers: [{id: 1, isFavorite: false}, {id: 2, isFavorite: false}, {id: 3, isFavorite: false}],
     activeOfferComments: [],
-    activeOffer: {},
-    nearbyOffers: [],
+    activeOffer: {id: 1, isFavorite: false},
+    nearbyOffers: [{id: 1, isFavorite: false}, {id: 2, isFavorite: false}, {id: 3, isFavorite: false}],
     favoriteOffers: []
   }, {
-    type: ActionType.CHANGE_FAVORITE_STATUS_IN_ALL_OFFERS,
+    type: ActionType.CHANGE_FAVORITE_STATUS,
     payload: {id: 1, isFavorite: true},
   })).toEqual({
     allOffers: [{id: 1, isFavorite: true}, {id: 2, isFavorite: false}, {id: 3, isFavorite: false}],
     activeOfferComments: [],
-    activeOffer: {},
-    nearbyOffers: [],
-    favoriteOffers: []
-  });
-});
-
-it(`Reducer should change favorite status in nearbyOffers`, () => {
-  expect(loadData({
-    allOffers: [],
-    activeOfferComments: [],
-    activeOffer: {},
-    nearbyOffers: [{id: 1, isFavorite: false}, {id: 2, isFavorite: false}, {id: 3, isFavorite: false}],
-    favoriteOffers: []
-  }, {
-    type: ActionType.CHANGE_FAVORITE_STATUS_IN_NEARBY_OFFERS,
-    payload: {id: 1, isFavorite: true},
-  })).toEqual({
-    allOffers: [],
-    activeOfferComments: [],
-    activeOffer: {},
+    activeOffer: {id: 1, isFavorite: true},
     nearbyOffers: [{id: 1, isFavorite: true}, {id: 2, isFavorite: false}, {id: 3, isFavorite: false}],
     favoriteOffers: []
-  });
-});
-
-it(`Reducer should change favorite status in activeOffer`, () => {
-  expect(loadData({
-    allOffers: [],
-    activeOfferComments: [],
-    activeOffer: {id: 1, isFavorite: false},
-    nearbyOffers: [],
-    favoriteOffers: []
-  }, {
-    type: ActionType.CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER,
-    payload: offer,
-  })).toEqual({
-    allOffers: [],
-    activeOfferComments: [],
-    activeOffer: offer,
-    nearbyOffers: [],
-    favoriteOffers: []
-  });
-});
-
-it(`Reducer should remove no favorite offer in favoriteOffers`, () => {
-  expect(loadData({
-    allOffers: [],
-    activeOfferComments: [],
-    activeOffer: {},
-    nearbyOffers: [],
-    favoriteOffers: [{id: 1, isFavorite: true}, {id: 2, isFavorite: true}, {id: 3, isFavorite: true}]
-  }, {
-    type: ActionType.REMOVE_NO_FAVORITE_OFFER,
-    payload: {id: 2, isFavorite: false},
-  })).toEqual({
-    allOffers: [],
-    activeOfferComments: [],
-    activeOffer: {},
-    nearbyOffers: [],
-    favoriteOffers: [{id: 1, isFavorite: true}, {id: 3, isFavorite: true}]
   });
 });

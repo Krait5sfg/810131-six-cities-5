@@ -7,7 +7,7 @@ import {PagePath, FavoriteStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
-import {sendFavoriteStatus} from '../../store/api-actions';
+import {sendFavoriteStatus, getFavoriteOffers} from '../../store/api-actions';
 
 const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatus, updateIdActiveCardForMap}) => {
 
@@ -81,7 +81,8 @@ const mapDispatchToProps = ((dispatch) => ({
     dispatch(ActionCreator.changeCity(city));
   },
   updateFavoriteStatus(id, status) {
-    dispatch(sendFavoriteStatus(id, status, ActionCreator.removeNoFavoriteOffer));
+    dispatch(sendFavoriteStatus(id, status));
+    dispatch(getFavoriteOffers());
   },
   updateIdActiveCardForMap(id) {
     dispatch(ActionCreator.updateIdActiveCardForMap(id));

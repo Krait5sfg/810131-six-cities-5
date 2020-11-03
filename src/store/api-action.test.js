@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {adaptToClient, adaptToClientUserData, adaptToClientComments} from '../utils/common';
 import {Request} from '../utils/const';
 import {createApi} from '../services/api';
-import {ActionType, ActionCreator} from './action';
+import {ActionType} from './action';
 
 const ID = 1;
 const FAVORITE_STATUS = 0;
@@ -222,11 +222,11 @@ describe(`Async operation work correctly`, () => {
       });
   });
 
-  it(`Should make a correct API call to /favorite/:id/1 on main page`, () => {
+  it(`Should make a correct API call to /favorite/:id/1`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
 
-    const favoriteOffersLoader = sendFavoriteStatus(ID, FAVORITE_STATUS, ActionCreator.changeFavoriteStatusInAllOffers);
+    const favoriteOffersLoader = sendFavoriteStatus(ID, FAVORITE_STATUS);
 
     apiMock
       .onPost(`${Request.FAVORITE}/${ID}/${FAVORITE_STATUS}`)
@@ -236,67 +236,7 @@ describe(`Async operation work correctly`, () => {
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.CHANGE_FAVORITE_STATUS_IN_ALL_OFFERS,
-          payload: adaptToClient(offerFromApi),
-        });
-      });
-  });
-
-  it(`Should make a correct API call to /favorite/:id/1 on offer page in nearby offers`, () => {
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
-
-    const nearbyFaforiteOffersLoader = sendFavoriteStatus(ID, FAVORITE_STATUS, ActionCreator.changeFavoriteStatusNearbyOffers);
-
-    apiMock
-      .onPost(`${Request.FAVORITE}/${ID}/${FAVORITE_STATUS}`)
-      .reply(200, offerFromApi);
-
-    return nearbyFaforiteOffersLoader(dispatch, () => {}, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.CHANGE_FAVORITE_STATUS_IN_NEARBY_OFFERS,
-          payload: adaptToClient(offerFromApi),
-        });
-      });
-  });
-
-  it(`Should make a correct API call to /favorite/:id/1 on offer page in active offer`, () => {
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
-
-    const favoriteActiveOfferLoader = sendFavoriteStatus(ID, FAVORITE_STATUS, ActionCreator.changeFavoriteStatusActiveOffer);
-
-    apiMock
-      .onPost(`${Request.FAVORITE}/${ID}/${FAVORITE_STATUS}`)
-      .reply(200, offerFromApi);
-
-    return favoriteActiveOfferLoader(dispatch, () => {}, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER,
-          payload: adaptToClient(offerFromApi),
-        });
-      });
-  });
-
-  it(`Should make a correct API call to /favorite/:id/1 on favorite page`, () => {
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
-
-    const favoriteOffersLoader = sendFavoriteStatus(ID, FAVORITE_STATUS, ActionCreator.removeNoFavoriteOffer);
-
-    apiMock
-      .onPost(`${Request.FAVORITE}/${ID}/${FAVORITE_STATUS}`)
-      .reply(200, offerFromApi);
-
-    return favoriteOffersLoader(dispatch, () => {}, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.REMOVE_NO_FAVORITE_OFFER,
+          type: ActionType.CHANGE_FAVORITE_STATUS,
           payload: adaptToClient(offerFromApi),
         });
       });

@@ -9,10 +9,7 @@ export const ActionType = {
   UPDATE_NEARBY_OFFERS: `UPDATE_NEARBY_OFFERS`,
   UPDATE_ACTIVE_OFFER_COMMENTS: `UPDATE_ACTIVE_OFFER_COMMENTS`,
   UPDATE_FAVORITE_OFFERS: `UPDATE_FAVORITE_OFFERS`,
-  CHANGE_FAVORITE_STATUS_IN_ALL_OFFERS: `CHANGE_FAVORITE_STATUS_IN_ALL_OFFERS`,
-  CHANGE_FAVORITE_STATUS_IN_NEARBY_OFFERS: `CHANGE_FAVORITE_STATUS_IN_NEARBY_OFFERS`,
-  CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER: `CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER`,
-  REMOVE_NO_FAVORITE_OFFER: `REMOVE_NO_FAVORITE_OFFER`
+  CHANGE_FAVORITE_STATUS: `CHANGE_FAVORITE_STATUS`
 };
 
 export const ActionCreator = {
@@ -56,20 +53,8 @@ export const ActionCreator = {
     type: ActionType.UPDATE_FAVORITE_OFFERS,
     payload: favoriteOffers
   }),
-  changeFavoriteStatusInAllOffers: (favoriteOffer) => ({
-    type: ActionType.CHANGE_FAVORITE_STATUS_IN_ALL_OFFERS,
+  changeFavoriteStatus: (favoriteOffer) => ({
+    type: ActionType.CHANGE_FAVORITE_STATUS,
     payload: favoriteOffer
   }),
-  changeFavoriteStatusNearbyOffers: (favoriteOffer) => ({
-    type: ActionType.CHANGE_FAVORITE_STATUS_IN_NEARBY_OFFERS,
-    payload: favoriteOffer
-  }),
-  changeFavoriteStatusActiveOffer: (favoriteOffer) => ({
-    type: ActionType.CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER,
-    payload: favoriteOffer
-  }),
-  removeNoFavoriteOffer: (offer) => ({
-    type: ActionType.REMOVE_NO_FAVORITE_OFFER,
-    payload: offer
-  })
 };
