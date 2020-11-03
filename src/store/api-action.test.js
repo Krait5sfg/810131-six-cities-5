@@ -4,9 +4,11 @@ import {adaptToClient, adaptToClientUserData, adaptToClientComments} from '../ut
 import {Request} from '../utils/const';
 import {createApi} from '../services/api';
 import {ActionType} from './action';
+import {AuthorizationStatus} from '../utils/const';
 
 const ID = 1;
 const FAVORITE_STATUS = 0;
+const SUCCESS_CODE_REQUEST = 200;
 
 const api = createApi(() => {});
 
@@ -49,7 +51,7 @@ describe(`Async operation work correctly`, () => {
     const offerLoader = getOffersFromApi();
     apiMock
       .onGet(Request.OFFER_DATA)
-      .reply(200, [offerFromApi]);
+      .reply(SUCCESS_CODE_REQUEST, [offerFromApi]);
 
     return offerLoader(dispatch, () => {}, api)
       .then(() => {
@@ -68,7 +70,7 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onGet(Request.AUTHORIZATION)
-      .reply(200, userDataFromApi);
+      .reply(SUCCESS_CODE_REQUEST, userDataFromApi);
 
     return authLoader(dispatch, () => {}, api)
       .then(() => {
@@ -79,7 +81,7 @@ describe(`Async operation work correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.REQUIRED_AUTHORIZATION,
-          payload: `AUTH`,
+          payload: AuthorizationStatus.AUTH,
         });
       });
   });
@@ -91,7 +93,7 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onPost(Request.AUTHORIZATION)
-      .reply(200, userDataFromApi);
+      .reply(SUCCESS_CODE_REQUEST, userDataFromApi);
 
     return loginLoader(dispatch, () => {}, api)
       .then(() => {
@@ -102,7 +104,7 @@ describe(`Async operation work correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.REQUIRED_AUTHORIZATION,
-          payload: `AUTH`,
+          payload: AuthorizationStatus.AUTH,
         });
       });
   });
@@ -114,24 +116,14 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onGet(`${Request.OFFER_DATA}/${ID}`)
-      .reply(200, {
-        city: {},
-        host: {},
-        location: {},
-        id: 1
-      });
+      .reply(SUCCESS_CODE_REQUEST, offerFromApi);
 
     return activOfferLoader(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.UPDATE_ACTIVE_OFFER,
-          payload: adaptToClient({
-            city: {},
-            host: {},
-            location: {},
-            id: 1
-          }),
+          payload: adaptToClient(offerFromApi),
         });
       });
   });
@@ -143,24 +135,14 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onGet(`${Request.OFFER_DATA}/${ID}/nearby`)
-      .reply(200, [{
-        city: {},
-        host: {},
-        location: {},
-        id: 1
-      }]);
+      .reply(200, [offerFromApi]);
 
     return nearbyOffersLoader(dispatch, () => {}, api)
       .then(() => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.UPDATE_NEARBY_OFFERS,
-          payload: [adaptToClient({
-            city: {},
-            host: {},
-            location: {},
-            id: 1
-          })],
+          payload: [adaptToClient(offerFromApi)],
         });
       });
   });
@@ -172,7 +154,7 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onGet(`${Request.OFFER_COMMENT}${ID}`)
-      .reply(200, [commentFromApi]);
+      .reply(SUCCESS_CODE_REQUEST, [commentFromApi]);
 
     return activeOfferCommentsLoader(dispatch, () => {}, api)
       .then(() => {
@@ -210,7 +192,7 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onGet(Request.FAVORITE)
-      .reply(200, [offerFromApi]);
+      .reply(SUCCESS_CODE_REQUEST, [offerFromApi]);
 
     return favoriteOffersLoader(dispatch, () => {}, api)
       .then(() => {
@@ -230,7 +212,7 @@ describe(`Async operation work correctly`, () => {
 
     apiMock
       .onPost(`${Request.FAVORITE}/${ID}/${FAVORITE_STATUS}`)
-      .reply(200, offerFromApi);
+      .reply(SUCCESS_CODE_REQUEST, offerFromApi);
 
     return favoriteOffersLoader(dispatch, () => {}, api)
       .then(() => {
