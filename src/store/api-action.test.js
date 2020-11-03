@@ -86,6 +86,21 @@ describe(`Async operation work correctly`, () => {
       });
   });
 
+  it(`Should make a error API call to get /login`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const errorLoader = checkAuth();
+
+    apiMock
+      .onGet(Request.AUTHORIZATION)
+      .reply(401);
+
+    return errorLoader(dispatch, () => {}, api)
+      .catch((error) => {
+        expect(error).toEqual(error);
+      });
+  });
+
   it(`Should make a correct API call to post /login`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
