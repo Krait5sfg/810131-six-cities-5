@@ -5,13 +5,8 @@ import CityItem from './city-item';
 
 configure({adapter: new Adapter()});
 
-const mockEvent = {
-  preventDefault() {}
-};
-
-it(`Click on city name should pass to the callback`, () => {
+it(`Click on city name should implement onCityLinkClick function`, () => {
   const onCityLinkClick = jest.fn();
-
   const screen = shallow(<CityItem
     onCityLinkClick={onCityLinkClick}
     city={`Amsterdam`}
@@ -20,7 +15,7 @@ it(`Click on city name should pass to the callback`, () => {
 
   const linkElement = screen.find(`.locations__item-link`);
 
-  linkElement.simulate(`click`, mockEvent);
+  linkElement.simulate(`click`);
 
   expect(onCityLinkClick).toHaveBeenCalledTimes(1);
 });
