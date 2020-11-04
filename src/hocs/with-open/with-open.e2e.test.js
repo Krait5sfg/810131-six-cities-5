@@ -8,8 +8,18 @@ configure({adapter: new Adapter()});
 const MockComponent = () => <div />;
 const MockComponentWrapped = withOpen(MockComponent);
 
-it.skip(`Should`, () => {
+describe(`Test withOpen HOC`, () => {
   const wrapper = shallow(<MockComponentWrapped />);
 
-  expect(wrapper.state().isOpen).toEqual(false);
+  it(`test original state`, () => {
+    expect(wrapper.state().isOpen).toEqual(false);
+  });
+
+  it(`test when invoke _onSortingClick`, () => {
+    const instance = wrapper.instance();
+    instance._onSortingClick();
+
+    expect(wrapper.state().isOpen).toEqual(true);
+  });
+
 });
