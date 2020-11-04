@@ -8,7 +8,7 @@ configure({adapter: new Adapter()});
 const MockComponent = () => <div />;
 const MockComponentWrapped = withOpen(MockComponent);
 
-describe(`Test withOpen HOC`, () => {
+describe(`withOpen HOC test`, () => {
   const wrapper = shallow(<MockComponentWrapped />);
 
   it(`test original state`, () => {
