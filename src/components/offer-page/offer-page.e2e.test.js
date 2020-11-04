@@ -36,7 +36,78 @@ const mockOffer = {
   title: ``,
   type: ``,
 };
+
+const mockNearbyOffers = [
+  {
+    accommodation: {
+      bedroomsCount: 0,
+      features: [],
+      guestsLimit: 0,
+      isPremium: false,
+      price: 0,
+      rating: 0,
+      title: ``,
+      type: ``,
+    },
+    bedrooms: 0,
+    city: `Paris`,
+    cityLocation: {latitude: 0, longitude: 0, zoom: 0},
+    coordinates: [0, 0],
+    description: ``,
+    goods: [],
+    host: {
+      avatar: ``,
+      id: 0,
+      isPro: true,
+      name: ``
+    },
+    id: 11,
+    images: [],
+    isFavorite: true,
+    location: {latitude: 0, longitude: 0, zoom: 0},
+    previewImage: ``,
+    price: 0,
+    rating: 0,
+    title: ``,
+    type: ``,
+  },
+  {
+    accommodation: {
+      bedroomsCount: 0,
+      features: [],
+      guestsLimit: 0,
+      isPremium: false,
+      price: 0,
+      rating: 0,
+      title: ``,
+      type: ``,
+    },
+    bedrooms: 0,
+    city: `Paris`,
+    cityLocation: {latitude: 0, longitude: 0, zoom: 0},
+    coordinates: [0, 0],
+    description: ``,
+    goods: [],
+    host: {
+      avatar: ``,
+      id: 0,
+      isPro: true,
+      name: ``
+    },
+    id: 11,
+    images: [],
+    isFavorite: true,
+    location: {latitude: 0, longitude: 0, zoom: 0},
+    previewImage: ``,
+    price: 0,
+    rating: 0,
+    title: ``,
+    type: ``,
+  },
+];
+
 configure({adapter: new Adapter()});
+jest.mock(`../place-card-list/place-card-list`, () => `PlaceCardList`);
 
 it(`Click by button favorite on OfferPage`, () => {
   const onFavoriteButtonClick = jest.fn();
@@ -45,7 +116,7 @@ it(`Click by button favorite on OfferPage`, () => {
   const wrapper = shallow(<OfferPage
     onLinkEmailClick={() => {}}
     offer={mockOffer}
-    nearbyOffers={[{mockOffer}, {mockOffer}]}
+    nearbyOffers={mockNearbyOffers}
     authorizationStatus={`NO_AUTH`}
     idActiveOffer={1}
     updateActiveOffer={() => {}}
