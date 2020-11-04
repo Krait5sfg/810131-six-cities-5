@@ -79,7 +79,6 @@ exports[`LoginPage render correctly LoginPage without authorization 1`] = `
         >
           <a
             className="locations__item-link"
-            href="#"
           >
             <span>
               Paris
