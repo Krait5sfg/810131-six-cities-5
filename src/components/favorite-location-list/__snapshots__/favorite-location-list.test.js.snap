@@ -12,7 +12,6 @@ exports[`FavoriteLocationList render correctly 1`] = `
     >
       <a
         className="locations__item-link"
-        href="#"
       >
         <span>
           Paris

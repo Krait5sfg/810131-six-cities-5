@@ -1,58 +1,59 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {FavoritePage} from './favorite-page';
+import {BrowserRouter} from 'react-router-dom';
 
 const offers = [
   {
     city: ``,
     accommodation: {
-      bedroomsCount: 1,
-      features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`, `Breakfast`, `Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
-      guestsLimit: 2,
+      bedroomsCount: 0,
+      features: [],
+      guestsLimit: 0,
       isPremium: true,
       price: 241,
       rating: 4.4,
       title: `The Joshua Tree House`,
       type: `room`,
     },
-    cityLocation: {latitude: 51.225402, longitude: 6.776314, zoom: 13},
-    coordinates: [51.237402, 6.797314],
-    description: `This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you enjoy `,
+    cityLocation: {latitude: 0, longitude: 0, zoom: 0},
+    coordinates: [0, 0],
+    description: ``,
     host: {
-      avatar: `img/avatar-angelina.jpg`,
+      avatar: ``,
       isPro: true,
-      name: `Angelina`,
+      name: ``,
     },
     id: 1,
-    images: [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg`],
-    isFavorite: false,
+    images: [],
+    isFavorite: true,
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
     city: ``,
     accommodation: {
-      bedroomsCount: 2,
-      features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
-      guestsLimit: 4,
-      isPremium: false,
-      price: 300,
-      rating: 4.5,
+      bedroomsCount: 0,
+      features: [],
+      guestsLimit: 0,
+      isPremium: true,
+      price: 241,
+      rating: 4.4,
       title: `The Joshua Tree House`,
-      type: `hotel`,
+      type: `room`,
     },
-    cityLocation: {latitude: 51.225402, longitude: 6.776314, zoom: 13},
-    coordinates: [51.247402, 6.777314],
-    description: `This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you `,
+    cityLocation: {latitude: 0, longitude: 0, zoom: 0},
+    coordinates: [0, 0],
+    description: ``,
     host: {
-      avatar: `img/avatar-angelina.jpg`,
+      avatar: ``,
       isPro: true,
-      name: `Angelina`,
+      name: ``,
     },
-    id: 2,
-    images: [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg`],
+    id: 1,
+    images: [],
     isFavorite: true,
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
-  },
+  }
 ];
 
 jest.mock(`../header/header`, () => `Header`);
@@ -61,20 +62,20 @@ jest.mock(`../favorite-location-list/favorite-location-list`, () => `FavoriteLoc
 
 describe(`FavoritePage render correctly`, () => {
   it(`FavoritePage with favorite offers`, () => {
-    const tree = renderer.create(<FavoritePage
+    const tree = renderer.create(<BrowserRouter><FavoritePage
       favoriteOffers={offers}
       onLinkEmailClick={() => {}}
       updateFavoriteOffers={() => {}}
-    />).toJSON();
+    /></BrowserRouter>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it(`FavoritePage without favorite offers`, () => {
-    const tree = renderer.create(<FavoritePage
+    const tree = renderer.create(<BrowserRouter><FavoritePage
       favoriteOffers={[]}
       onLinkEmailClick={() => {}}
       updateFavoriteOffers={() => {}}
-    />).toJSON();
+    /></BrowserRouter>).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
