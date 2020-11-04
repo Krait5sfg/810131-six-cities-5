@@ -39,20 +39,23 @@ const mockOffer = {
 configure({adapter: new Adapter()});
 
 it(`Click by article in FavoritePlaceCard`, () => {
-  const handleFavoriteCardClick = jest.fn();
+  const updateIdActiveCardForMap = jest.fn();
   const updateFavoriteStatus = jest.fn();
+  const changeCity = jest.fn();
 
   const wrapper = shallow(<FavoritePlaceCard
     favoriteOffer={mockOffer}
     city={`Amsterdam`}
-    changeCity={() => {}}
+    changeCity={changeCity}
     updateFavoriteStatus={updateFavoriteStatus}
-    updateIdActiveCardForMap={handleFavoriteCardClick}
+    updateIdActiveCardForMap={updateIdActiveCardForMap}
   />);
 
   wrapper.find(`.favorites__card`).simulate(`click`);
   wrapper.find(`.place-card__bookmark-button`).simulate(`click`);
 
-  expect(handleFavoriteCardClick).toHaveBeenCalledTimes(1);
+  expect(updateIdActiveCardForMap).toHaveBeenCalledTimes(1);
   expect(updateFavoriteStatus).toHaveBeenCalledTimes(1);
+  expect(changeCity).toHaveBeenCalledTimes(1);
+
 });
