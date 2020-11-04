@@ -284,7 +284,7 @@ exports[`OfferPage render correctly OfferPage with authorization 1`] = `
                 "accommodation": Object {
                   "bedroomsCount": 0,
                   "features": Array [],
-                  "guestsLimit": 4,
+                  "guestsLimit": 0,
                   "isPremium": false,
                   "price": 300,
                   "rating": 4.5,
@@ -313,7 +313,7 @@ exports[`OfferPage render correctly OfferPage with authorization 1`] = `
                 "accommodation": Object {
                   "bedroomsCount": 0,
                   "features": Array [],
-                  "guestsLimit": 4,
+                  "guestsLimit": 0,
                   "isPremium": false,
                   "price": 300,
                   "rating": 4.5,
@@ -342,7 +342,7 @@ exports[`OfferPage render correctly OfferPage with authorization 1`] = `
                 "accommodation": Object {
                   "bedroomsCount": 0,
                   "features": Array [],
-                  "guestsLimit": 4,
+                  "guestsLimit": 0,
                   "isPremium": false,
                   "price": 300,
                   "rating": 4.5,
@@ -660,7 +660,7 @@ exports[`OfferPage render correctly OfferPage without authorization 1`] = `
                 "accommodation": Object {
                   "bedroomsCount": 0,
                   "features": Array [],
-                  "guestsLimit": 4,
+                  "guestsLimit": 0,
                   "isPremium": false,
                   "price": 300,
                   "rating": 4.5,
@@ -689,7 +689,7 @@ exports[`OfferPage render correctly OfferPage without authorization 1`] = `
                 "accommodation": Object {
                   "bedroomsCount": 0,
                   "features": Array [],
-                  "guestsLimit": 4,
+                  "guestsLimit": 0,
                   "isPremium": false,
                   "price": 300,
                   "rating": 4.5,
@@ -718,7 +718,7 @@ exports[`OfferPage render correctly OfferPage without authorization 1`] = `
                 "accommodation": Object {
                   "bedroomsCount": 0,
                   "features": Array [],
-                  "guestsLimit": 4,
+                  "guestsLimit": 0,
                   "isPremium": false,
                   "price": 300,
                   "rating": 4.5,
