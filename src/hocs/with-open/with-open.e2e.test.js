@@ -21,5 +21,4 @@ describe(`withOpen HOC test`, () => {
 
     expect(wrapper.state().isOpen).toEqual(true);
   });
-
 });
