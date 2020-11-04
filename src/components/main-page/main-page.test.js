@@ -4,6 +4,7 @@ import {MainPage} from './main-page';
 
 const offers = [
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 1,
       features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`, `Breakfast`, `Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -28,6 +29,7 @@ const offers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 2,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -52,6 +54,7 @@ const offers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 3,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -76,6 +79,7 @@ const offers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 3,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -100,6 +104,7 @@ const offers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 4,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],

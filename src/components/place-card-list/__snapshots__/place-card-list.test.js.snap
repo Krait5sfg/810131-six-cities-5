@@ -26,6 +26,7 @@ exports[`PlaceCardList render correctly 1`] = `
           "title": "The Joshua Tree House",
           "type": "room",
         },
+        "city": "",
         "cityLocation": Object {
           "latitude": 51.225402,
           "longitude": 6.776314,
@@ -71,6 +72,7 @@ exports[`PlaceCardList render correctly 1`] = `
           "title": "The Joshua Tree House",
           "type": "hotel",
         },
+        "city": "",
         "cityLocation": Object {
           "latitude": 51.225402,
           "longitude": 6.776314,

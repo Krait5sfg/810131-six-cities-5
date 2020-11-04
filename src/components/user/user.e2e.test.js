@@ -10,7 +10,7 @@ it(`Click by user's email`, () => {
 
   const wrapper = shallow(<User
     onLinkEmailClick={onLinkEmailClick}
-    authorizationStatus={true}
+    authorizationStatus={`AUTH`}
     userData={{fake: true}}
   />
   );

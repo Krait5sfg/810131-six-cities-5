@@ -4,6 +4,7 @@ import {FavoritePlaceCard} from './favorite-place-card';
 import {BrowserRouter} from 'react-router-dom';
 
 const offer = {
+  city: ``,
   accommodation: {
     bedroomsCount: 1,
     features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`, `Breakfast`, `Laptop friendly workspace`, `Baby seat`, `Air conditioning`],

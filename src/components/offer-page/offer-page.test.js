@@ -4,31 +4,33 @@ import {OfferPage} from './offer-page';
 
 const noop = () => {};
 const offer = {
+  city: ``,
   accommodation: {
-    bedroomsCount: 1,
-    features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`, `Breakfast`, `Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
+    bedroomsCount: 0,
+    features: [],
     guestsLimit: 2,
     isPremium: true,
-    price: 241,
-    rating: 4.4,
-    title: `The Joshua Tree House`,
-    type: `room`,
+    price: 0,
+    rating: 0,
+    title: ``,
+    type: ``,
   },
-  cityLocation: {latitude: 51.225402, longitude: 6.776314, zoom: 13},
-  coordinates: [51.237402, 6.797314],
-  description: `This is a place for dreamers to reset, reflect, and create. Designed with a 'slow' pace in mind, our hope is that you enjoy every part of your stay; from making local coffee by drip in the morning, choosing the perfect record to put on as the sun sets.`,
+  cityLocation: {latitude: 0, longitude: 0, zoom: 0},
+  coordinates: [0, 0],
+  description: ``,
   host: {
-    avatar: `img/avatar-angelina.jpg`,
+    avatar: ``,
     isPro: true,
-    name: `Angelina`,
+    name: `0`,
   },
-  id: 1,
-  images: [`https://assets.htmlacademy.ru/intensives/javascript-3/hotel/12.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/1.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/10.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/2.jpg`, `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg`],
+  id: 0,
+  images: [],
   isFavorite: false,
-  previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
+  previewImage: ``,
 };
 const nearbyOffers = [
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 2,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -53,6 +55,7 @@ const nearbyOffers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 3,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -77,6 +80,7 @@ const nearbyOffers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 3,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],

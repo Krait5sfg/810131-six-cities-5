@@ -6,6 +6,7 @@ import {BrowserRouter} from 'react-router-dom';
 
 const offers = [
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 1,
       features: [`Dishwasher`, `Towels`, `Washer`, `Fridge`, `Breakfast`, `Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
@@ -30,6 +31,7 @@ const offers = [
     previewImage: `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg`,
   },
   {
+    city: ``,
     accommodation: {
       bedroomsCount: 2,
       features: [`Laptop friendly workspace`, `Baby seat`, `Air conditioning`],
