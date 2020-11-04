@@ -121,12 +121,11 @@ it(`Click by button favorite on OfferPage`, () => {
     idActiveOffer={1}
     updateActiveOffer={() => {}}
     updateNearbyOffers={() => {}}
-    onFavoriteButtonClick={() => {}}
-    updateFavoriteStatus={() => {}}
+    onFavoriteButtonClick={onFavoriteButtonClick}
+    updateFavoriteStatus={updateFavoriteStatus}
   />);
 
   wrapper.find(`.property__bookmark-button`).simulate(`click`);
-  // wrapper.find(`.place-card__bookmark-button`).simulate(`click`);
 
   expect(onFavoriteButtonClick).toHaveBeenCalledTimes(1);
   expect(updateFavoriteStatus).toHaveBeenCalledTimes(1);
