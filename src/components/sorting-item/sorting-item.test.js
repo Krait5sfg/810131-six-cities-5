@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import SortingItem from './sorting-item';
 
 describe(`SortingItem render correctly`, () => {
-  it(`SortingItem open`, () => {
+  it(`SortingItem active`, () => {
     const tree = renderer
       .create(<SortingItem
         itemName={`Popular`}
@@ -15,7 +15,7 @@ describe(`SortingItem render correctly`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`SortingItem close`, () => {
+  it(`SortingItem not active`, () => {
     const tree = renderer
       .create(<SortingItem
         itemName={`Popular`}

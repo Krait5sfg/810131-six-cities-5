@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PlaceCard render correctly PlaceCard with authorization 1`] = `" "`;
+exports[`PrivateRoute render correctly PrivateRoute with authorization 1`] = `" "`;
 
-exports[`PlaceCard render correctly PlaceCard without authorization 1`] = `" "`;
+exports[`PrivateRoute render correctly PrivateRoute without authorization 1`] = `" "`;

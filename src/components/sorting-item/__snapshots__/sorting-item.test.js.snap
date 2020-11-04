@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SortingItem render correctly SortingItem close 1`] = `
+exports[`SortingItem render correctly SortingItem active 1`] = `
 <li
-  className="places__option "
+  className="places__option places__option--active"
   data-sorting="Popular"
   onClick={[Function]}
   tabIndex="0"
@@ -11,9 +11,9 @@ exports[`SortingItem render correctly SortingItem close 1`] = `
 </li>
 `;
 
-exports[`SortingItem render correctly SortingItem open 1`] = `
+exports[`SortingItem render correctly SortingItem not active 1`] = `
 <li
-  className="places__option places__option--active"
+  className="places__option "
   data-sorting="Popular"
   onClick={[Function]}
   tabIndex="0"

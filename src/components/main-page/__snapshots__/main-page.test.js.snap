@@ -57,10 +57,10 @@ exports[`MainPage render correctly MainPage with offers 1`] = `
                     "features": Array [],
                     "guestsLimit": 0,
                     "isPremium": true,
-                    "price": 241,
-                    "rating": 4.4,
-                    "title": "The Joshua Tree House",
-                    "type": "room",
+                    "price": 0,
+                    "rating": 0,
+                    "title": "",
+                    "type": "",
                   },
                   "city": "",
                   "cityLocation": Object {
@@ -81,7 +81,7 @@ exports[`MainPage render correctly MainPage with offers 1`] = `
                   "id": 1,
                   "images": Array [],
                   "isFavorite": false,
-                  "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+                  "previewImage": "",
                 },
                 Object {
                   "accommodation": Object {
@@ -89,10 +89,10 @@ exports[`MainPage render correctly MainPage with offers 1`] = `
                     "features": Array [],
                     "guestsLimit": 0,
                     "isPremium": true,
-                    "price": 241,
-                    "rating": 4.4,
-                    "title": "The Joshua Tree House",
-                    "type": "room",
+                    "price": 0,
+                    "rating": 0,
+                    "title": "",
+                    "type": "",
                   },
                   "city": "",
                   "cityLocation": Object {
@@ -113,7 +113,7 @@ exports[`MainPage render correctly MainPage with offers 1`] = `
                   "id": 2,
                   "images": Array [],
                   "isFavorite": false,
-                  "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+                  "previewImage": "",
                 },
                 Object {
                   "accommodation": Object {
@@ -121,10 +121,10 @@ exports[`MainPage render correctly MainPage with offers 1`] = `
                     "features": Array [],
                     "guestsLimit": 0,
                     "isPremium": true,
-                    "price": 241,
-                    "rating": 4.4,
-                    "title": "The Joshua Tree House",
-                    "type": "room",
+                    "price": 0,
+                    "rating": 0,
+                    "title": "",
+                    "type": "",
                   },
                   "city": "",
                   "cityLocation": Object {
@@ -145,7 +145,7 @@ exports[`MainPage render correctly MainPage with offers 1`] = `
                   "id": 3,
                   "images": Array [],
                   "isFavorite": true,
-                  "previewImage": "https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg",
+                  "previewImage": "",
                 },
               ]
             }

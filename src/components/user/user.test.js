@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {User} from './user';
 
 const userData = {
-  avatarUrl: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/7.jpg`,
+  avatarUrl: ``,
   email: `test@mail.ru`,
   id: 1,
   isPro: false,
