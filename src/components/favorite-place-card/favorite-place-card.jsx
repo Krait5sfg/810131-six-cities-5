@@ -10,7 +10,6 @@ import PropTypes from 'prop-types';
 import {sendFavoriteStatus, getFavoriteOffers} from '../../store/api-actions';
 
 const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatus, updateIdActiveCardForMap}) => {
-
   const {id, images, accommodation} = favoriteOffer;
   const [firstImage] = images;
   const {price, rating, title, type} = accommodation;
