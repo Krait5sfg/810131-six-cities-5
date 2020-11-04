@@ -8,14 +8,6 @@ configure({adapter: new Adapter()});
 const MockComponent = () => <div />;
 const MockComponentWrapped = withReviewForm(MockComponent);
 
-// it.skip(`Should`, () => {
-//   const wrapper = shallow(<MockComponentWrapped />);
-
-//   expect(wrapper.state().rating).toEqual(``);
-//   expect(wrapper.state().review).toEqual(``);
-//   expect(wrapper.state().isDisabled).toEqual(false);
-// });
-
 describe(`withReviewForm HOC test`, () => {
   const wrapper = shallow(<MockComponentWrapped />);
   const instance = wrapper.instance();
