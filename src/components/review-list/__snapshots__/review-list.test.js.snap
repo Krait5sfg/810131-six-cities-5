@@ -19,9 +19,7 @@ Array [
       comment={
         Object {
           "avatar": "",
-          "commentText": "",
           "date": 2020-11-07T21:00:00.000Z,
-          "id": 1,
           "isPro": true,
           "name": "",
           "rating": 0,
@@ -32,9 +30,7 @@ Array [
       comment={
         Object {
           "avatar": "",
-          "commentText": "",
           "date": 2020-10-07T21:00:00.000Z,
-          "id": 1,
           "isPro": true,
           "name": "",
           "rating": 0,
