@@ -11,7 +11,7 @@ const comments = [
     rating: 0,
     commentText: ``,
     isPro: true,
-    date: `10-08-2020`,
+    date: new Date(`10-08-2020`),
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const comments = [
     rating: 0,
     commentText: `.`,
     isPro: true,
-    date: `11-08-2020`,
+    date: new Date(`11-08-2020`),
   },
 ];
 
