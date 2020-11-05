@@ -6,7 +6,7 @@ import {ReviewList} from './review-list';
 const comments = [
   {
     avatar: ``,
-    date: new Date(`10-08-2020`),
+    date: new Date(`2019-05-08T14:13:56.569Z`),
     id: 1,
     isPro: true,
     commentText: ``,
@@ -15,7 +15,7 @@ const comments = [
   },
   {
     avatar: ``,
-    date: new Date(`11-08-2020`),
+    date: new Date(`2019-06-08T14:13:56.569Z`),
     id: 1,
     isPro: true,
     commentText: ``,
