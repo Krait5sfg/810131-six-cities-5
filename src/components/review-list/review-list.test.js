@@ -14,11 +14,11 @@ const comments = [
     date: new Date(`10-08-2020`),
   },
   {
-    id: 2,
+    id: 1,
     avatar: ``,
     name: ``,
     rating: 0,
-    commentText: `.`,
+    commentText: ``,
     isPro: true,
     date: new Date(`11-08-2020`),
   },

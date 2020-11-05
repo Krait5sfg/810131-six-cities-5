@@ -19,9 +19,9 @@ Array [
       comment={
         Object {
           "avatar": "",
-          "commentText": ".",
+          "commentText": "",
           "date": 2020-11-07T21:00:00.000Z,
-          "id": 2,
+          "id": 1,
           "isPro": true,
           "name": "",
           "rating": 0,
