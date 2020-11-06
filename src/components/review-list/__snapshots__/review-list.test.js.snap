@@ -18,26 +18,26 @@ Array [
     <Review
       comment={
         Object {
-          "avatar": "https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg",
-          "commentText": "Bathed in the nature. Completely unplugged. Unforgettable.",
-          "date": 2020-10-27T09:30:21.000Z,
+          "avatar": "",
+          "commentText": "",
+          "date": 2019-06-08T14:13:56.569Z,
           "id": 1,
           "isPro": true,
-          "name": "Iakov",
-          "rating": 3,
+          "name": "",
+          "rating": 0,
         }
       }
     />
     <Review
       comment={
         Object {
-          "avatar": "https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg",
-          "commentText": "Bathed in the nature. Completely unplugged. Unforgettable.",
-          "date": 2020-10-27T09:29:21.000Z,
+          "avatar": "",
+          "commentText": "",
+          "date": 2019-05-08T14:13:56.569Z,
           "id": 1,
           "isPro": true,
-          "name": "Isaac",
-          "rating": 4,
+          "name": "",
+          "rating": 0,
         }
       }
     />

@@ -5,22 +5,22 @@ import {ReviewList} from './review-list';
 
 const comments = [
   {
+    avatar: ``,
+    date: new Date(`2019-05-08T14:13:56.569Z`),
     id: 1,
-    avatar: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg`,
-    name: `Isaac`,
-    rating: 4,
-    commentText: `Bathed in the nature. Completely unplugged. Unforgettable.`,
     isPro: true,
-    date: new Date(`Tue Oct 27 2020 12:29:21 GMT+0300`),
+    commentText: ``,
+    name: ``,
+    rating: 0,
   },
   {
+    avatar: ``,
+    date: new Date(`2019-06-08T14:13:56.569Z`),
     id: 1,
-    avatar: `https://assets.htmlacademy.ru/intensives/javascript-3/avatar/3.jpg`,
-    name: `Iakov`,
-    rating: 3,
-    commentText: `Bathed in the nature. Completely unplugged. Unforgettable.`,
     isPro: true,
-    date: new Date(`Tue Oct 27 2020 12:30:21 GMT+0300`),
+    commentText: ``,
+    name: ``,
+    rating: 0,
   },
 ];
 

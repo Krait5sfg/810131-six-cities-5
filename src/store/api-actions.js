@@ -1,13 +1,6 @@
 import {ActionCreator} from '../store/action';
 import {adaptToClient, adaptToClientUserData, adaptToClientComments} from '../utils/common';
-import {AuthorizationStatus} from '../utils/const';
-
-const Request = {
-  AUTHORIZATION: `/login`,
-  OFFER_DATA: `/hotels`,
-  OFFER_COMMENT: `/comments/`,
-  FAVORITE: `/favorite`
-};
+import {AuthorizationStatus, Request} from '../utils/const';
 
 export const getOffersFromApi = () => (dispatch, _getState, api) => (
   api.get(Request.OFFER_DATA)
@@ -85,9 +78,9 @@ export const getFavoriteOffers = () => (dispatch, _getState, api) => (
 
 // обновление статуса избранное в предложении.
 // В зависимости от того где происходит вызов меняется атрибут action
-export const sendFavoriteStatus = (id, status, action) => (dispatch, _getState, api) => (
+export const sendFavoriteStatus = (id, status) => (dispatch, _getState, api) => (
   api.post(`${Request.FAVORITE}/${id}/${status}`)
     .then(({data}) => {
-      dispatch(action(adaptToClient(data)));
+      dispatch(ActionCreator.changeFavoriteStatus(adaptToClient(data)));
     })
 );

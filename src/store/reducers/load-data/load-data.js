@@ -26,29 +26,32 @@ const loadData = (state = initialState, action) => {
     case ActionType.UPDATE_FAVORITE_OFFERS:
       return Object.assign({}, state, {favoriteOffers: action.payload});
 
-    case ActionType.CHANGE_FAVORITE_STATUS_IN_ALL_OFFERS:
-      const index = state.allOffers.findIndex((offer) => offer.id === action.payload.id);
-      const changedAllOffers = [
-        ...state.allOffers.slice(0, index),
-        action.payload,
-        ...state.allOffers.slice(index + 1)
-      ];
-      return Object.assign({}, state, {allOffers: changedAllOffers});
+    case ActionType.CHANGE_FAVORITE_STATUS:
+      const result = {};
+      let index = state.allOffers.findIndex((offer) => offer.id === action.payload.id);
+      if (index !== -1) {
+        const changedAllOffers = [
+          ...state.allOffers.slice(0, index),
+          action.payload,
+          ...state.allOffers.slice(index + 1)
+        ];
+        result.allOffers = changedAllOffers;
+      }
+      index = state.nearbyOffers.findIndex((offer) => offer.id === action.payload.id);
+      if (index !== -1) {
+        const changedNearbyOffers = [
+          ...state.nearbyOffers.slice(0, index),
+          action.payload,
+          ...state.nearbyOffers.slice(index + 1)
+        ];
+        result.nearbyOffers = changedNearbyOffers;
+      }
 
-    case ActionType.CHANGE_FAVORITE_STATUS_IN_NEARBY_OFFERS:
-      const indexElement = state.nearbyOffers.findIndex((offer) => offer.id === action.payload.id);
-      const changedNearbyOffers = [
-        ...state.nearbyOffers.slice(0, indexElement),
-        action.payload,
-        ...state.nearbyOffers.slice(indexElement + 1)
-      ];
-      return Object.assign({}, state, {nearbyOffers: changedNearbyOffers});
+      if (state.activeOffer.id === action.payload.id) {
+        result.activeOffer = action.payload;
+      }
+      return Object.assign({}, state, result);
 
-    case ActionType.CHANGE_FAVORITE_STATUS_IN_ACTIVE_OFFER:
-      return Object.assign({}, state, {activeOffer: action.payload});
-
-    case ActionType.REMOVE_NO_FAVORITE_OFFER:
-      return Object.assign({}, state, {favoriteOffers: state.favoriteOffers.slice(0).filter((offer) => offer.id !== action.payload.id)});
   }
   return state;
 };

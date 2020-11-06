@@ -44,3 +44,10 @@ export const FavoriteStatus = {
   ADDITION: 1,
   REMOVAL: 0
 };
+
+export const Request = {
+  AUTHORIZATION: `/login`,
+  OFFER_DATA: `/hotels`,
+  OFFER_COMMENT: `/comments/`,
+  FAVORITE: `/favorite`
+};

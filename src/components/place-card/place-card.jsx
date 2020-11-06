@@ -48,7 +48,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonC
             type="button"
             onClick={(evt) => {
               onFavoriteButtonClick(evt);
-              updateFavoriteStatus(id, isFavorite ? FavoriteStatus.REMOVAL : FavoriteStatus.ADDITION, typePage);
+              updateFavoriteStatus(id, isFavorite ? FavoriteStatus.REMOVAL : FavoriteStatus.ADDITION);
             }}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
@@ -85,15 +85,8 @@ const mapDispatchToProps = ((dispatch) => ({
   updateIdActiveCardForMap(id) {
     dispatch(ActionCreator.updateIdActiveCardForMap(id));
   },
-  updateFavoriteStatus(id, status, place) {
-    switch (place) {
-      case TypePage.MAIN:
-        dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusInAllOffers));
-        break;
-      case TypePage.OFFER:
-        dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusNearbyOffers));
-        break;
-    }
+  updateFavoriteStatus(id, status) {
+    dispatch(sendFavoriteStatus(id, status));
   }
 }));
 
