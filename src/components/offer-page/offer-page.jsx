@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
 import {TypeAccommodation} from '../../utils/const';
 import ReviewForm from '../review-form/review-form';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import ReviewList from '../review-list/review-list';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
@@ -172,9 +172,9 @@ OfferPage.propTypes = {
   onLinkEmailClick: PropTypes.func.isRequired,
   offer: PropTypes.oneOfType([
     PropTypes.object.isRequired,
-    OfferPropTypes
+    offerPropTypes
   ]),
-  nearbyOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  nearbyOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   idActiveOffer: PropTypes.number.isRequired,
   updateActiveOffer: PropTypes.func.isRequired,

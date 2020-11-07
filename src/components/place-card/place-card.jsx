@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {getRating} from '../../utils/common';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
 import {TypeAccommodation, PagePath, FavoriteStatus, TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
@@ -75,7 +75,7 @@ const PlaceCard = ({offer, typePage, updateIdActiveCardForMap, onFavoriteButtonC
 
 PlaceCard.propTypes = {
   updateIdActiveCardForMap: PropTypes.func.isRequired,
-  offer: OfferPropTypes,
+  offer: offerPropTypes,
   typePage: PropTypes.string.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
   updateFavoriteStatus: PropTypes.func.isRequired

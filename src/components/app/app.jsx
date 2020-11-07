@@ -5,7 +5,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import LoginPage from '../login-page/login-page';
 import FavoritePage from '../favorite-page/favorite-page';
 import OfferPage from '../offer-page/offer-page';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import {PagePath, AuthorizationStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
@@ -71,7 +71,7 @@ const App = ({offers, city, authorizationStatus}) => {
 };
 
 App.propTypes = {
-  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   city: PropTypes.string.isRequired,
   authorizationStatus: PropTypes.string.isRequired
 };

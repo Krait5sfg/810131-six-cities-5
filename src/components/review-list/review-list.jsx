@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {ReviewPropTypes} from '../../utils/property-type';
+import {reviewPropTypes} from '../../utils/property-type';
 import Review from '../review/review';
 import {connect} from 'react-redux';
 import {getActiveOfferComments} from '../../store/api-actions';
@@ -35,7 +35,7 @@ class ReviewList extends PureComponent {
 }
 
 ReviewList.propTypes = {
-  activeOfferComments: PropTypes.arrayOf(ReviewPropTypes).isRequired,
+  activeOfferComments: PropTypes.arrayOf(reviewPropTypes).isRequired,
   updateActiveOfferComments: PropTypes.func.isRequired,
   idActiveOffer: PropTypes.number.isRequired
 };

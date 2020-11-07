@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import '../../../node_modules/leaflet/dist/leaflet.css';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import {TypePage} from '../../utils/const';
 import {connect} from 'react-redux';
 import {selectCityOffers} from '../../selector/selector';
@@ -107,7 +107,7 @@ class Map extends PureComponent {
 }
 
 Map.propTypes = {
-  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   typePage: PropTypes.string.isRequired,
   idActiveCardForMap: PropTypes.number.isRequired
 };

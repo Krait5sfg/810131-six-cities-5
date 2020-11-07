@@ -1,7 +1,7 @@
 import React from 'react';
 import {TypeAccommodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
 import {PagePath, FavoriteStatus} from '../../utils/const';
 import {connect} from 'react-redux';
@@ -62,7 +62,7 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatu
 };
 
 FavoritePlaceCard.propTypes = {
-  favoriteOffer: OfferPropTypes,
+  favoriteOffer: offerPropTypes,
   city: PropTypes.string.isRequired,
   changeCity: PropTypes.func.isRequired,
   updateFavoriteStatus: PropTypes.func.isRequired,

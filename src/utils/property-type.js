@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const OfferPropTypes = PropTypes.shape({
+export const offerPropTypes = PropTypes.shape({
   city: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   images: PropTypes.array.isRequired,
@@ -31,7 +31,7 @@ export const OfferPropTypes = PropTypes.shape({
 }).isRequired;
 
 
-export const ReviewPropTypes = PropTypes.shape({
+export const reviewPropTypes = PropTypes.shape({
   id: PropTypes.number.isRequired,
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
