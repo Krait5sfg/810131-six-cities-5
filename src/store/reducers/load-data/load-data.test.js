@@ -130,3 +130,22 @@ it(`Reducer should change favorite status in all offers except favoriteOffers`, 
     favoriteOffers: []
   });
 });
+
+it(`Reducer should delete offer without favorite status true in favorite offers`, () => {
+  expect(loadData({
+    allOffers: [],
+    activeOfferComments: [],
+    activeOffer: {},
+    nearbyOffers: [],
+    favoriteOffers: [{id: 1, isFavorite: true}, {id: 2, isFavorite: true}, {id: 3, isFavorite: true}]
+  }, {
+    type: ActionType.CHANGE_FAVORITE_STATUS_IN_FAVORITE_OFFERS,
+    payload: 1,
+  })).toEqual({
+    allOffers: [],
+    activeOfferComments: [],
+    activeOffer: {},
+    nearbyOffers: [],
+    favoriteOffers: [{id: 2, isFavorite: true}, {id: 3, isFavorite: true}]
+  });
+});
