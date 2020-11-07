@@ -21,11 +21,12 @@ class ReviewForm extends PureComponent {
   constructor(props) {
     super(props);
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleErrorClick = this._handleErrorClick.bind(this);
     this.errorRef = React.createRef();
   }
 
-  _handleErrorClick(evt) {
-    evt.target.textContent = ``;
+  _handleErrorClick() {
+    this.errorRef.current.textContent = ``;
   }
 
   _handleFormSubmit(evt) {
