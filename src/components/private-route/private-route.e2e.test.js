@@ -19,3 +19,16 @@ it(`should redirect user to login page if no authorization`, () => {
   expect(wrapper.exists(Route)).toBe(true);
   expect(renderProp()).toEqual(<Redirect to={`/login`} />);
 });
+
+it(`should show favorite page if user have authorization`, () => {
+  const render = jest.fn();
+
+  mount(<BrowserRouter><PrivateRoute
+    path={``}
+    exact
+    authorizationStatus={`AUTH`}
+    render={render}
+  /></BrowserRouter>);
+
+  expect(render).toHaveBeenCalled();
+});
