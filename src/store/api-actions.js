@@ -19,8 +19,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
     .then((response) => {
       dispatch(ActionCreator.updateUser(adaptToClientUserData(response.data)));
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-    })
-    .catch(() => {})
+    }).catch(() => {})
 );
 
 // авторизация
