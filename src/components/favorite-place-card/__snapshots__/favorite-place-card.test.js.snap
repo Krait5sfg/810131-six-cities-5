@@ -16,6 +16,7 @@ exports[`FavoritePlaceCard render correctly 1`] = `
         alt="Place image"
         className="place-card__image"
         height="110"
+        src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/6.jpg"
         width="150"
       />
     </a>
