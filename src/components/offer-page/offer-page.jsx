@@ -12,7 +12,6 @@ import {connect} from 'react-redux';
 import User from '../user/user';
 import {AuthorizationStatus, FavoriteStatus} from '../../utils/const';
 import {getActiveOffer, getNearbyOffers, sendFavoriteStatus} from '../../store/api-actions';
-import {ActionCreator} from '../../store/action';
 import Header from '../header/header';
 import Loading from '../loading/loading';
 
