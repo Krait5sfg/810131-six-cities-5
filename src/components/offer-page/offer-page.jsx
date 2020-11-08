@@ -200,7 +200,7 @@ const mapDispatchToProps = ((dispatch) => ({
     dispatch(getNearbyOffers(id));
   },
   updateFavoriteStatus(id, status) {
-    dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusActiveOffer));
+    dispatch(sendFavoriteStatus(id, status));
   }
 }));
 
