@@ -31,8 +31,8 @@ User.propTypes = {
       email: PropTypes.string.isRequired,
       isPro: PropTypes.bool.isRequired,
       name: PropTypes.string.isRequired
-    })
-  ])
+    }).isRequired
+  ]).isRequired
 };
 
 const mapStateToProps = (({USER}) => ({
