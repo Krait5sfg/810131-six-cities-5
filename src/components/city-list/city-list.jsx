@@ -26,7 +26,7 @@ const CityList = ({cities, activeCity, changeCity}) => {
 };
 
 CityList.propTypes = {
-  cities: PropTypes.array.isRequired,
+  cities: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   activeCity: PropTypes.string.isRequired,
   changeCity: PropTypes.func.isRequired,
 };
