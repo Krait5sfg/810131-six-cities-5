@@ -4,12 +4,13 @@ import {AuthorizationStatus, Request} from '../utils/const';
 
 // пустой catch нужен для того чтобы в консоли оставить только сетевые ошибки
 // его нужно указывать во всех функциях потому подключение к API идет через экземпляр axious
+// в getOffersFromApi и sendComment catch блоки не нужны потому reject промисы обрабатываются в index.js и в ReviewForm
 export const getOffersFromApi = () => (dispatch, _getState, api) => (
   api.get(Request.OFFER_DATA)
     .then(({data}) => {
       const modifiedToClientOffers = data.map((offer) => adaptToClient(offer));
       dispatch(ActionCreator.loadOffers(modifiedToClientOffers));
-    }).catch(() => {})
+    })
 );
 
 // проверка авторизован пользователь или нет
@@ -64,7 +65,7 @@ export const sendComment = (id, {review: comment, rating}) => (dispatch, _getSta
     .then(({data}) => {
       const offerModifiedComments = data.map((oneComment) => adaptToClientComments(oneComment));
       dispatch(ActionCreator.updateActiveOfferComments(offerModifiedComments));
-    }).catch(() => {})
+    })
 );
 
 // загрузка Избранных предложений
