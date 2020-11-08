@@ -10,8 +10,7 @@ import PropTypes from 'prop-types';
 import {sendFavoriteStatus} from '../../store/api-actions';
 
 const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatus, updateIdActiveCardForMap}) => {
-  const {id, images, accommodation} = favoriteOffer;
-  const [firstImage] = images;
+  const {id, previewImage, accommodation} = favoriteOffer;
   const {price, rating, title, type} = accommodation;
 
   const handleFavoriteCardClick = () => {
@@ -27,7 +26,7 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatu
       onClick={handleFavoriteCardClick}>
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${PagePath.OFFER}${id}`}>
-          <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
+          <img className="place-card__image" src={previewImage} width="150" height="110" alt="Place image" />
         </Link>
       </div>
       <div className="favorites__card-info place-card__info">
