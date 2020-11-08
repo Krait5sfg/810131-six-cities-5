@@ -1,17 +1,16 @@
 import React from 'react';
 import {TypeAccommodation} from '../../utils/const';
 import {getRating} from '../../utils/common';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import {Link} from 'react-router-dom';
 import {PagePath, FavoriteStatus} from '../../utils/const';
 import {connect} from 'react-redux';
 import {ActionCreator} from '../../store/action';
 import PropTypes from 'prop-types';
-import {sendFavoriteStatus, getFavoriteOffers} from '../../store/api-actions';
+import {sendFavoriteStatus} from '../../store/api-actions';
 
 const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatus, updateIdActiveCardForMap}) => {
-  const {id, images, accommodation} = favoriteOffer;
-  const [firstImage] = images;
+  const {id, previewImage, accommodation} = favoriteOffer;
   const {price, rating, title, type} = accommodation;
 
   const handleFavoriteCardClick = () => {
@@ -27,7 +26,7 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatu
       onClick={handleFavoriteCardClick}>
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={`${PagePath.OFFER}${id}`}>
-          <img className="place-card__image" src={firstImage} width="150" height="110" alt="Place image" />
+          <img className="place-card__image" src={previewImage} width="150" height="110" alt="Place image" />
         </Link>
       </div>
       <div className="favorites__card-info place-card__info">
@@ -62,7 +61,7 @@ const FavoritePlaceCard = ({favoriteOffer, city, changeCity, updateFavoriteStatu
 };
 
 FavoritePlaceCard.propTypes = {
-  favoriteOffer: OfferPropTypes,
+  favoriteOffer: offerPropTypes,
   city: PropTypes.string.isRequired,
   changeCity: PropTypes.func.isRequired,
   updateFavoriteStatus: PropTypes.func.isRequired,
@@ -81,7 +80,7 @@ const mapDispatchToProps = ((dispatch) => ({
   },
   updateFavoriteStatus(id, status) {
     dispatch(sendFavoriteStatus(id, status));
-    dispatch(getFavoriteOffers());
+    dispatch(ActionCreator.changeFavoriteStatusInFavoriteOffers(id));
   },
   updateIdActiveCardForMap(id) {
     dispatch(ActionCreator.updateIdActiveCardForMap(id));

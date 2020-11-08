@@ -1,6 +1,6 @@
 import React from 'react';
 import {getRating} from '../../utils/common';
-import {ReviewPropTypes} from '../../utils/property-type';
+import {reviewPropTypes} from '../../utils/property-type';
 
 const Review = ({comment}) => {
   const {avatar, name, rating, commentText, date} = comment;
@@ -35,7 +35,7 @@ const Review = ({comment}) => {
 };
 
 Review.propTypes = {
-  comment: ReviewPropTypes,
+  comment: reviewPropTypes,
 };
 
 export default Review;

@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import Map from '../map/map';
 import {TypePage} from '../../utils/const';
 import CityList from '../city-list/city-list';
@@ -70,7 +70,7 @@ class MainPage extends PureComponent {
 MainPage.propTypes = {
   city: PropTypes.string.isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
   updateIdActiveCardForMap: PropTypes.func.isRequired
 };

@@ -2,6 +2,9 @@ import {ActionCreator} from '../store/action';
 import {adaptToClient, adaptToClientUserData, adaptToClientComments} from '../utils/common';
 import {AuthorizationStatus, Request} from '../utils/const';
 
+// пустой catch нужен для того чтобы в консоли оставить только сетевые ошибки
+// его нужно указывать во всех функциях потому подключение к API идет через экземпляр axious
+// в getOffersFromApi и sendComment catch блоки не нужны потому reject промисы обрабатываются в index.js и в ReviewForm
 export const getOffersFromApi = () => (dispatch, _getState, api) => (
   api.get(Request.OFFER_DATA)
     .then(({data}) => {
@@ -16,10 +19,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
     .then((response) => {
       dispatch(ActionCreator.updateUser(adaptToClientUserData(response.data)));
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-    })
-    .catch((error) => {
-      throw error;
-    })
+    }).catch(() => {})
 );
 
 // авторизация
@@ -28,7 +28,7 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
     .then((response) => {
       dispatch(ActionCreator.updateUser(adaptToClientUserData(response.data)));
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-    })
+    }).catch(() => {})
 );
 
 // запрос активного предложения
@@ -36,7 +36,7 @@ export const getActiveOffer = (id) => (dispatch, _getState, api) => (
   api.get(`${Request.OFFER_DATA}/${id}`)
     .then(({data}) => {
       dispatch(ActionCreator.updateActiveOffer(adaptToClient(data)));
-    })
+    }).catch(() => {})
 );
 
 // запрос предложений неподалеку
@@ -45,7 +45,7 @@ export const getNearbyOffers = (id) => (dispatch, _getState, api) => (
     .then(({data}) => {
       const modifiedToClientNearbyOffers = data.map((offer) => adaptToClient(offer));
       dispatch(ActionCreator.updateNearbyOffers(modifiedToClientNearbyOffers));
-    })
+    }).catch(() => {})
 );
 
 // запрос комментариев активного предложения
@@ -54,7 +54,7 @@ export const getActiveOfferComments = (id) => (dispatch, _getState, api) => (
     .then(({data}) => {
       const modifiedComments = data.map((comment) => adaptToClientComments(comment));
       dispatch(ActionCreator.updateActiveOfferComments(modifiedComments));
-    })
+    }).catch(() => {})
 );
 
 // отправка комментария. в ответ приходят все комментарии к предложению + новое
@@ -73,7 +73,7 @@ export const getFavoriteOffers = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       const modifiedFavoriteOffers = data.map((favoriteOffer) => adaptToClient(favoriteOffer));
       dispatch(ActionCreator.updateFavoriteOffers(modifiedFavoriteOffers));
-    })
+    }).catch(() => {})
 );
 
 // обновление статуса избранное в предложении.
@@ -82,5 +82,5 @@ export const sendFavoriteStatus = (id, status) => (dispatch, _getState, api) => 
   api.post(`${Request.FAVORITE}/${id}/${status}`)
     .then(({data}) => {
       dispatch(ActionCreator.changeFavoriteStatus(adaptToClient(data)));
-    })
+    }).catch(() => {})
 );

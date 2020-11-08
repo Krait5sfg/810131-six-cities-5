@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FavoritePlaceCard from '../favorite-place-card/favorite-place-card';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 
 const FavoriteLocationList = ({city, cityFavoriteOffers}) => {
 
@@ -29,7 +29,7 @@ const FavoriteLocationList = ({city, cityFavoriteOffers}) => {
 
 FavoriteLocationList.propTypes = {
   city: PropTypes.string.isRequired,
-  cityFavoriteOffers: PropTypes.arrayOf(OfferPropTypes).isRequired
+  cityFavoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired
 };
 
 export default FavoriteLocationList;

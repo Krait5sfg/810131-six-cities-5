@@ -21,30 +21,8 @@ class ReviewForm extends PureComponent {
   constructor(props) {
     super(props);
     this._handleFormSubmit = this._handleFormSubmit.bind(this);
+    this._handleErrorClick = this._handleErrorClick.bind(this);
     this.errorRef = React.createRef();
-  }
-
-  _handleErrorClick(evt) {
-    evt.target.textContent = ``;
-  }
-
-  _handleFormSubmit(evt) {
-    const {onSubmit, rating, review, idActiveOffer, resetState, changeDisableFormAttribute} = this.props;
-    evt.preventDefault();
-
-    changeDisableFormAttribute(DisableStatus.DISABLED); // блокируем форму при отправке комментария
-    // отправка комментария
-    onSubmit(idActiveOffer, {
-      review,
-      rating
-    }).then(() => {
-      changeDisableFormAttribute(DisableStatus.NOT_DISABLED);
-      resetState(); // отчистка полей формы
-    }).catch(() => {
-      changeDisableFormAttribute(DisableStatus.NOT_DISABLED);
-      this.errorRef.current.textContent = ERROR_MESSAGE;
-    });
-
   }
 
   render() {
@@ -88,6 +66,28 @@ class ReviewForm extends PureComponent {
           onClick={this._handleErrorClick}></p>
       </form>
     );
+  }
+
+  _handleErrorClick() {
+    this.errorRef.current.textContent = ``;
+  }
+
+  _handleFormSubmit(evt) {
+    const {onSubmit, rating, review, idActiveOffer, resetState, changeDisableFormAttribute} = this.props;
+    evt.preventDefault();
+
+    changeDisableFormAttribute(DisableStatus.DISABLED); // блокируем форму при отправке комментария
+    // отправка комментария
+    onSubmit(idActiveOffer, {
+      review,
+      rating
+    }).then(() => {
+      changeDisableFormAttribute(DisableStatus.NOT_DISABLED);
+      resetState(); // отчистка полей формы
+    }).catch(() => {
+      changeDisableFormAttribute(DisableStatus.NOT_DISABLED);
+      this.errorRef.current.textContent = ERROR_MESSAGE;
+    });
   }
 }
 

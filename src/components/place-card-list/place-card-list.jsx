@@ -1,7 +1,7 @@
 import React from 'react';
 import PlaceCard from '../place-card/place-card';
 import PropTypes from 'prop-types';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import {TypePage} from '../../utils/const';
 
 const PlaceCardList = ({offers, typePage, onFavoriteButtonClick}) => {
@@ -32,7 +32,7 @@ const PlaceCardList = ({offers, typePage, onFavoriteButtonClick}) => {
 };
 
 PlaceCardList.propTypes = {
-  offers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  offers: PropTypes.arrayOf(offerPropTypes).isRequired,
   typePage: PropTypes.string.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired
 };

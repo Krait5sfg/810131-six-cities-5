@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import FavoriteLocationList from '../favorite-location-list/favorite-location-list';
-import {OfferPropTypes} from '../../utils/property-type';
+import {offerPropTypes} from '../../utils/property-type';
 import User from '../user/user';
 import {connect} from 'react-redux';
 import {getFavoriteOffers} from '../../store/api-actions';
@@ -71,7 +71,7 @@ class FavoritePage extends PureComponent {
 }
 
 FavoritePage.propTypes = {
-  favoriteOffers: PropTypes.arrayOf(OfferPropTypes).isRequired,
+  favoriteOffers: PropTypes.arrayOf(offerPropTypes).isRequired,
   onLinkEmailClick: PropTypes.func.isRequired,
   updateFavoriteOffers: PropTypes.func.isRequired
 };

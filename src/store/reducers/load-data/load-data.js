@@ -52,6 +52,9 @@ const loadData = (state = initialState, action) => {
       }
       return Object.assign({}, state, result);
 
+    case ActionType.CHANGE_FAVORITE_STATUS_IN_FAVORITE_OFFERS:
+      return Object.assign({}, state, {favoriteOffers: state.favoriteOffers.slice().filter((offer) => offer.id !== action.payload)});
+
   }
   return state;
 };

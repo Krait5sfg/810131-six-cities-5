@@ -31,7 +31,15 @@ it(`Submit form in ReviewForm`, () => {
   expect(wrapper.find(`.reviews__textarea`).props().value).toEqual(`some text`);
   expect(wrapper.find(`.form__rating-input`).at(2).props().checked).toEqual(true);
   expect(onSubmit).toHaveBeenCalledTimes(1);
+  expect(onSubmit).toHaveBeenCalledWith(1, {review: `some text`, rating: `3`});
   expect(changeDisableFormAttribute).toHaveBeenCalledTimes(1);
   expect(wrapper.find(`.reviews__textarea`).props().disabled).toEqual(false);
   expect(wrapper.find(`.reviews__submit`).props().disabled).toEqual(true);
+
+  // test клика на .error
+  wrapper.instance()._handleErrorClick = jest.fn();
+  wrapper.instance().forceUpdate(); // чтобы сработал мок для _handleErrorClick
+  wrapper.find(`.error`).simulate(`click`);
+
+  expect(wrapper.instance()._handleErrorClick).toHaveBeenCalledTimes(1);
 });

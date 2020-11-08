@@ -9,13 +9,13 @@ const MockComponent = () => <div />;
 const MockComponentWrapped = withOpen(MockComponent);
 
 describe(`withOpen HOC test`, () => {
-  const wrapper = shallow(<MockComponentWrapped />);
-
   it(`test original state`, () => {
+    const wrapper = shallow(<MockComponentWrapped />);
     expect(wrapper.state().isOpen).toEqual(false);
   });
 
   it(`test when invoke _onSortingClick`, () => {
+    const wrapper = shallow(<MockComponentWrapped />);
     const instance = wrapper.instance();
     instance._onSortingClick();
 

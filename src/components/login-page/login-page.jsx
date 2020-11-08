@@ -7,7 +7,7 @@ import {AuthorizationStatus, PagePath} from '../../utils/const';
 import User from '../user/user';
 import Header from '../header/header';
 
-const EMAIL_REGEXP = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const EMAIL_REGULAR_EXPRESSION = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 class LoginPage extends PureComponent {
 
@@ -65,7 +65,7 @@ class LoginPage extends PureComponent {
     const {onSubmit} = this.props;
     evt.preventDefault();
 
-    if (EMAIL_REGEXP.test(this.loginRef.current.value)) {
+    if (EMAIL_REGULAR_EXPRESSION.test(this.loginRef.current.value)) {
       onSubmit({
         login: this.loginRef.current.value,
         password: this.passwordRef.current.value,
