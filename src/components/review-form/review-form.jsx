@@ -109,5 +109,4 @@ const mapDispatchToProps = ((dispatch) => ({
 }));
 
 export {ReviewForm}; // для тестов
-export const EnhancedReviewForm = withReviewForm(ReviewForm);
 export default connect(null, mapDispatchToProps)(withReviewForm(ReviewForm));
