@@ -4,7 +4,7 @@ const withReviewForm = (WrappedComponent) => {
   return class WithReviewForm extends PureComponent {
     constructor() {
       super();
-      this._onInputChange = this._onInputChange.bind(this);
+      this._handleInputChange = this._handleInputChange.bind(this);
       this._resetState = this._resetState.bind(this);
       this._changeDisableFormAttribute = this._changeDisableFormAttribute.bind(this);
 
@@ -21,7 +21,7 @@ const withReviewForm = (WrappedComponent) => {
         rating={rating}
         review={review}
         resetState={this._resetState}
-        onChange={this._onInputChange}
+        onChange={this._handleInputChange}
         isDisabled={isDisabled}
         changeDisableFormAttribute={this._changeDisableFormAttribute}
         {...this.props}
@@ -32,7 +32,7 @@ const withReviewForm = (WrappedComponent) => {
       this.setState({isDisabled: status});
     }
 
-    _onInputChange(evt) {
+    _handleInputChange(evt) {
       const {name, value} = evt.target;
       this.setState({[name]: value});
     }

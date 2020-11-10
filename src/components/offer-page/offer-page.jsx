@@ -12,7 +12,6 @@ import {connect} from 'react-redux';
 import User from '../user/user';
 import {AuthorizationStatus, FavoriteStatus} from '../../utils/const';
 import {getActiveOffer, getNearbyOffers, sendFavoriteStatus} from '../../store/api-actions';
-import {ActionCreator} from '../../store/action';
 import Header from '../header/header';
 import Loading from '../loading/loading';
 
@@ -21,21 +20,15 @@ const MAX_IMAGE_ON_PAGE = 6;
 class OfferPage extends PureComponent {
 
   componentDidUpdate(previousProps) {
-    const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;
+    const {idActiveOffer} = this.props;
     if (previousProps.idActiveOffer !== idActiveOffer) {
-      updateActiveOffer(idActiveOffer);
-      updateNearbyOffers(idActiveOffer);
+      this._updateActiveOfferAndNearbyOffers();
     }
 
   }
 
   componentDidMount() {
-    const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;
-
-    // Запросы на сервер
-    updateActiveOffer(idActiveOffer);
-    updateNearbyOffers(idActiveOffer);
-
+    this._updateActiveOfferAndNearbyOffers();
   }
 
   render() {
@@ -166,6 +159,14 @@ class OfferPage extends PureComponent {
     }
     return <Loading />;
   }
+
+  _updateActiveOfferAndNearbyOffers() {
+    const {idActiveOffer, updateActiveOffer, updateNearbyOffers} = this.props;
+
+    // запросы на сервер
+    updateActiveOffer(idActiveOffer);
+    updateNearbyOffers(idActiveOffer);
+  }
 }
 
 OfferPage.propTypes = {
@@ -198,7 +199,7 @@ const mapDispatchToProps = ((dispatch) => ({
     dispatch(getNearbyOffers(id));
   },
   updateFavoriteStatus(id, status) {
-    dispatch(sendFavoriteStatus(id, status, ActionCreator.changeFavoriteStatusActiveOffer));
+    dispatch(sendFavoriteStatus(id, status));
   }
 }));
 

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {AuthorizationStatus} from '../../utils/const';
 
 const User = ({onLinkEmailClick, authorizationStatus, userData}) => {
-
   return (
     <li className="header__nav-item user">
       <a className="header__nav-link header__nav-link--profile" href="#" onClick={onLinkEmailClick}>
@@ -24,7 +23,16 @@ const User = ({onLinkEmailClick, authorizationStatus, userData}) => {
 User.propTypes = {
   onLinkEmailClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  userData: PropTypes.object.isRequired,
+  userData: PropTypes.oneOfType([
+    PropTypes.object.isRequired,
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      avatarUrl: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      isPro: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  ]).isRequired
 };
 
 const mapStateToProps = (({USER}) => ({
