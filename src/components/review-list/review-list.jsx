@@ -9,6 +9,13 @@ const LIMIT_COMMENT = 10;
 
 class ReviewList extends PureComponent {
 
+  componentDidUpdate(previousProps) {
+    const {updateActiveOfferComments, idActiveOffer} = this.props;
+    if (previousProps.idActiveOffer !== idActiveOffer) {
+      updateActiveOfferComments(idActiveOffer);
+    }
+  }
+
   componentDidMount() {
     const {updateActiveOfferComments, idActiveOffer} = this.props;
     updateActiveOfferComments(idActiveOffer);
